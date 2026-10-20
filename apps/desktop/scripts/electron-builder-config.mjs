@@ -98,7 +98,7 @@ export function createElectronBuilderConfig(
   }
   // GitHub Releases feed (XPeach): one provider for every target, generated from
   // the release repository so electron-updater can resolve per-platform assets.
-  const githubPublish = env.XPEACH_GITHUB_RELEASE === '1'
+  const githubPublish = env.XPEACH_GITHUB_OWNER !== undefined || env.XPEACH_GITHUB_RELEASE === '1'
   const githubOwner = env.XPEACH_GITHUB_OWNER || 'yellowpeachxgp'
   const githubRepo = env.XPEACH_GITHUB_REPO || 'xpeach-harness'
   const update = githubPublish
@@ -274,7 +274,15 @@ export function createElectronBuilderConfig(
     publish: update === undefined
       ? null
       : githubPublish
-        ? [{ provider: 'github', owner: githubOwner, repo: githubRepo, channel: update.channel }]
+        ? [{
+            provider: 'github',
+            owner: githubOwner,
+            repo: githubRepo,
+            channel: update.channel,
+            // CI keeps uploads in the release job; the provider still makes
+            // electron-builder emit latest*.yml next to the installers.
+            ...(env.XPEACH_GITHUB_PUBLISH === 'never' ? { publishAutoUpdate: false } : {}),
+          }]
         : [{ provider: 'generic', url: update.publicUrl, channel: update.channel }],
   }
 }

@@ -36,9 +36,10 @@ jobs:
       DSH_DESKTOP_APP_ID: codes.xpeach.harness
       DSH_DESKTOP_UNSIGNED: '1'
       DSH_DESKTOP_UPDATE_CHANNEL: latest
-      XPEACH_GITHUB_RELEASE: '0'
+      XPEACH_GITHUB_RELEASE: '1'
       XPEACH_GITHUB_OWNER: yellowpeachxgp
       XPEACH_GITHUB_REPO: xpeach-harness
+      XPEACH_GITHUB_PUBLISH: never
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
