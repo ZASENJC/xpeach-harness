@@ -122,8 +122,18 @@ jobs:
           TAG="${GITHUB_REF_NAME}"
           if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release upload "$TAG" artifacts/* --repo "$GITHUB_REPOSITORY" --clobber
-            gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --latest
+            gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false
           else
-            gh release create "$TAG" artifacts/* --repo "$GITHUB_REPOSITORY" --title "$TAG" --generate-notes --latest
+            gh release create "$TAG" artifacts/* --repo "$GITHUB_REPOSITORY" --title "$TAG" --generate-notes
+          fi
+          # electron-updater resolves latest-mac.yml / latest.yml from the release
+          # marked "latest"; publishing a build without them silently breaks
+          # updates, so only promote when the metadata made it into the release.
+          ASSETS=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json assets --jq '.assets[].name')
+          if echo "$ASSETS" | grep -qx 'latest-mac.yml' && echo "$ASSETS" | grep -qx 'latest.yml'; then
+            gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --latest
+            echo "promoted $TAG to latest (update metadata present)"
+          else
+            echo "::warning::$TAG has no latest-*.yml; leaving the previous latest release in place"
           fi
           gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json tagName,isDraft,assets
