@@ -65,15 +65,17 @@ jobs:
           EOF
       - name: Build desktop app
         run: pnpm run build:desktop
+      - name: Prepare desktop runtime
+        run: pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
       - name: Package (macOS)
         if: matrix.target == 'mac-arm64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --mac dmg zip --arm64 --publish never --config.executableName=xpeach-harness
+        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --mac dmg zip --arm64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness
       - name: Package (Windows)
         if: matrix.target == 'win-x64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --win nsis --x64 --publish never --config.executableName=xpeach-harness
+        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --win nsis --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-setup-${version}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness
       - name: Package (Linux)
         if: matrix.target == 'linux-x64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --linux AppImage --x64 --publish never --config.executableName=xpeach-harness
+        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --linux AppImage --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness
       - name: Collect installers
         shell: bash
         run: |
