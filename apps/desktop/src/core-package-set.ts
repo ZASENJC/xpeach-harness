@@ -39,6 +39,8 @@ const VERSION_PATTERN = /^[0-9A-Za-z][0-9A-Za-z.+_-]*$/u
 const FILE_PATTERN = /^[a-zA-Z0-9][a-zA-Z0-9._-]*\.tgz$/u
 const INTEGRITY_PATTERN = /^sha512-[A-Za-z0-9+/]+={0,2}$/u
 const DSH_PACKAGE = '@deepseek-ai/dsh'
+/** XPeach product plugins the Desktop runtime installs and loads. */
+export const XPEACH_PACKAGES = ['@xpeach/xph-account', '@xpeach/xph-client-ui'] as const
 const RELEASE_PACKAGES = [DSH_PACKAGE, DESKTOP_HOST_PACKAGE] as const
 
 function isRecord(value: unknown): value is Record<string, unknown> {

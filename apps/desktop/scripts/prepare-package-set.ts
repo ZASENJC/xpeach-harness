@@ -22,13 +22,13 @@ import {
   DESKTOP_PACKAGE_SET_FILE,
   parseDesktopCorePackageSet,
   type DesktopCorePackageRecord,
-} from '../src/core-package-set.ts'
+  XPEACH_PACKAGES } from '../src/core-package-set.ts'
 import { capture } from '../../../scripts/release/process.ts'
 import { tarballFiles } from '../../../scripts/release/tarball.ts'
 import { resolveDesktopTargetBuildPaths } from './desktop-build-paths.mjs'
 
 const DSH_PACKAGE = '@deepseek-ai/dsh'
-const ROOT_PACKAGES = [DSH_PACKAGE, DESKTOP_HOST_PACKAGE] as const
+const ROOT_PACKAGES = [DSH_PACKAGE, DESKTOP_HOST_PACKAGE, ...XPEACH_PACKAGES] as const
 const APP_ROOT = resolve(import.meta.dirname, '..')
 const REPOSITORY_ROOT = resolve(APP_ROOT, '..', '..')
 

@@ -2,7 +2,13 @@ import type { ProductEventMap, ProductEvent } from '@deepseek-ai/dsh-client-prod
 import { WINDOWS_TITLEBAR_HEIGHT } from './windows-layout.ts'
 /** Electron shell: desktop project ownership, custom protocol, windows, and lifecycle. */
 
+// XPeach owns its data root. Pinning XPH_HOME before any path resolution keeps
+// every Electron-side root — profile, lock, settings, caches, logs — under
+// ~/.xph, so the desktop shell never shares DeepSeek Harness's ~/.dsh.
+process.env.XPH_HOME ??= join(homedir(), '.xph')
+
 import { readFile, writeFile } from 'node:fs/promises'
+import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -932,7 +938,7 @@ async function main(): Promise<void> {
   const applicationIconPath = development ? join(app.getAppPath(), 'resources', 'icon-windows.png')
     : join(process.resourcesPath, 'icon.png')
   app.setAboutPanelOptions({
-    applicationName: 'DeepSeek Harness',
+    applicationName: 'XPeach Harness',
     applicationVersion: app.getVersion(),
     // The release has no separate build number; omit Electron's bundle version.
     version: '',

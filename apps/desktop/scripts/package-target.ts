@@ -25,6 +25,9 @@ import { desktopBuildCommitEnvironment, readDesktopBuildCommit, resolveDesktopBu
 import { requireDesktopToolchain } from './desktop-toolchain-preflight.ts'
 import { withMacOSNotarizationProxy } from './macos-notarization-proxy.ts'
 
+/** Private XPeach plugins bundled into the Desktop runtime beside the dsh core set. */
+const XPEACH_DESKTOP_PACKAGES = ['packages/xpeach/account', 'packages/xpeach/client-ui'] as const
+
 const APP_ROOT = resolve(import.meta.dirname, '..')
 const REPOSITORY_ROOT = resolve(APP_ROOT, '..', '..')
 const WINDOWS_SIGNING_ENV_PREFIX = 'DSH_DESKTOP_WINDOWS_'
@@ -411,7 +414,7 @@ async function main(): Promise<void> {
   if (success && target.platform === 'darwin' && !invocation.directory && !invocation.prepareOnly) {
     const paths = desktopTargetBuildPaths(target.name)
     const output = desktopArtifactOutput(paths, invocation)
-    const filename = `deepseek-harness-${buildVersion}-mac-${target.arch}${output.suffix}.dmg`
+    const filename = `xpeach-harness-${buildVersion}-mac-${target.arch}${output.suffix}.dmg`
     console.log(`DMG: ${join(output.directory, filename)}`)
   }
 }
@@ -493,6 +496,11 @@ export async function packageTarget(
     buildPaths.packedDsh,
   ], buildEnv, REPOSITORY_ROOT)
   await execute(['run', 'release:pack', '--family', 'vendor', '--out', buildPaths.packedVendor, ...packArguments], buildEnv, REPOSITORY_ROOT)
+  // XPeach ships its own product plugins beside the dsh core set. They are private
+  // workspace packages, so they are packed here rather than through a release family.
+  for (const xpeachPackage of XPEACH_DESKTOP_PACKAGES) {
+    await execute(['--dir', xpeachPackage, 'pack', '--pack-destination', buildPaths.packedDsh], buildEnv, REPOSITORY_ROOT)
+  }
   rmSync(buildPaths.packedLandlock, { recursive: true, force: true })
   mkdirSync(buildPaths.packedLandlock, { recursive: true })
   await execute(['--dir', 'native/system', 'run', 'build:ts'], buildEnv, REPOSITORY_ROOT)
