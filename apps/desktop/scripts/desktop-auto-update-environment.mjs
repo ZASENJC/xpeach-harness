@@ -33,7 +33,7 @@ const UPDATE_ENVIRONMENTS = {
   },
 }
 
-const UPDATE_TARGETS = new Set(['mac-arm64', 'mac-x64', 'win-x64'])
+const UPDATE_TARGETS = new Set(['mac-arm64', 'mac-x64', 'win-x64', 'linux-x64'])
 
 /**
  * Resolve the update deployment, defaulting local release work to test.
@@ -55,7 +55,7 @@ export function resolveDesktopAutoUpdateEnvironment(env) {
  * @returns {'mac-arm64' | 'mac-x64' | 'win-x64'} Update target directory.
  */
 export function resolveDesktopAutoUpdateTarget(platform, arch) {
-  const os = platform === 'darwin' ? 'mac' : platform === 'win32' ? 'win' : platform
+  const os = platform === 'darwin' ? 'mac' : platform === 'win32' ? 'win' : platform === 'linux' ? 'linux' : platform
   const target = `${os}-${arch}`
   if (!UPDATE_TARGETS.has(target)) {
     throw new Error(`desktop auto-update: unsupported target ${target}`)
