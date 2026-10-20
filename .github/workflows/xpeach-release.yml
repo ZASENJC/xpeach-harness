@@ -66,7 +66,16 @@ jobs:
       - name: Build desktop app
         run: pnpm run build:desktop
       - name: Prepare desktop runtime
-        run: pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
+        shell: bash
+        run: |
+          if [ "${{ matrix.target }}" = "mac-arm64" ]; then
+            export DSH_DESKTOP_TARGET_PLATFORM=darwin DSH_DESKTOP_TARGET_ARCH=arm64
+          elif [ "${{ matrix.target }}" = "win-x64" ]; then
+            export DSH_DESKTOP_TARGET_PLATFORM=win32 DSH_DESKTOP_TARGET_ARCH=x64
+          else
+            export DSH_DESKTOP_TARGET_PLATFORM=linux DSH_DESKTOP_TARGET_ARCH=x64
+          fi
+          pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
       - name: Package (macOS)
         if: matrix.target == 'mac-arm64'
         run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --mac dmg zip --arm64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness
