@@ -1,0 +1,8 @@
+{
+  "name": "🍑Code — XPeach",
+  "short_name": "🍑Code",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

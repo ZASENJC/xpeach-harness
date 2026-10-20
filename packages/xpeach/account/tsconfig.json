@@ -1,0 +1,36 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib/types",
+    "tsBuildInfoFile": "lib/tsconfig.tsbuildinfo"
+  },
+  "files": [
+    "src/api.ts",
+    "src/chatgpt-db.ts",
+    "src/index.ts",
+    "src/network.ts",
+    "src/onboarding.ts",
+    "src/types.ts"
+  ],
+  "references": [
+    {
+      "path": "../../../vendor/cordis"
+    },
+    {
+      "path": "../../../vendor/schemastery"
+    },
+    {
+      "path": "../../credentials/credentials"
+    },
+    {
+      "path": "../../typert/protocol"
+    },
+    {
+      "path": "../../util/launch-environment"
+    },
+    {
+      "path": "../../../packages/util/values"
+    }
+  ]
+}
