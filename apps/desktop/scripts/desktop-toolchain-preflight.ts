@@ -92,7 +92,7 @@ export async function probeDesktopToolchain(
  * @returns Resolves when every probe passes.
  */
 export async function requireDesktopToolchain(
-  platform: 'darwin' | 'win32',
+  platform: 'darwin' | 'win32' | 'linux',
   environment: NodeJS.ProcessEnv = process.env,
 ): Promise<void> {
   const failures = await probeDesktopToolchain(platform, environment)
