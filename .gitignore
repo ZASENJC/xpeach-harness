@@ -47,3 +47,7 @@ worktrees/
 .agents/worktrees/
 .typert-*/
 native/system/test/bin/
+
+# desktop build output
+apps/desktop/dist/
+apps/desktop/.desktop-build/

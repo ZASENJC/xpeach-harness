@@ -76,6 +76,9 @@ jobs:
             export DSH_DESKTOP_TARGET_PLATFORM=linux DSH_DESKTOP_TARGET_ARCH=x64
           fi
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
+          # First pass produces packed/dsh; the package set needs it, and the
+          # final dsh tree then absorbs the resolved package list.
+          pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh || true
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:packages
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
       - name: Package (macOS)
