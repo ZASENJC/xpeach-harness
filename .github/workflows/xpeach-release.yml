@@ -83,10 +83,9 @@ jobs:
         run: |
           export DSH_DESKTOP_TARGET_PLATFORM=linux DSH_DESKTOP_TARGET_ARCH=x64
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
-          # Seed packed/dsh so the package set can resolve, then rebuild the tree
-          # with the resolved package list.
-          DSH_DESKTOP_PACK_DIR="$PWD/apps/desktop/.desktop-build/targets/linux-x64/packed/dsh" \
-            pnpm run release:pack --family dsh --out "$PWD/apps/desktop/.desktop-build/targets/linux-x64/packed/dsh" --concurrency 4 || true
+          B="$PWD/apps/desktop/.desktop-build/targets/linux-x64"
+          pnpm run release:pack --family dsh --out "$B/packed/dsh" --concurrency 4 || true
+          pnpm run release:pack --family vendor --out "$B/packed/vendor" --concurrency 4 || true
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:packages
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
       - name: Package (Linux)
