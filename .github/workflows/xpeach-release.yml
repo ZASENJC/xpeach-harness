@@ -75,6 +75,15 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'win-x64'
         run: pnpm --filter @deepseek-ai/dsh-desktop run package:win:x64:unsigned
+      - name: Prepare Linux runtime
+        if: matrix.target == 'linux-x64'
+        shell: bash
+        run: |
+          export DSH_DESKTOP_TARGET_PLATFORM=linux DSH_DESKTOP_TARGET_ARCH=x64
+          pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
+          pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh || true
+          pnpm --filter @deepseek-ai/dsh-desktop run prepare:packages
+          pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
       - name: Package (Linux)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
