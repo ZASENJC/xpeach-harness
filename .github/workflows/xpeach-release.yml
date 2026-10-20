@@ -79,14 +79,20 @@ jobs:
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:packages
       - name: Package (macOS)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'mac-arm64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --mac dmg zip --arm64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness
+        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --mac dmg zip --arm64 --publish always --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness --config.publish.releaseType=draft
       - name: Package (Windows)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'win-x64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --win nsis --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-setup-${version}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness
+        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --win nsis --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-setup-${version}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness --config.publish.releaseType=draft
       - name: Package (Linux)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'linux-x64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --linux AppImage --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness
+        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --linux AppImage --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness --config.publish.releaseType=draft
       - name: Collect installers
         shell: bash
         run: |
@@ -108,9 +114,15 @@ jobs:
         with:
           path: artifacts
           merge-multiple: true
-      - uses: softprops/action-gh-release@v2
-        with:
-          files: artifacts/*
-          generate_release_notes: true
-          draft: false
-          prerelease: false
+      - name: Publish draft release with all installers
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if gh release view "$TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$TAG" artifacts/* --repo "$GITHUB_REPOSITORY" --clobber
+            gh release edit "$TAG" --repo "$GITHUB_REPOSITORY" --draft=false --latest
+          else
+            gh release create "$TAG" artifacts/* --repo "$GITHUB_REPOSITORY" --title "$TAG" --generate-notes --latest
+          fi
+          gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json tagName,isDraft,assets
