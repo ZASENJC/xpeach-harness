@@ -78,7 +78,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p out
-          find apps/desktop/.desktop-build -type f \( -name '*.dmg' -o -name '*.zip' -o -name '*.exe' -o -name '*.AppImage' -o -name 'latest*.yml' -o -name '*.blockmap' \) -exec cp {} out/ \;
+          find apps/desktop/.desktop-build apps/desktop/dist -type f \( -name '*.dmg' -o -name '*.zip' -o -name '*.exe' -o -name '*.AppImage' -o -name 'latest*.yml' -o -name '*.blockmap' \) -exec cp {} out/ \; 2>/dev/null || true
           ls -la out
       - uses: actions/upload-artifact@v4
         with:

@@ -113,6 +113,7 @@ export function createElectronBuilderConfig(
   const packaged = resolveDesktopBuildCommit(env)
   return {
     appId,
+    executableName: 'xpeach-harness',
     protocols: [{ name: 'DeepSeek Harness', schemes: ['dsh'] }],
     extraMetadata: {
       dshDesktopAppId: appId,
@@ -121,7 +122,7 @@ export function createElectronBuilderConfig(
       ...buildVersion === productVersion ? {} : { version: buildVersion },
       ...packaged === undefined ? {} : { dshBuildCommit: packaged.commit, dshBuildDirty: packaged.dirty },
     },
-    productName: 'DeepSeek Harness',
+    productName: 'XPeach Harness',
     // Unsigned builds carry their own suffix so a shared file can never pass for a release artifact.
     artifactName: `deepseek-harness-\${version}-\${os}-\${arch}${output.suffix}.\${ext}`,
     directories: { output: output.directory },
@@ -255,8 +256,6 @@ export function createElectronBuilderConfig(
       target: ['nsis'],
     },
     linux: {
-      executableName: 'xpeach-harness',
-      desktopName: 'xpeach-harness.desktop',
       category: 'Development',
       target: ['AppImage'],
     },
