@@ -54,7 +54,7 @@ jobs:
         if: matrix.target == 'linux-x64'
         env:
           DSH_CLIENT_BUILD_PROFILE: official
-          DSH_CLIENT_TITLE: XPeach Harness
+          DSH_CLIENT_TITLE: DeepSeek Harness
         run: pnpm run build
       - name: Provide Windows packaging env
         if: matrix.target == 'win-x64'
