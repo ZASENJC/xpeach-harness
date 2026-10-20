@@ -95,7 +95,14 @@ export function createElectronBuilderConfig(
   if (windowsSigner !== undefined) {
     installWindowsNsisBootstrapSigner({ sign: windowsSigner })
   }
-  const update = unsigned ? undefined : resolveDesktopAutoUpdateConfig(env, resolvedPlatform, resolvedArch)
+  // GitHub Releases feed (XPeach): one provider for every target, generated from
+  // the release repository so electron-updater can resolve per-platform assets.
+  const githubPublish = env.XPEACH_GITHUB_RELEASE === '1'
+  const githubOwner = env.XPEACH_GITHUB_OWNER || 'yellowpeachxgp'
+  const githubRepo = env.XPEACH_GITHUB_REPO || 'xpeach-harness'
+  const update = githubPublish
+    ? { channel: env.DSH_DESKTOP_UPDATE_CHANNEL === 'nightly' ? 'nightly' : 'latest' }
+    : unsigned ? undefined : resolveDesktopAutoUpdateConfig(env, resolvedPlatform, resolvedArch)
   if (preparedRuntime !== undefined) buildPaths.dsh = preparedRuntime
   // electron-builder merges extraMetadata into the packaged manifest, so a build version here reaches
   // the artifact names, the update feed, and the installed app.getVersion() the updater compares against.
@@ -171,12 +178,13 @@ export function createElectronBuilderConfig(
       // Prepared runtime files retain their signatures; PAK resources are sealed by their enclosing bundle.
       signIgnore: ['/Contents/Resources/app\\.asar\\.unpacked/dsh(?:/|$)', '/Contents/Resources/runtime/primary-runtime(?:/|$)', '\\.pak$'],
       notarize: !unsigned && !skipNotarization,
-      target: unsigned ? ['dmg'] : ['dmg', 'zip'],
+      target: unsigned ? ['dmg', 'zip'] : ['dmg', 'zip'],
     },
     dmg: {
       format: 'ULMO',
       sign: !unsigned,
-      writeUpdateInfo: false,
+      // Update info is required for the GitHub Releases feed (electron-updater).
+      writeUpdateInfo: githubPublish,
     },
     beforePack: async context => {
       const office = await officePackageDirectories(buildPaths.dsh, { platform: resolvedPlatform, arch: resolvedArch })
@@ -261,6 +269,10 @@ export function createElectronBuilderConfig(
       differentialPackage: true,
     },
     detectUpdateChannel: false,
-    publish: update === undefined ? null : [{ provider: 'generic', url: update.publicUrl, channel: update.channel }],
+    publish: update === undefined
+      ? null
+      : githubPublish
+        ? [{ provider: 'github', owner: githubOwner, repo: githubRepo, channel: update.channel }]
+        : [{ provider: 'generic', url: update.publicUrl, channel: update.channel }],
   }
 }

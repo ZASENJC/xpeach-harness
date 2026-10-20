@@ -1,0 +1,92 @@
+name: Release Desktop (XPeach)
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to release (e.g. 0.1.0)
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build ${{ matrix.target }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-14
+            target: mac-arm64
+            artifact: xpeach-macos
+          - os: ubuntu-22.04
+            target: linux-x64
+            artifact: xpeach-linux
+          - os: windows-2022
+            target: win-x64
+            artifact: xpeach-windows
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 120
+    env:
+      DSH_TELEMETRY_DISABLED: '1'
+      DSH_DESKTOP_APP_ID: codes.xpeach.harness
+      DSH_DESKTOP_UNSIGNED: '1'
+      DSH_DESKTOP_UPDATE_CHANNEL: latest
+      XPEACH_GITHUB_RELEASE: '1'
+      XPEACH_GITHUB_OWNER: yellowpeachxgp
+      XPEACH_GITHUB_REPO: xpeach-harness
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build host libraries
+        run: pnpm run build:lib:host
+      - name: Build desktop app
+        run: pnpm run build:desktop
+      - name: Package (macOS)
+        if: matrix.target == 'mac-arm64'
+        run: pnpm --filter @deepseek-ai/dsh-desktop run package:mac:arm64:unsigned
+      - name: Package (Windows)
+        if: matrix.target == 'win-x64'
+        run: pnpm --filter @deepseek-ai/dsh-desktop run package:win:x64:unsigned
+      - name: Package (Linux)
+        if: matrix.target == 'linux-x64'
+        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --linux AppImage --publish never
+      - name: Collect installers
+        shell: bash
+        run: |
+          mkdir -p out
+          find apps/desktop/.desktop-build -type f \( -name '*.dmg' -o -name '*.zip' -o -name '*.exe' -o -name '*.AppImage' -o -name 'latest*.yml' -o -name '*.blockmap' \) -exec cp {} out/ \;
+          ls -la out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: out/*
+          if-no-files-found: warn
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true
+          draft: false
+          prerelease: false

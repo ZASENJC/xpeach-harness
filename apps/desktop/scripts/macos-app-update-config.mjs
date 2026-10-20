@@ -31,8 +31,17 @@ export function resolveMacOSAppUpdateFeed(publish) {
     throw new Error('desktop macOS update config: publish must contain exactly one provider')
   }
   const provider = object(publish[0], 'publish provider')
+  if (provider.provider === 'github') {
+    return {
+      github: {
+        owner: nonEmptyString(provider.owner, 'publish provider owner'),
+        repo: nonEmptyString(provider.repo, 'publish provider repo'),
+      },
+      channel: resolveDesktopUpdateChannel({ DSH_DESKTOP_UPDATE_CHANNEL: provider.channel }),
+    }
+  }
   if (provider.provider !== 'generic' || !['nightly', 'latest'].includes(provider.channel)) {
-    throw new Error('desktop macOS update config: publish provider must be generic with nightly or latest channel')
+    throw new Error('desktop macOS update config: publish provider must be generic or github with nightly or latest channel')
   }
   return { publicUrl: nonEmptyString(provider.url, 'publish provider URL'), channel: resolveDesktopUpdateChannel({ DSH_DESKTOP_UPDATE_CHANNEL: provider.channel }) }
 }
@@ -44,6 +53,15 @@ export function resolveMacOSAppUpdateFeed(publish) {
  * @returns {{ provider: 'generic', url: string, channel: 'nightly' | 'latest', updaterCacheDirName: string }} Packaged updater fields.
  */
 export function createMacOSAppUpdateConfig(update, updaterCacheDirName) {
+  if (update.github !== undefined) {
+    return {
+      provider: 'github',
+      owner: nonEmptyString(update.github.owner, 'publish provider owner'),
+      repo: nonEmptyString(update.github.repo, 'publish provider repo'),
+      channel: resolveDesktopUpdateChannel({ DSH_DESKTOP_UPDATE_CHANNEL: update.channel }),
+      updaterCacheDirName: nonEmptyString(updaterCacheDirName, 'updater cache directory'),
+    }
+  }
   return {
     provider: 'generic',
     url: nonEmptyString(update.publicUrl, 'public URL'),
@@ -81,6 +99,12 @@ export async function verifyMacOSAppUpdateConfig(appPath, update, updaterCacheDi
     throw new Error(`desktop macOS update config: cannot read ${path}: ${error instanceof Error ? error.message : String(error)}`)
   }
   const config = object(parsed, CONFIG_FILENAME)
+  if (update.github !== undefined) {
+    if (config.provider !== 'github' || config.owner !== update.github.owner || config.repo !== update.github.repo) {
+      throw new Error('desktop macOS update config: packaged github feed does not match the release destination')
+    }
+    return
+  }
   if (config.provider !== 'generic' || config.url !== update.publicUrl || config.channel !== resolveDesktopUpdateChannel({ DSH_DESKTOP_UPDATE_CHANNEL: update.channel })) {
     throw new Error(`desktop macOS update config: ${path} does not match ${update.publicUrl}`)
   }

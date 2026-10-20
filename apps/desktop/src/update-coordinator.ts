@@ -58,6 +58,9 @@ export class DesktopUpdateCoordinator {
     private readonly channel: 'nightly' | 'latest' = 'nightly',
   ) {
     if (updater === autoUpdater) {
+      if (process.env.XPEACH_SILENT_UPDATE !== '0') {
+        setTimeout(() => { void this.check().catch(() => {}) }, 20_000).unref?.()
+      }
       // electron-updater omits this internal transport property from its public declarations.
       // Real-Electron qualification exercises the pinned dependency integration.
       const transportOwner = updater as AppUpdater & { httpExecutor: DesktopUpdateHttpExecutor }
@@ -66,8 +69,10 @@ export class DesktopUpdateCoordinator {
         (authInfo, callback) => { updater.emit('login', authInfo, callback) },
       )
     }
-    this.updater.autoDownload = false
-    this.updater.autoInstallOnAppQuit = false
+    // XPeach ships with silent updates: download in the background and install on
+    // quit; a user-initiated check can still surface progress in the UI.
+    this.updater.autoDownload = process.env.XPEACH_SILENT_UPDATE !== '0'
+    this.updater.autoInstallOnAppQuit = process.env.XPEACH_SILENT_UPDATE !== '0'
     this.updater.channel = channel
     this.updater.allowPrerelease = channel === 'nightly'
     // Selecting a channel can enable downgrade in electron-updater.
@@ -86,6 +91,9 @@ export class DesktopUpdateCoordinator {
    * @returns The check result, including a silent automatic failure when applicable.
    */
   async check(manual = false): Promise<DesktopUpdateState> {
+    // With silent updates enabled, a background check also fetches the installer
+    // so the next quit applies it without asking.
+    const silent = process.env.XPEACH_SILENT_UPDATE !== '0' && !manual
     this.assertLive()
     if (this.downloadOperation !== undefined || this.installOperation !== undefined || this.downloaded) return this.current
     if (!manual && this.current.phase === 'error' && this.current.failedOperation === 'download') return this.current
@@ -93,6 +101,10 @@ export class DesktopUpdateCoordinator {
       .finally(() => { this.checkOperation = undefined })
     const result = await this.checkOperation
     if (manual && result.phase === 'error') this.setState(result)
+    // Silent mode: fetch the installer in the background so the next quit applies it.
+    if (silent && result.phase === 'available' && result.version !== undefined && this.downloadOperation === undefined) {
+      void this.download(result.version).catch(() => {})
+    }
     return result
   }
 
