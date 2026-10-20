@@ -65,32 +65,16 @@ jobs:
           EOF
       - name: Build desktop app
         run: pnpm run build:desktop
-      - name: Prepare desktop runtime
-        shell: bash
-        run: |
-          if [ "${{ matrix.target }}" = "mac-arm64" ]; then
-            export DSH_DESKTOP_TARGET_PLATFORM=darwin DSH_DESKTOP_TARGET_ARCH=arm64
-          elif [ "${{ matrix.target }}" = "win-x64" ]; then
-            export DSH_DESKTOP_TARGET_PLATFORM=win32 DSH_DESKTOP_TARGET_ARCH=x64
-          else
-            export DSH_DESKTOP_TARGET_PLATFORM=linux DSH_DESKTOP_TARGET_ARCH=x64
-          fi
-          pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
-          # First pass produces packed/dsh; the package set needs it, and the
-          # final dsh tree then absorbs the resolved package list.
-          pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh || true
-          pnpm --filter @deepseek-ai/dsh-desktop run prepare:packages
-          pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
       - name: Package (macOS)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'mac-arm64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --mac dmg zip --arm64 --publish always --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness --config.publish.releaseType=draft
+        run: pnpm --filter @deepseek-ai/dsh-desktop run package:mac:arm64:unsigned
       - name: Package (Windows)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'win-x64'
-        run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --win nsis --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-setup-${version}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness --config.publish.releaseType=draft
+        run: pnpm --filter @deepseek-ai/dsh-desktop run package:win:x64:unsigned
       - name: Package (Linux)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
