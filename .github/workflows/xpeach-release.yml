@@ -36,7 +36,7 @@ jobs:
       DSH_DESKTOP_APP_ID: codes.xpeach.harness
       DSH_DESKTOP_UNSIGNED: '1'
       DSH_DESKTOP_UPDATE_CHANNEL: latest
-      XPEACH_GITHUB_RELEASE: '1'
+      XPEACH_GITHUB_RELEASE: '0'
       XPEACH_GITHUB_OWNER: yellowpeachxgp
       XPEACH_GITHUB_REPO: xpeach-harness
     steps:
@@ -72,13 +72,9 @@ jobs:
       - name: Build desktop app
         run: pnpm run build:desktop
       - name: Package (macOS)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'mac-arm64'
         run: pnpm --filter @deepseek-ai/dsh-desktop run package:mac:arm64:unsigned
       - name: Package (Windows)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'win-x64'
         run: pnpm --filter @deepseek-ai/dsh-desktop run package:win:x64:unsigned
       - name: Prepare Linux runtime
@@ -94,8 +90,6 @@ jobs:
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:packages
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
       - name: Package (Linux)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: matrix.target == 'linux-x64'
         run: pnpm --filter @deepseek-ai/dsh-desktop exec electron-builder --config electron-builder.config.mjs --linux AppImage --x64 --publish never --config.executableName=xpeach-harness --config.artifactName=xpeach-harness-${version}-${arch}.${ext} --config.publish.provider=github --config.publish.owner=yellowpeachxgp --config.publish.repo=xpeach-harness --config.publish.releaseType=draft
       - name: Collect installers
