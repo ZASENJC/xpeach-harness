@@ -70,7 +70,9 @@ export function desktopTargetBuildPaths(target) {
 export function desktopTargetPlatform(target) {
   assertSupportedTarget(target)
   return {
-    platform: /** @type {'darwin' | 'win32'} */ (target === 'win-x64' ? 'win32' : 'darwin'),
+    platform: /** @type {'darwin' | 'win32' | 'linux'} */ (
+      target === 'win-x64' ? 'win32' : target === 'linux-x64' ? 'linux' : 'darwin'
+    ),
     arch: /** @type {'arm64' | 'x64'} */ (target === 'mac-arm64' ? 'arm64' : 'x64'),
   }
 }

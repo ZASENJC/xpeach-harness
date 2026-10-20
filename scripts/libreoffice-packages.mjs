@@ -23,6 +23,9 @@ export function selectOfficeEngine(manifest, target) {
  */
 export async function officePackageDirectories(staging, target) {
   const entry = join(staging, 'node_modules', '@deepseek-ai', 'libreoffice-kit')
+  // Community release builds may omit the optional Office kit entirely.
+  if (!existsSync(entry)) return []
+
   const manifest = JSON.parse(await readFile(join(entry, 'package.json'), 'utf8'))
   const engineName = `@deepseek-ai/libreoffice-kit-${selectOfficeEngine(manifest, target)}`
   const packages = new Set()
