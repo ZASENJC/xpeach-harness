@@ -76,8 +76,8 @@ jobs:
             export DSH_DESKTOP_TARGET_PLATFORM=linux DSH_DESKTOP_TARGET_ARCH=x64
           fi
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:runtime
-          pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
           pnpm --filter @deepseek-ai/dsh-desktop run prepare:packages
+          pnpm --filter @deepseek-ai/dsh-desktop run prepare:dsh
       - name: Package (macOS)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
