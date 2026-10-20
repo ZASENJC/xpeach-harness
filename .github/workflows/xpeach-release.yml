@@ -52,6 +52,9 @@ jobs:
         run: pnpm run build:lib:host
       - name: Build workspace (client artifacts)
         if: matrix.target == 'linux-x64'
+        env:
+          DSH_CLIENT_BUILD_PROFILE: official
+          DSH_CLIENT_TITLE: XPeach Harness
         run: pnpm run build
       - name: Provide Windows packaging env
         if: matrix.target == 'win-x64'
