@@ -2,11 +2,20 @@ import type { ProductEventMap, ProductEvent } from '@deepseek-ai/dsh-client-prod
 import { WINDOWS_TITLEBAR_HEIGHT } from './windows-layout.ts'
 /** Electron shell: desktop project ownership, custom protocol, windows, and lifecycle. */
 
+// Electron derives userData from app.name. Keeping the packaged package name would
+// point XPeach at DeepSeek Harness's own userData directory, which both breaks the
+// single-instance lock against a running DeepSeek app and mixes caches. Name the
+// product before anything reads a path.
+app.setName('XPeach Harness')
+
 // XPeach owns its data root. Pinning XPH_HOME before any path resolution keeps
 // every Electron-side root — profile, lock, settings, caches, logs — under
 // ~/.xph, so the desktop shell never shares DeepSeek Harness's ~/.dsh.
 process.env.XPH_HOME ??= join(homedir(), '.xph')
+// The bundled runtime reads XPH_PRODUCT to pick the product name it announces.
+process.env.XPH_PRODUCT ??= '1'
 
+import { existsSync } from 'node:fs'
 import { readFile, writeFile } from 'node:fs/promises'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
@@ -154,6 +163,13 @@ interface RuntimeResources {
   readonly node: string
   readonly pnpm: string
   readonly dsh: string
+}
+
+/** Packaged XPeach product profile patch; absent in a development checkout. */
+function productProfilePatch(): string | undefined {
+  if (!app.isPackaged) return process.env.DSH_DESKTOP_PRODUCT_PATCH
+  const packaged = join(process.resourcesPath, 'xpeach.profile.yml')
+  return existsSync(packaged) ? packaged : undefined
 }
 
 function runtimeResources(): RuntimeResources {
@@ -332,7 +348,7 @@ async function main(): Promise<void> {
     ? developmentPrimaryRuntime()
     : join(process.resourcesPath, 'runtime', 'primary-runtime')
   const activeProject = paths.profile
-  const manager = new DesktopProjectManager(paths, resources)
+  const manager = new DesktopProjectManager(paths, resources, productProfilePatch())
   // Dock and Finder launches inherit only launchd's environment; every Host shares one login-shell read.
   const loginShellRead = new AbortController()
   // The probe runs in its own process group, which outlives Desktop unless the read is aborted.
@@ -461,12 +477,18 @@ async function main(): Promise<void> {
         hostUrl = ready.url
         if (ready.injections === undefined) throw new Error('Desktop Host did not provide boot injections')
         injections = ready.injections
-        welcomeBackend = await connectDesktopWelcome(ready.url, (input, init) => net.fetch(input, init), async () => (await session.defaultSession.cookies.get({ url: ready.url })).map(cookie => `${cookie.name}=${cookie.value}`).join('; '))
-        analyticsEnabled = await welcomeBackend.analyticsEnabled().catch(() => false)
+        welcomeBackend = await connectDesktopWelcome(ready.url, (input, init) => net.fetch(input, init), async () => (await session.defaultSession.cookies.get({ url: ready.url })).map(cookie => `${cookie.name}=${cookie.value}`).join('; ')).catch((error: unknown) => {
+          // The XPeach product patch replaces DeepSeek's sign-in surface, so the
+          // native welcome has no DeepSeek credential namespace to read. That is
+          // expected: the product onboarding in the workspace owns binding.
+          console.error(error)
+          return undefined
+        })
+        analyticsEnabled = welcomeBackend === undefined ? false : await welcomeBackend.analyticsEnabled().catch(() => false)
         if (!reportedLaunch) { reportedLaunch = true; void track('desktop_app_launch', {}) }
         stopAccount?.()
-        const accountBackend = welcomeBackend.account
-        stopAccount = accountBackend.watch((state) => {
+        const accountBackend = welcomeBackend?.account
+        stopAccount = accountBackend === undefined ? undefined : accountBackend.watch((state) => {
           if (quitting) return
           if (welcomeWindow !== undefined && !welcomeWindow.isDestroyed()) welcomeWindow.webContents.send(WELCOME_IPC.state, state)
           const attempt = state.attempt
@@ -1209,7 +1231,14 @@ async function main(): Promise<void> {
   }
   const openInitialWindow = async (): Promise<void> => {
     if (quitting || recovery.active) return
-    const state = await readWelcomeState()
+    // A product that replaces the sign-in surface has no native welcome to show:
+    // when the welcome projection is unavailable, boot straight into the workspace
+    // and let the product's own onboarding own binding.
+    const state = await readWelcomeState().catch((error: unknown) => {
+      console.error(error)
+      return undefined
+    })
+    if (state === undefined) { await enterWorkspace(); return }
     if (isQuitting() || backend.state.phase !== 'ready') return
     locale = resolveDesktopStartupLocale(state.localePreference, systemLanguages)
     windowsLanguage = locale.id

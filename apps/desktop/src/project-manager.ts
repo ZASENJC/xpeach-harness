@@ -13,7 +13,8 @@ import {
   writeFileSync,
   writeSync,
 } from 'node:fs'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
+import { copyFileSync, cpSync } from 'node:fs'
 import {
   DESKTOP_HOST_PACKAGE,
   desktopCorePackageOverrides,
@@ -23,7 +24,7 @@ import type { DesktopPaths } from './paths.ts'
 import type { DesktopRelease } from './release.ts'
 import { readDesktopRuntime } from './runtime-tree.ts'
 import {
-  initProfile, PROFILE_TEMPLATES, removeLinkProjections, sanitizeProfile, type ProfileTemplate,
+  initProfile, PROFILE_PATCH_FILENAME, PROFILE_TEMPLATES, removeLinkProjections, sanitizeProfile, type ProfileTemplate,
 } from '@deepseek-ai/dsh-app-boot'
 
 const PROJECT_NAME = 'xpeach-desktop-runtime'
@@ -32,8 +33,12 @@ const CORE_BUILD_PACKAGE = '@deepseek-ai/dsh-subprocess-local'
 const WEB_PROFILE = PROFILE_TEMPLATES.web as ProfileTemplate
 /** XPeach product plugins loaded on top of the dsh web profile. */
 export const XPEACH_PROFILE_BUNDLES = ['@xpeach/xph-account', '@xpeach/xph-client-ui'] as const
-/** Complete bundle list of the XPeach Desktop profile. */
-const XPEACH_BUNDLES = [...WEB_PROFILE.bundles, ...XPEACH_PROFILE_BUNDLES]
+/**
+ * Bundle list of the XPeach Desktop profile. The XPeach product plugins are not
+ * bundles: they are host plugins inserted by the shipped product patch, which is
+ * how every other client-only plugin in this repository is loaded.
+ */
+const XPEACH_BUNDLES = [...WEB_PROFILE.bundles]
 const WORKSPACE_SETTINGS = 'nodeLinker: hoisted\nautoInstallPeers: false\n'
 function writeJson(path: string, value: unknown): void {
   writeFileSync(path, `${JSON.stringify(value, undefined, 2)}\n`, { mode: 0o600 })
@@ -70,6 +75,8 @@ export class DesktopProjectManager {
   constructor(
     readonly paths: DesktopPaths,
     readonly runtime: { readonly dsh: string },
+    /** Packaged XPeach product patch seeded into a profile that has none. */
+    readonly productPatch?: string,
   ) {}
 
   /**
@@ -90,6 +97,8 @@ export class DesktopProjectManager {
       readDesktopRuntime(this.runtime.dsh)
       migrateProfileSettings(this.paths.profile)
       createPluginProfile(this.paths.profile)
+      seedProductProfilePatch(this.paths.profile, this.productPatch)
+      installProductPlugins(this.paths.profile, this.runtime.dsh)
       removeLinkProjections(this.paths.profile)
     })
   }
@@ -172,6 +181,52 @@ export function createDevelopmentProjectMetadata(projectDir: string, release: De
   }
   writeJson(join(projectDir, 'package.json'), manifest)
   writeFileSync(join(projectDir, 'pnpm-workspace.yaml'), workspaceFile(), { mode: 0o600 })
+}
+
+/**
+ * Install the shipped XPeach product patch the first time a profile boots.
+ *
+ * The product identity — XPeach brand slots, the site sign-in surface and the
+ * relay model provider — lives in the patch layer, not in the bundle list. A
+ * profile that boots with an empty patch is stock DeepSeek Harness, so the
+ * packaged patch is copied in whenever the profile still has none.
+ *
+ * @param profileDir - Desktop profile directory.
+ * @param source - Packaged product patch, when this build shipped one.
+ */
+export function seedProductProfilePatch(profileDir: string, source: string | undefined): void {
+  if (source === undefined || !existsSync(source)) return
+  const target = join(profileDir, PROFILE_PATCH_FILENAME)
+  if (existsSync(target)) {
+    // An empty placeholder patch carries no product configuration yet.
+    const text = readFileSync(target, 'utf8')
+    if (text.split('\n').some(line => line.trim().startsWith('-'))) return
+  }
+  copyFileSync(source, target)
+}
+
+/**
+ * Expose the shipped XPeach plugins to the profile.
+ *
+ * The product patch inserts them by package name, so the profile has to be able
+ * to resolve them. The runtime already carries them; linking that copy in keeps
+ * the profile offline-installable and free of a package-manager round trip.
+ *
+ * @param profileDir - Desktop profile directory.
+ * @param runtimeDir - Installed dsh package tree shipped with the app.
+ */
+export function installProductPlugins(profileDir: string, runtimeDir: string): void {
+  const unpacked = runtimeDir.replace(/app\.asar(?=$|[\\/])/u, 'app.asar.unpacked')
+  for (const name of XPEACH_PROFILE_BUNDLES) {
+    // A packaged runtime keeps these packages unpacked; only a development
+    // checkout has them as ordinary directories.
+    const source = join(unpacked === runtimeDir ? runtimeDir : unpacked, 'node_modules', name)
+    if (!existsSync(source)) continue
+    const target = join(profileDir, 'node_modules', name)
+    if (existsSync(target)) continue
+    mkdirSync(dirname(target), { recursive: true, mode: 0o700 })
+    cpSync(source, target, { recursive: true, dereference: true, verbatimSymlinks: false })
+  }
 }
 
 /** Create the first external plugin profile without running a package manager. */

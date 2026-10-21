@@ -3084,6 +3084,9 @@ importers:
       '@deepseek-ai/schemastery':
         specifier: link:../../../vendor/schemastery
         version: link:../../../vendor/schemastery
+      '@xpeach/xph-client-ui':
+        specifier: workspace:*
+        version: link:../../xpeach/client-ui
       commander:
         specifier: ^15.0.0
         version: 15.0.0

@@ -5,8 +5,12 @@ import { resolveDshHome } from '@deepseek-ai/dsh-home-paths'
 
 /** XPeach product home; the Desktop shell never writes into DeepSeek's ~/.dsh. */
 export const XPEACH_HOME_ENV = 'XPH_HOME'
-/** Profile directory name owned by the XPeach product. */
-export const XPEACH_PROFILE_NAME = 'xpeach'
+/**
+ * Profile directory owned by the Desktop shell. It stays distinct from the CLI's
+ * `xpeach` profile because Desktop manages its own package project and would
+ * otherwise rewrite a profile the CLI owns.
+ */
+export const XPEACH_PROFILE_NAME = 'xpeach-desktop'
 
 /** Stable desktop installation paths under the shared Harness home. */
 export interface DesktopPaths {

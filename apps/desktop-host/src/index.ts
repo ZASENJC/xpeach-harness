@@ -22,9 +22,17 @@ async function main(): Promise<void> {
   const installAnchor = join(runtimeDir, 'node_modules', '@deepseek-ai', 'dsh', 'package.json')
   const profile = loadProfileDirectory('dsh', projectDir, installAnchor)
   reportSkippedBundles('dsh', profile)
+  // XPeach diagnostics: prove which entries the Desktop Host actually composes.
+  if (process.env.XPH_DESKTOP_DIAGNOSTICS === '1') {
+    console.error('[xph] profile:', projectDir)
+    console.error('[xph] bundles:', JSON.stringify(profile.layers.map(layer => layer.packageName)))
+    console.error('[xph] patch rows:', (profile.patches || []).length)
+  }
   const application = runProfile({
     environment: loadLayeredEnv('dsh'),
-    profile: 'desktop',
+    // The profile name feeds module resolution for patch-inserted plugin rows, so
+    // it must be the profile's own directory name, exactly as the CLI passes it.
+    profile: profile.name,
     resolvedProfile: { profile, installAnchor },
     patchFiles: [],
     args: ['--no-open', '--host', '127.0.0.1', '--port', '0'],
