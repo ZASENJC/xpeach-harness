@@ -48,7 +48,7 @@
   "dependencies": {
     "@xpeach/xph-util-values": "workspace:*",
     "@xpeach/xph-schemastery": "workspace:~",
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   },
   "peerDependencies": {
     "@xpeach/xph-cordis": "workspace:~",

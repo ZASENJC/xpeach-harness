@@ -35,7 +35,7 @@
   "license": "MIT",
   "dependencies": {
     "@xpeach/xph-schemastery": "workspace:~",
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   },
   "peerDependencies": {
     "@xpeach/xph-agent": "workspace:*",

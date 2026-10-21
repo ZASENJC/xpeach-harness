@@ -61,6 +61,6 @@
     "@xpeach/xph-schemastery": "workspace:~",
     "@xpeach/xph-brand": "workspace:*",
     "@xpeach/xph-typert-protocol": "workspace:*",
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   }
 }

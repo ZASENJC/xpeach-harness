@@ -42,7 +42,7 @@
     "@xpeach/xph-brand": "workspace:*",
     "@xpeach/xph-util-values": "workspace:*",
     "@xpeach/xph-schemastery": "workspace:~",
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@xpeach/xph-llm-deepseek-api-key": "workspace:*",

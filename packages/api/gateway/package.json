@@ -80,6 +80,6 @@
     "@xpeach/xph-util-crypto": "workspace:*",
     "@types/ws": "^8.18.1",
     "@xpeach/xph-cordis": "workspace:~",
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   }
 }

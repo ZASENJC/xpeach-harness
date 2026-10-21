@@ -89,7 +89,7 @@
     "@xpeach/xph-user-approval": "workspace:*",
     "@xpeach/xph-user-questions": "workspace:*",
     "@xpeach/xph-cordis": "workspace:~",
-    "zod": "4.4.3",
+    "zod": "4.6.5",
     "@xpeach/xph-command-feedback": "workspace:*",
     "@xpeach/xph-api-terminal-controller": "workspace:*",
     "@xpeach/xph-plugin-manager": "workspace:*",

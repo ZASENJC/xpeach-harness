@@ -53,7 +53,7 @@
     "@xpeach/xph-typert-protocol": "workspace:*"
   },
   "dependencies": {
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@xpeach/xph-cordis-plugin-include": "workspace:~",

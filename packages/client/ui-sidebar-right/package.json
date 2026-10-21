@@ -69,7 +69,7 @@
     "picomatch": "^4.0.7",
     "clsx": "^2.0.0",
     "@xpeach/xph-util-crypto": "workspace:*",
-    "zod": "4.4.3",
+    "zod": "4.6.5",
     "@xpeach/xph-client-shortcuts": "workspace:*",
     "@xpeach/xph-brand": "workspace:*"
   },

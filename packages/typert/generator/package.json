@@ -43,6 +43,6 @@
     "@xpeach/xph-tool-cordis": "workspace:*",
     "@xpeach/xph-typert-registry": "workspace:*",
     "@xpeach/xph-cordis": "workspace:~",
-    "zod": "4.4.3"
+    "zod": "4.6.5"
   }
 }

@@ -44,7 +44,7 @@
     "@xpeach/xph-mcp-client": "workspace:*",
     "@xpeach/xph-util-values": "workspace:*",
     "@xpeach/xph-schemastery": "workspace:~",
-    "zod": "4.4.3",
+    "zod": "4.6.5",
     "@xpeach/xph-subprocess": "workspace:*",
     "@puppeteer/browsers": "3.2.2"
   },

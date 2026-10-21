@@ -46,7 +46,7 @@
     "@xpeach/xph-user-questions": "workspace:*"
   },
   "dependencies": {
-    "zod": "^4.4.3",
+    "zod": "^4.6.5",
     "@xpeach/xph-atomic-write": "workspace:*",
     "@xpeach/xph-cua": "workspace:*"
   },

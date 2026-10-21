@@ -65,7 +65,7 @@
   "dependencies": {
     "@xpeach/xph-app-boot": "workspace:*",
     "@xpeach/xph-schemastery": "workspace:~",
-    "zod": "4.4.3",
+    "zod": "4.6.5",
     "js-yaml": "^4.3.2"
   },
   "devDependencies": {

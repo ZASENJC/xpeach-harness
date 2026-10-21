@@ -64,7 +64,7 @@
     "lib/typert.remote-client.d.ts"
   ],
   "dependencies": {
-    "zod": "4.4.3",
+    "zod": "4.6.5",
     "@xpeach/xph-typert-protocol": "workspace:*",
     "@xpeach/xph-brand": "workspace:*"
   },
