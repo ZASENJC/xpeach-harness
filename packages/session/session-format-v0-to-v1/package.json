@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-session-format-v0-to-v1",
+  "name": "@xpeach/xph-session-format-v0-to-v1",
   "description": "Frozen released-v0 Session codec and identity migration to v1",
   "version": "0.3.0",
   "publishConfig": {
@@ -39,14 +39,14 @@
     }
   },
   "dependencies": {
-    "@deepseek-ai/dsh-session-format": "workspace:*",
-    "@deepseek-ai/dsh-util-values": "workspace:*"
+    "@xpeach/xph-session-format": "workspace:*",
+    "@xpeach/xph-util-values": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-session": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-session": "workspace:*"
   }
 }

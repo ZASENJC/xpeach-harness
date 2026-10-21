@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-plugin-market",
+  "name": "@xpeach/xph-plugin-market",
   "description": "Configured plugin market indexes for the Web Discover page and the plugin_market agent tool",
   "version": "0.3.0",
   "publishConfig": {
@@ -49,41 +49,41 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-package-manifest": "workspace:*",
-    "@deepseek-ai/dsh-plugin-market-index": "workspace:*",
-    "@deepseek-ai/dsh-timeout": "workspace:*",
-    "@deepseek-ai/dsh-util-values": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-package-manifest": "workspace:*",
+    "@xpeach/xph-plugin-market-index": "workspace:*",
+    "@xpeach/xph-timeout": "workspace:*",
+    "@xpeach/xph-util-values": "workspace:*",
+    "@xpeach/xph-schemastery": "workspace:~",
     "minisearch": "^7.2.0",
     "semver": "^7.8.5",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-plugin-manager": "workspace:*",
-    "@deepseek-ai/dsh-settings": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-plugin-manager": "workspace:*",
+    "@xpeach/xph-settings": "workspace:*",
+    "@xpeach/xph-tools": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@deepseek-ai/dsh-settings": {
+    "@xpeach/xph-settings": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/cosmokit": "workspace:~",
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-config-editor": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-plugin-manager": "workspace:*",
-    "@deepseek-ai/dsh-settings": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-cosmokit": "workspace:~",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-config-editor": "workspace:*",
+    "@xpeach/xph-llm": "workspace:*",
+    "@xpeach/xph-plugin-manager": "workspace:*",
+    "@xpeach/xph-settings": "workspace:*",
+    "@xpeach/xph-system-prompt": "workspace:*",
+    "@xpeach/xph-tools": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*",
     "@types/semver": "^7.8.0"
   }
 }

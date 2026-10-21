@@ -102,7 +102,7 @@ const loader = loaderModule.getOrInitializeCascadedLoader()
 const methods: readonly Method[] = ['esm-resolve', 'esm-meta-resolve', 'esm-import', 'cjs-resolve', 'cjs-require', 'cjs-paths', 'metadata']
 const layouts: readonly Layout[] = ['single-flat', 'single-pnpm', 'pnpm-monorepo']
 // These are real request spellings; each fixture supplies its own package implementations.
-const names = ['@deepseek-ai/dsh-tools', 'react'] as const
+const names = ['@xpeach/xph-tools', 'react'] as const
 const copyBits: readonly [Source, number][] = [
   ['local', 1], ['parent', 2], ['profile', 4], ['private', 8], ['workspace', 16],
 ]
@@ -319,7 +319,7 @@ class MatrixFixture {
   setup(): void {
     const value = this.scenario
     manifest(this.installDir, {
-      name: '@deepseek-ai/dsh', version: '1.0.0',
+      name: '@xpeach/xph-dsh', version: '1.0.0',
       dependencies: value.inRuntime ? { [value.name]: '*' } : {},
     })
     if (value.inRuntime) this.package(this.runtimeDir, 'runtime')

@@ -1,15 +1,15 @@
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent, AgentStatus } from '@deepseek-ai/dsh-agent'
-import CommandRuntime from '@deepseek-ai/dsh-commands'
-import GoalService from '@deepseek-ai/dsh-goal'
-import type { GoalRef } from '@deepseek-ai/dsh-goal'
-import SessionStore, { Session, SessionId, type SessionEvent } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import * as commandGoal from '@deepseek-ai/dsh-command-goal'
-import { createInboxStub } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import AgentRegistry from '@xpeach/xph-agent'
+import type { Agent, AgentStatus } from '@xpeach/xph-agent'
+import CommandRuntime from '@xpeach/xph-commands'
+import GoalService from '@xpeach/xph-goal'
+import type { GoalRef } from '@xpeach/xph-goal'
+import SessionStore, { Session, SessionId, type SessionEvent } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import * as commandGoal from '@xpeach/xph-command-goal'
+import { createInboxStub } from '@xpeach/xph-agent-loop-testkit'
 
 interface Harness {
   readonly ctx: Context
@@ -88,7 +88,7 @@ function ref(goal: NonNullable<ReturnType<GoalService['get']>>): GoalRef {
   return { id: goal.id, revision: goal.revision }
 }
 
-describe('@deepseek-ai/dsh-command-goal registration', () => {
+describe('@xpeach/xph-command-goal registration', () => {
   it('registers one global command with Loader-safe exports and disposes it', async () => {
     const test = await harness()
     expect(commandGoal.name).toBe('command-goal')
@@ -98,7 +98,7 @@ describe('@deepseek-ai/dsh-command-goal registration', () => {
     expect(loader.unwrapExports(commandGoal)).toBe(commandGoal)
 
     expect(test.ctx.commands.list(test.agent)).toContainEqual({
-      definitionId: '@deepseek-ai/dsh-command-goal',
+      definitionId: '@xpeach/xph-command-goal',
       name: 'goal',
       description: 'Set or view the goal for a long-running task',
       input: { hint: '[<objective>|clear|edit <objective>|pause|resume]', attachments: true },

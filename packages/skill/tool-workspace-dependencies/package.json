@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-tool-workspace-dependencies",
+  "name": "@xpeach/xph-tool-workspace-dependencies",
   "description": "The load_workspace_dependencies tool: absolute paths into a bundled Python, Node.js, and pnpm payload",
   "version": "0.3.0",
   "publishConfig": {
@@ -26,19 +26,19 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-tools": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-tools": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/cordis-plugin-include": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*"
+    "@xpeach/xph-tools": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-cordis-plugin-include": "workspace:~",
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-llm": "workspace:*",
+    "@xpeach/xph-system-prompt": "workspace:*"
   },
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@xpeach/xph-schemastery": "workspace:~"
   }
 }

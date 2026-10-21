@@ -1,21 +1,21 @@
 // @vitest-environment jsdom
 
-import { createSnapshotStore } from '@deepseek-ai/dsh-client-store'
+import { createSnapshotStore } from '@xpeach/xph-client-store'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent } from '@testing-library/react'
-import type { ISession } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import type { WorkspaceId } from '@deepseek-ai/dsh-workspace/types'
+import type { ISession } from '@xpeach/xph-api-session-controller/client'
+import type { SessionId } from '@xpeach/xph-session/types'
+import type { WorkspaceId } from '@xpeach/xph-workspace/types'
 import {
   apply as applyChat, inject as injectChat, type ToolResultNode,
-} from '@deepseek-ai/dsh-client-ui-chat/client'
-import type { PropsRenderSlots } from '@deepseek-ai/dsh-client-ui-slots'
-import { SlotTestRuntime, stubConfigForm } from '@deepseek-ai/dsh-client-test-runtime'
-import { LocaleRuntime } from '@deepseek-ai/dsh-client-locale/client'
-import { apply as applyConversation, inject as injectConversation } from '@deepseek-ai/dsh-client-ui-conversation/client'
-import { apply as applyTool, inject as injectTool } from '@deepseek-ai/dsh-client-ui-tool/client'
-import type { ToolCallViewProps } from '@deepseek-ai/dsh-client-ui-tool/client'
-import { PartialArguments } from '@deepseek-ai/dsh-util-values'
+} from '@xpeach/xph-client-ui-chat/client'
+import type { PropsRenderSlots } from '@xpeach/xph-client-ui-slots'
+import { SlotTestRuntime, stubConfigForm } from '@xpeach/xph-client-test-runtime'
+import { LocaleRuntime } from '@xpeach/xph-client-locale/client'
+import { apply as applyConversation, inject as injectConversation } from '@xpeach/xph-client-ui-conversation/client'
+import { apply as applyTool, inject as injectTool } from '@xpeach/xph-client-ui-tool/client'
+import type { ToolCallViewProps } from '@xpeach/xph-client-ui-tool/client'
+import { PartialArguments } from '@xpeach/xph-util-values'
 import { toolSessionEvents } from './tool-fixtures.client.ts'
 
 const SID = 's1' as SessionId

@@ -3,25 +3,25 @@
  * Provider lifecycle controls tool registration and context-sensitive schema
  * wording. Every delegation starts a managed activation and returns its child
  * id; the subagent runtime owns result delivery and resource cleanup.
- * @module @deepseek-ai/dsh-tool-subagent
+ * @module @xpeach/xph-tool-subagent
  */
 
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { scopeChainOf, scopeOf } from '@deepseek-ai/dsh-scope'
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import type { ToolDefinition } from '@deepseek-ai/dsh-tools'
-import type { Agent, AgentOptions } from '@deepseek-ai/dsh-agent'
-import { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
-import type { ContentBlock } from '@deepseek-ai/dsh-llm'
-import { SessionSeq } from '@deepseek-ai/dsh-session'
-import type { Session } from '@deepseek-ai/dsh-session'
+import type { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { scopeChainOf, scopeOf } from '@xpeach/xph-scope'
+import { defineTool } from '@xpeach/xph-tools'
+import type { ToolDefinition } from '@xpeach/xph-tools'
+import type { Agent, AgentOptions } from '@xpeach/xph-agent'
+import { ReasoningEffortId } from '@xpeach/xph-llm'
+import type { ContentBlock } from '@xpeach/xph-llm'
+import { SessionSeq } from '@xpeach/xph-session'
+import type { Session } from '@xpeach/xph-session'
 import {
   assertSubagentMaxDepth,
   delegationDepthOf,
   parentAgentOptionsForDelegation,
-} from '@deepseek-ai/dsh-subagent'
-import type { SubagentProvider } from '@deepseek-ai/dsh-subagent'
+} from '@xpeach/xph-subagent'
+import type { SubagentProvider } from '@xpeach/xph-subagent'
 import {
   assertAllowedModelSelection,
   hasConfiguredLlmSelection,
@@ -407,7 +407,7 @@ export async function apply(ctx: Context, config: Config, session?: Session): Pr
   if (modelSelectionCapable && settings === undefined) {
     throw new Error(
       'tool-subagent: `modelSelectionSettings` requires '
-      + '@deepseek-ai/dsh-tool-subagent/model-selection-settings in the Host scope',
+      + '@xpeach/xph-tool-subagent/model-selection-settings in the Host scope',
     )
   }
   const selectForSession = (target: Session): ModelSelectionPolicy | undefined => {

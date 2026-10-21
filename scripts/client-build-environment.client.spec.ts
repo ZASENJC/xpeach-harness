@@ -240,12 +240,12 @@ describe('client build environment', () => {
       'lib/types/index.js',
     ])({ env: { DSH_BUILD_FACE: 'client' } })
     if (!Array.isArray(configs)) throw new TypeError('client bundle config must be an array')
-    const dynamic = configs.find(config => config.name === '@deepseek-ai/dsh-client-ui-sidebar/client')
+    const dynamic = configs.find(config => config.name === '@xpeach/xph-client-ui-sidebar/client')
     expect(dynamic?.define).toMatchObject({
       'process.env': '{}',
       [PROBE_KEY]: '"shared-value"',
     })
-    const node = configs.find(config => config.name === '@deepseek-ai/dsh-client-ui-sidebar')
+    const node = configs.find(config => config.name === '@xpeach/xph-client-ui-sidebar')
     expect(node?.define).toMatchObject({ [PROBE_KEY]: '"shared-value"' })
     expect(node?.define).not.toHaveProperty(['process.env'])
 

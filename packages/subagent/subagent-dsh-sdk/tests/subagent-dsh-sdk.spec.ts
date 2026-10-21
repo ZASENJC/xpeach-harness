@@ -9,23 +9,23 @@ import { mountWorkingDirectoryFixture } from '../../subagent/tests/working-direc
 
 import { startExternalActivation } from '../../subagent/tests/external-activation-helpers.ts'
 import { afterEach, beforeEach, describe, expect, it, onTestFinished, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import { existsSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import SubagentRuntime from '@deepseek-ai/dsh-subagent'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import type { Agent, AgentOptions } from '@deepseek-ai/dsh-agent'
+import SubagentRuntime from '@xpeach/xph-subagent'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import type { Agent, AgentOptions } from '@xpeach/xph-agent'
 import {
   DeepSeekHarness,
   HarnessClient,
   SdkProtocolError,
-} from '@deepseek-ai/dsh-sdk-client'
+} from '@xpeach/xph-sdk-client'
 import { createProcessDeepSeekHarness } from '../../../sdk/client/src/api.ts'
 import type { RuntimeProcessOptions } from '../../../sdk/client/src/launch.ts'
-import type { DeepSeekHarnessOptions } from '@deepseek-ai/dsh-sdk-client'
-import { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
+import type { DeepSeekHarnessOptions } from '@xpeach/xph-sdk-client'
+import { ReasoningEffortId } from '@xpeach/xph-llm'
 import * as sdk from '../src/index.ts'
 import {
   DEFAULT_DISPOSE_EOF_GRACE_MS,
@@ -157,7 +157,7 @@ describe('sdkChildOutcome', () => {
 describe('dsh-subagent-dsh-sdk provider', () => {
   it('constructs the production dsh-backed harness lazily', async () => {
     const harness = defaultCreateHarness({})
-    expect(harness).toBeInstanceOf((await import('@deepseek-ai/dsh-sdk-client')).DeepSeekHarness)
+    expect(harness).toBeInstanceOf((await import('@xpeach/xph-sdk-client')).DeepSeekHarness)
     await harness.close()
   })
 

@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-typert-loader",
+  "name": "@xpeach/xph-typert-loader",
   "description": "Loader integration for generated Typert package contributions",
   "version": "0.3.0",
   "publishConfig": {
@@ -29,19 +29,19 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-typert-registry": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-typert-registry": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@xpeach/xph-schemastery": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-typert-registry": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-typert-registry": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
     "typescript": "^6.0.3",
     "zod": "4.4.3"
   }

@@ -1,10 +1,10 @@
 /** Late-reply conversation node: the steered `user-question-reply` message projected as question and answer pairs. */
-import type {} from '@deepseek-ai/dsh-client-ui-chat/client'
-import type { ConversationNodeDefinition } from '@deepseek-ai/dsh-client-ui-conversation/client'
-import type { PropsLocale } from '@deepseek-ai/dsh-client-ui-slots'
-import { isAppendSurfaceEvent } from '@deepseek-ai/dsh-session/surface'
-import type { SessionEvent } from '@deepseek-ai/dsh-session/types'
-import type {} from '@deepseek-ai/dsh-user-questions/types'
+import type {} from '@xpeach/xph-client-ui-chat/client'
+import type { ConversationNodeDefinition } from '@xpeach/xph-client-ui-conversation/client'
+import type { PropsLocale } from '@xpeach/xph-client-ui-slots'
+import { isAppendSurfaceEvent } from '@xpeach/xph-session/surface'
+import type { SessionEvent } from '@xpeach/xph-session/types'
+import type {} from '@xpeach/xph-user-questions/types'
 
 /** One asked question as echoed in the reply payload. */
 export interface QuestionReplyQuestion {
@@ -35,7 +35,7 @@ export interface QuestionReplyData {
   readonly time: number
 }
 
-declare module '@deepseek-ai/dsh-client-ui-chat/client' {
+declare module '@xpeach/xph-client-ui-chat/client' {
   interface ChatNodeDataMap {
     /** Late answer to a continued question. */
     'question-reply': QuestionReplyData

@@ -17,9 +17,9 @@ import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
 import {
   SESSION_FORMAT_VERSION, SessionId as sessionId, type SessionEvent, type SessionHeader, type SessionId,
-} from '@deepseek-ai/dsh-session'
-import { SUBAGENT_DESCRIPTOR_VERSION } from '@deepseek-ai/dsh-subagent'
-import { createSystemMessage, createUserMessage } from '@deepseek-ai/dsh-llm'
+} from '@xpeach/xph-session'
+import { SUBAGENT_DESCRIPTOR_VERSION } from '@xpeach/xph-subagent'
+import { createSystemMessage, createUserMessage } from '@xpeach/xph-llm'
 import {
   captureStableAria, compareOrRefreshGolden, launchWebScaffold, seedSession, watchConsole,
   webSnapshotMode, type WebScaffold,

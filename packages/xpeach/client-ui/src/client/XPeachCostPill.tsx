@@ -8,8 +8,8 @@
  */
 import { memo, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { IconDatabaseOutlineRegular, useAnchoredPosition, useDismissOnOutsidePointer } from '@deepseek-ai/dsh-client-ui-primitives'
-import type { InjectFace, PropsLocale } from '@deepseek-ai/dsh-client-ui-slots'
+import { IconDatabaseOutlineRegular, useAnchoredPosition, useDismissOnOutsidePointer } from '@xpeach/xph-client-ui-primitives'
+import type { InjectFace, PropsLocale } from '@xpeach/xph-client-ui-slots'
 import type { XPeachBillingRate } from './ops.ts'
 import css from './xpeach.module.css'
 

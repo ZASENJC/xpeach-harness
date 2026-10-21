@@ -8,9 +8,9 @@
  * tab that asked for it.
  */
 import type { ReactNode } from 'react'
-import { IconWarningOutlineRegular, Toast } from '@deepseek-ai/dsh-client-ui-primitives'
-import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
-import type {} from '@deepseek-ai/dsh-client-ui-layout/client'
+import { IconWarningOutlineRegular, Toast } from '@xpeach/xph-client-ui-primitives'
+import type { HostObservable, InjectFace, PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
+import type {} from '@xpeach/xph-client-ui-layout/client'
 import type { CatalogDeleteOutcome } from './catalog-source.ts'
 
 /** One reported deletion outcome; `seq` keys the banner so a re-show restarts it. */

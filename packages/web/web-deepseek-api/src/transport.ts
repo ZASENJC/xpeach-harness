@@ -5,14 +5,14 @@
  * `dsh-web-search-deepseek`, so neither plugin depends on the other; the
  * `jscpd:ignore` regions mark those repeats
  * ([rationale](../../../../.agents/notes/implemented/feature/2026-10-15-deepseek-search-fetch-api.md)).
- * @module @deepseek-ai/dsh-web-deepseek-api/transport
+ * @module @xpeach/xph-web-deepseek-api/transport
  */
-import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-agent'
-import { credentialRef, type CredentialRef } from '@deepseek-ai/dsh-credentials'
-import type {} from '@deepseek-ai/dsh-deepseek-account'
-import { launchEnvironmentOf } from '@deepseek-ai/dsh-launch-environment'
-import { WebError } from '@deepseek-ai/dsh-web'
+import type { Context } from '@xpeach/xph-cordis'
+import type {} from '@xpeach/xph-agent'
+import { credentialRef, type CredentialRef } from '@xpeach/xph-credentials'
+import type {} from '@xpeach/xph-deepseek-account'
+import { launchEnvironmentOf } from '@xpeach/xph-launch-environment'
+import { WebError } from '@xpeach/xph-web'
 
 const ACCOUNT_PROVIDER = 'deepseek-account'
 const USER_AGENT = 'deepseek-harness/0.0.1'

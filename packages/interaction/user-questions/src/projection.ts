@@ -1,12 +1,12 @@
 /** Fold of `ask_user_question` tool events into the answerable question set, and its Session projection. */
 import { z } from 'zod'
-import { SessionLogOffset, TOOL_OUTCOME_UNKNOWN } from '@deepseek-ai/dsh-session'
-import type { SessionEvent, SessionLogOffset as SessionLogOffsetType } from '@deepseek-ai/dsh-session'
-import type { ProjectionDefinition } from '@deepseek-ai/dsh-session-projection'
-import type {} from '@deepseek-ai/dsh-agent/types'
-import type {} from '@deepseek-ai/dsh-tools/types'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import type { ContentBlock, ToolSchema } from '@deepseek-ai/dsh-llm'
+import { SessionLogOffset, TOOL_OUTCOME_UNKNOWN } from '@xpeach/xph-session'
+import type { SessionEvent, SessionLogOffset as SessionLogOffsetType } from '@xpeach/xph-session'
+import type { ProjectionDefinition } from '@xpeach/xph-session-projection'
+import type {} from '@xpeach/xph-agent/types'
+import type {} from '@xpeach/xph-tools/types'
+import { ToolCallId } from '@xpeach/xph-llm'
+import type { ContentBlock, ToolSchema } from '@xpeach/xph-llm'
 import type { AskUserQuestionAnswerItem, AskUserQuestionItem, AskUserQuestionOption, PendingUserQuestion, SettledUserQuestion, UserQuestionProjectionView } from './types.ts'
 
 /**
@@ -330,7 +330,7 @@ export const userQuestionProjectionDefinition = {
   stateVersion: 2,
 } satisfies ProjectionDefinition<'userQuestions', UserQuestionProjectionState>
 
-declare module '@deepseek-ai/dsh-session-projection/types' {
+declare module '@xpeach/xph-session-projection/types' {
   interface SessionProjectionStateMap {
     userQuestions: UserQuestionProjectionState
   }

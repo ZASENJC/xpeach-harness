@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-host-plugin-inventory",
+  "name": "@xpeach/xph-host-plugin-inventory",
   "description": "Read-only Remote projection of current Cordis Loader plugin state",
   "version": "0.3.0",
   "publishConfig": {
@@ -49,24 +49,24 @@
     "zod": "4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-agent-preset-registry": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-agent-preset-registry": "workspace:*",
+    "@xpeach/xph-brand": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "peerDependenciesMeta": {
-    "@deepseek-ai/dsh-agent-preset-registry": {
+    "@xpeach/xph-agent-preset-registry": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-package-manifest": "workspace:*",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-agent-preset-registry": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-package-manifest": "workspace:*",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-agent-preset-registry": "workspace:*",
+    "@xpeach/xph-brand": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   }
 }

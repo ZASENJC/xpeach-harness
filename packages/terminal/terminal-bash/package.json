@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-terminal-bash",
+  "name": "@xpeach/xph-terminal-bash",
   "description": "Persistent shell PTY backend over the DeepSeek Harness subprocess terminal primitive",
   "version": "0.3.0",
   "publishConfig": {
@@ -29,32 +29,32 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-terminal": "workspace:*",
-    "@deepseek-ai/dsh-sandbox": "workspace:*",
-    "@deepseek-ai/dsh-sandbox-policy": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-subprocess": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-session-projection": "workspace:*",
-    "@deepseek-ai/dsh-working-directory": "workspace:*"
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-terminal": "workspace:*",
+    "@xpeach/xph-sandbox": "workspace:*",
+    "@xpeach/xph-sandbox-policy": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-subprocess": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-session-projection": "workspace:*",
+    "@xpeach/xph-working-directory": "workspace:*"
   },
   "dependencies": {
-    "@deepseek-ai/dsh-lazy-require": "workspace:*",
-    "@deepseek-ai/dsh-pwsh-local": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@xpeach/xph-lazy-require": "workspace:*",
+    "@xpeach/xph-pwsh-local": "workspace:*",
+    "@xpeach/xph-schemastery": "workspace:~",
     "@xterm/headless": "^6.0.0"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-loop-testkit": "workspace:*",
-    "@deepseek-ai/dsh-terminal": "workspace:*",
-    "@deepseek-ai/dsh-sandbox": "workspace:*",
-    "@deepseek-ai/dsh-sandbox-policy": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-subprocess": "workspace:*",
-    "@deepseek-ai/dsh-subprocess-local": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-working-directory": "workspace:*"
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-agent-loop-testkit": "workspace:*",
+    "@xpeach/xph-terminal": "workspace:*",
+    "@xpeach/xph-sandbox": "workspace:*",
+    "@xpeach/xph-sandbox-policy": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-subprocess": "workspace:*",
+    "@xpeach/xph-subprocess-local": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-working-directory": "workspace:*"
   }
 }

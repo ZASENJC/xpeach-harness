@@ -1,21 +1,21 @@
 /**
  * Basic replay-aware compaction backend.
  *
- * @module @deepseek-ai/dsh-compaction-basic
+ * @module @xpeach/xph-compaction-basic
  */
 
-import { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { CompactionEngine, ManualCompactionError } from '@deepseek-ai/dsh-compaction'
-import type { CompactionResult, CompactionTrigger } from '@deepseek-ai/dsh-compaction'
-import type { Session, SessionSeq } from '@deepseek-ai/dsh-session'
-import { CONTEXT_WINDOW_EXCEEDED_CODE } from '@deepseek-ai/dsh-llm'
-import type { LlmCallConfig } from '@deepseek-ai/dsh-llm'
-import { assertNever } from '@deepseek-ai/dsh-util-values'
-import type { Agent, PreStepDecision } from '@deepseek-ai/dsh-agent'
-import type { CommandId } from '@deepseek-ai/dsh-commands/brand'
+import { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { CompactionEngine, ManualCompactionError } from '@xpeach/xph-compaction'
+import type { CompactionResult, CompactionTrigger } from '@xpeach/xph-compaction'
+import type { Session, SessionSeq } from '@xpeach/xph-session'
+import { CONTEXT_WINDOW_EXCEEDED_CODE } from '@xpeach/xph-llm'
+import type { LlmCallConfig } from '@xpeach/xph-llm'
+import { assertNever } from '@xpeach/xph-util-values'
+import type { Agent, PreStepDecision } from '@xpeach/xph-agent'
+import type { CommandId } from '@xpeach/xph-commands/brand'
 // Type-only: makes the optional sibling service available to `ctx.get()`.
-import type {} from '@deepseek-ai/dsh-compaction-tool-result-pruner'
+import type {} from '@xpeach/xph-compaction-tool-result-pruner'
 import {
   resolveCompactSpec,
   resolveConfig,

@@ -1,19 +1,19 @@
 /**
  * Default model selection for an Agent without a session-specific selection.
  *
- * @module @deepseek-ai/dsh-agent-default-model
+ * @module @xpeach/xph-agent-default-model
  */
-import type {} from '@deepseek-ai/dsh-settings'
+import type {} from '@xpeach/xph-settings'
 
-import type { Volatile } from '@deepseek-ai/cordis'
+import type { Volatile } from '@xpeach/xph-cordis'
 
-import { Context, Service } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import type { ModelSelection } from '@deepseek-ai/dsh-agent'
-import { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
-import type {} from '@deepseek-ai/dsh-config-editor'
+import { Context, Service } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import type { ModelSelection } from '@xpeach/xph-agent'
+import { ReasoningEffortId } from '@xpeach/xph-llm'
+import type {} from '@xpeach/xph-config-editor'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Default model selection for Agents created without an explicit model. */
     agentDefaultModel: AgentDefaultModelConfig

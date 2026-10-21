@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-shell-env",
+  "name": "@xpeach/xph-shell-env",
   "description": "Tool-independent managed DSH_* shell environment registry",
   "version": "0.3.0",
   "publishConfig": {
@@ -29,22 +29,22 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/dsh-shell": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-home-paths": "workspace:*",
+    "@xpeach/xph-shell": "workspace:*",
+    "@xpeach/xph-tools": "workspace:*"
   },
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@xpeach/xph-schemastery": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-shell": "workspace:*",
-    "@deepseek-ai/dsh-tools": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-home-paths": "workspace:*",
+    "@xpeach/xph-llm": "workspace:*",
+    "@xpeach/xph-shell": "workspace:*",
+    "@xpeach/xph-tools": "workspace:*"
   }
 }

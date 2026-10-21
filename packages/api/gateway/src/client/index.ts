@@ -4,13 +4,13 @@
  * participates in method lookup, invocation, or type exposure.
  */
 
-import { Service } from '@deepseek-ai/cordis'
-import { RemoteError, isRemoteUplinkItem, remoteErrorOf } from '@deepseek-ai/dsh-typert-protocol'
+import { Service } from '@xpeach/xph-cordis'
+import { RemoteError, isRemoteUplinkItem, remoteErrorOf } from '@xpeach/xph-typert-protocol'
 export type { TypertGatewayFaultDetails } from '../remote-error-codes.ts'
-import type { Context } from '@deepseek-ai/cordis'
+import type { Context } from '@xpeach/xph-cordis'
 import type {
   ConnectionHandle,
-} from '@deepseek-ai/dsh-client-connection/client'
+} from '@xpeach/xph-client-connection/client'
 import type {
   InvocationDescriptor,
   TypertClientEventListener,
@@ -22,7 +22,7 @@ import type {
   TypertDisposer,
   TypertRemoteContribution,
   TypertRemoteEvent,
-} from '@deepseek-ai/dsh-typert-protocol'
+} from '@xpeach/xph-typert-protocol'
 import {
   ClientUplinkQueue,
   RemoteStreamCarrierError,
@@ -124,7 +124,7 @@ export interface RemoteHostFacts {
   readonly isLoopback: boolean
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Generated Remote namespaces selected by the Client assembly. */
     remote: ClientRemote

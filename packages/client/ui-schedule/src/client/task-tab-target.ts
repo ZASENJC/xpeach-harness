@@ -10,8 +10,8 @@
  * @module
  */
 import { useEffect, useMemo } from 'react'
-import type { SidebarRightNavigationParams } from '@deepseek-ai/dsh-client-ui-sidebar-right/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
+import type { SidebarRightNavigationParams } from '@xpeach/xph-client-ui-sidebar-right/client'
+import type { SessionId } from '@xpeach/xph-session/types'
 import { scheduleTaskParams } from './definition.ts'
 import type { TaskTabBindings, TaskTabPage, TaskTabTarget } from './task-tab-bindings.ts'
 

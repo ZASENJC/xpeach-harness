@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import css from './xpeach.module.css'
 import { EditDrawer, DrawerField } from './XPeachDrawer.tsx'
-import type { PropsLocale } from '@deepseek-ai/dsh-client-ui-slots'
+import type { PropsLocale } from '@xpeach/xph-client-ui-slots'
 import type { XPeachOps, XPeachAdminUserRow, XPeachAdminTokenRow, XPeachAdminLogRow } from './ops.ts'
 import { quotaUsd, callUsd, rel, at } from './fmt.ts'
 

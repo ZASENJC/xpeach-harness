@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-api-workspace-files",
+  "name": "@xpeach/xph-api-workspace-files",
   "description": "Workspace file service and Client resource provider: bounded reads, directory listing, and live metadata over the workspaceFiles Remote namespace",
   "version": "0.3.0",
   "publishConfig": {
@@ -41,8 +41,8 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-gateway",
-        "@deepseek-ai/dsh-client-resources"
+        "@xpeach/xph-api-gateway",
+        "@xpeach/xph-client-resources"
       ],
       "platform": "web"
     }
@@ -53,27 +53,27 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-deque": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@xpeach/xph-deque": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*",
+    "@xpeach/xph-schemastery": "workspace:~",
     "zod": "4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-api-gateway": "workspace:*",
-    "@deepseek-ai/dsh-api-remote-access": "workspace:*",
-    "@deepseek-ai/dsh-client-connection": "workspace:*",
-    "@deepseek-ai/dsh-client-resources": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-slots": "workspace:*",
-    "@deepseek-ai/dsh-fs": "workspace:*",
-    "@deepseek-ai/dsh-remote-mock": "workspace:*",
-    "@deepseek-ai/dsh-sandbox-policy": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-session-persistence": "workspace:*",
-    "@deepseek-ai/dsh-util-workspace-path": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-api-gateway": "workspace:*",
+    "@xpeach/xph-api-remote-access": "workspace:*",
+    "@xpeach/xph-client-connection": "workspace:*",
+    "@xpeach/xph-client-resources": "workspace:*",
+    "@xpeach/xph-client-ui-slots": "workspace:*",
+    "@xpeach/xph-fs": "workspace:*",
+    "@xpeach/xph-remote-mock": "workspace:*",
+    "@xpeach/xph-sandbox-policy": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-session-persistence": "workspace:*",
+    "@xpeach/xph-util-workspace-path": "workspace:*"
   },
   "files": [
     "locale/*.json",

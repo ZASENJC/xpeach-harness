@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-tmux-context",
+  "name": "@xpeach/xph-tmux-context",
   "description": "Opt-in durable per-step context with this agent's tmux pane and window location",
   "version": "0.3.0",
   "publishConfig": {
@@ -27,24 +27,24 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@xpeach/xph-schemastery": "workspace:~",
     "zod": "4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-shell": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-session-projection": "workspace:*"
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-shell": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-session-projection": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-agent-loop-testkit": "workspace:*",
-    "@deepseek-ai/dsh-shell": "workspace:*",
-    "@deepseek-ai/dsh-llm": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-system-prompt": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-session-projection": "workspace:*"
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-agent-loop-testkit": "workspace:*",
+    "@xpeach/xph-shell": "workspace:*",
+    "@xpeach/xph-llm": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-system-prompt": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-session-projection": "workspace:*"
   }
 }

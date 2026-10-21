@@ -1,7 +1,7 @@
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
-import type { UserTextRule } from '@deepseek-ai/dsh-client-ui-conversation/client'
-import { UserTextRegistry } from '@deepseek-ai/dsh-client-ui-conversation/src/client/conversation/user-text-registry.ts'
+import type { UserTextRule } from '@xpeach/xph-client-ui-conversation/client'
+import { UserTextRegistry } from '@xpeach/xph-client-ui-conversation/src/client/conversation/user-text-registry.ts'
 import { skillReferenceRule } from '../src/client/user-text-rules.ts'
 
 function setup(rule: UserTextRule = skillReferenceRule) {

@@ -1,13 +1,13 @@
 /** Desktop-only analytics RPC and live compaction collection. */
-import { type Context, type Volatile } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { Remote, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
-import type {} from '@deepseek-ai/dsh-host-product-telemetry-otel'
-import type {} from '@deepseek-ai/dsh-deepseek-account'
-import type {} from '@deepseek-ai/dsh-settings'
-import type {} from '@deepseek-ai/cordis-plugin-loader'
-import type {} from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-compaction/types'
+import { type Context, type Volatile } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { Remote, TypertRemoteService } from '@xpeach/xph-typert-protocol'
+import type {} from '@xpeach/xph-host-product-telemetry-otel'
+import type {} from '@xpeach/xph-deepseek-account'
+import type {} from '@xpeach/xph-settings'
+import type {} from '@xpeach/xph-cordis-plugin-loader'
+import type {} from '@xpeach/xph-session'
+import type {} from '@xpeach/xph-compaction/types'
 import type { ProductEvent } from './events.ts'
 import { collectEnvironment, type EnvironmentAttributes } from './environment.ts'
 
@@ -23,7 +23,7 @@ export interface Config {
   environmentQueryMaxOutputBytes: number
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     productAnalytics: ProductAnalytics
   }

@@ -1,15 +1,15 @@
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import SessionStore, {
   Session,
   SessionId,
-} from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import type { SandboxMode } from '@deepseek-ai/dsh-sandbox'
-import type { ApprovalPolicy } from '@deepseek-ai/dsh-user-approval'
+} from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import type { SandboxMode } from '@xpeach/xph-sandbox'
+import type { ApprovalPolicy } from '@xpeach/xph-user-approval'
 import PermissionPresetService, {
   AUTO_PRESET, CUSTOM_PRESET,
-} from '@deepseek-ai/dsh-permission-presets'
+} from '@xpeach/xph-permission-presets'
 import { liveConfig } from '../../../settings/settings/tests/live-config.ts'
 
 const configurations = new WeakMap<Context, Awaited<ReturnType<typeof liveConfig>>>()

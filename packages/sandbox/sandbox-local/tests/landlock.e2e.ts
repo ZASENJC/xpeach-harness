@@ -4,10 +4,10 @@ import { mkdtemp, rm } from 'node:fs/promises'
 import { homedir, tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import type { SandboxPolicy } from '@deepseek-ai/dsh-sandbox'
-import { launcherPath } from '@deepseek-ai/node-addon-system/landlock-run'
-import { LocalSandboxProvider } from '@deepseek-ai/dsh-sandbox-local'
+import { Context } from '@xpeach/xph-cordis'
+import type { SandboxPolicy } from '@xpeach/xph-sandbox'
+import { launcherPath } from '@xpeach/xph-node-addon-system/landlock-run'
+import { LocalSandboxProvider } from '@xpeach/xph-sandbox-local'
 
 /**
  * Keyless backend integration through `confine()` and the workspace `landlock-run` launcher, with

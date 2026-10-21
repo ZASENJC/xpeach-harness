@@ -1,30 +1,30 @@
 /**
  * Single replay-aware token-meter service for request and surface pressure.
  *
- * @module @deepseek-ai/dsh-token-meter
+ * @module @xpeach/xph-token-meter
  */
 
-import { Context, Service } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-compaction-image-offload/projection'
-import z from '@deepseek-ai/schemastery'
-import { assembleAssistantStream } from '@deepseek-ai/dsh-llm'
-import type { LlmImageRequestPricing, LlmRuntime, Message, TokenUsage } from '@deepseek-ai/dsh-llm'
-import { deepFreeze } from '@deepseek-ai/dsh-util-values'
+import { Context, Service } from '@xpeach/xph-cordis'
+import type {} from '@xpeach/xph-compaction-image-offload/projection'
+import z from '@xpeach/xph-schemastery'
+import { assembleAssistantStream } from '@xpeach/xph-llm'
+import type { LlmImageRequestPricing, LlmRuntime, Message, TokenUsage } from '@xpeach/xph-llm'
+import { deepFreeze } from '@xpeach/xph-util-values'
 import type {
   EpochHeader,
   Session,
   SessionEvent,
   SessionLogOffset as SessionLogOffsetType,
-} from '@deepseek-ai/dsh-session'
+} from '@xpeach/xph-session'
 import {
   canonicalHeader,
   headerEquals,
   isSurfaceEvent,
   SessionLogOffset,
   SessionSeq,
-} from '@deepseek-ai/dsh-session'
+} from '@xpeach/xph-session'
 // Type-only: activates the `ctx.sessionProjections` Context declaration.
-import type {} from '@deepseek-ai/dsh-session-projection'
+import type {} from '@xpeach/xph-session-projection'
 import type {
   TokenMeasurement,
   TokenMeasurementBaseline,
@@ -91,7 +91,7 @@ function validateConfigKeys(config: TokenMeterConfig): void {
   }
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     tokenMeter: TokenMeter
   }

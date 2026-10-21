@@ -1,6 +1,6 @@
 /** XPeach settings section: key binding, token usage, site models, call log. */
 import { useEffect, useRef, useState } from 'react'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
 import type { XPeachModel } from '@xpeach/xph-account/types'
 import type { XPeachOps } from './ops.ts'
 import { XPeachMark } from './brand.tsx'

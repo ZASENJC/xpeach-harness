@@ -1,7 +1,7 @@
 /** Deployment-owned preset choices for one delegation tool. */
-import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-agent-preset-registry'
-import type { SubagentProvider } from '@deepseek-ai/dsh-subagent'
+import type { Context } from '@xpeach/xph-cordis'
+import type {} from '@xpeach/xph-agent-preset-registry'
+import type { SubagentProvider } from '@xpeach/xph-subagent'
 
 /** Optional default and model-selectable preset ids for a spawn tool. */
 export interface PresetSelectionConfig {

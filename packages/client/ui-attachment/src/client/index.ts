@@ -1,10 +1,10 @@
 /** Browser attachment plugin: composer entries and independently replaceable image galleries. */
-import type { Context as ClientContext } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-client-ui-chat/client'
-import type {} from '@deepseek-ai/dsh-client-ui-conversation/client'
-import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
-import type {} from '@deepseek-ai/dsh-client-ui-tool/client'
-import type {} from '@deepseek-ai/dsh-client-ui-trajectory/client'
+import type { Context as ClientContext } from '@xpeach/xph-cordis'
+import type {} from '@xpeach/xph-client-ui-chat/client'
+import type {} from '@xpeach/xph-client-ui-conversation/client'
+import type {} from '@xpeach/xph-client-ui-renderer/client'
+import type {} from '@xpeach/xph-client-ui-tool/client'
+import type {} from '@xpeach/xph-client-ui-trajectory/client'
 import { ComposerAttachments } from './ComposerAttachments.tsx'
 import { MessageImages, MessageImagesContent } from './MessageImages.tsx'
 

@@ -5,29 +5,29 @@
  * or command substitution, and no pre-tool approval or rewrite path; only
  * blocking decisions are honored. Shared execution and parsing live in
  * `dsh-hook-protocol`.
- * @module @deepseek-ai/dsh-hooks-codex
+ * @module @xpeach/xph-hooks-codex
  */
 
 // Each dialect bridge keeps its complete dependency list visible at the entry
 // point; a cross-package facade for imports alone would add indirection.
 /* jscpd:ignore-start */
-import type {} from '@deepseek-ai/dsh-working-directory'
+import type {} from '@xpeach/xph-working-directory'
 import { readFileSync } from 'node:fs'
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import type { Agent, PreStepDecision } from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-session-projection'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-declare module '@deepseek-ai/dsh-llm' {
+import type { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import type { Agent, PreStepDecision } from '@xpeach/xph-agent'
+import type {} from '@xpeach/xph-session-projection'
+import { createUserMessage } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'hooks-codex': { kind: 'hooks-codex' } & ContextFormed
   }
 }
 
-import type { ContentBlock, MessageSource } from '@deepseek-ai/dsh-llm'
-import type { UserMessage } from '@deepseek-ai/dsh-session'
-import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@deepseek-ai/dsh-tools'
+import type { ContentBlock, MessageSource } from '@xpeach/xph-llm'
+import type { UserMessage } from '@xpeach/xph-session'
+import type { PostToolDecision, PreToolDecision, ToolExecution, ToolExecutionResult } from '@xpeach/xph-tools'
 import {
   appendHookInvoked,
   appendHookResult,
@@ -39,7 +39,7 @@ import {
   selectHookGroups,
   type HookOutput,
   type MergedHookOutcome,
-} from '@deepseek-ai/dsh-hook-protocol'
+} from '@xpeach/xph-hook-protocol'
 import { parseCodexConfig, type CodexHookConfig } from './config.ts'
 /* jscpd:ignore-end */
 

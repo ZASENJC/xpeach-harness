@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-settings",
+  "name": "@xpeach/xph-settings",
   "description": "Abstract user-settings seam (ctx.settings) for the DeepSeek Harness",
   "version": "0.3.0",
   "publishConfig": {
@@ -34,27 +34,27 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-brand": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-schemastery": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
-    "@deepseek-ai/cordis-plugin-timer": "workspace:~",
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-hmr": "workspace:*",
-    "@deepseek-ai/dsh-agent-default-model": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-brand": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-schemastery": "workspace:~",
+    "@xpeach/xph-cordis-plugin-timer": "workspace:~",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-hmr": "workspace:*",
+    "@xpeach/xph-agent-default-model": "workspace:*",
     "yaml": "^2.8.1"
   },
   "dependencies": {
-    "@deepseek-ai/dsh-util-values": "workspace:*",
-    "@deepseek-ai/dsh-config-editor": "workspace:*",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/cosmokit": "workspace:~",
+    "@xpeach/xph-util-values": "workspace:*",
+    "@xpeach/xph-config-editor": "workspace:*",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-cosmokit": "workspace:~",
     "yaml": "^2.8.1"
   }
 }

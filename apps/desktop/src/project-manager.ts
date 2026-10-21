@@ -25,11 +25,11 @@ import type { DesktopRelease } from './release.ts'
 import { readDesktopRuntime } from './runtime-tree.ts'
 import {
   initProfile, PROFILE_PATCH_FILENAME, PROFILE_TEMPLATES, removeLinkProjections, sanitizeProfile, type ProfileTemplate,
-} from '@deepseek-ai/dsh-app-boot'
+} from '@xpeach/xph-app-boot'
 
 const PROJECT_NAME = 'xpeach-desktop-runtime'
-const DSH_PACKAGE = '@deepseek-ai/dsh'
-const CORE_BUILD_PACKAGE = '@deepseek-ai/dsh-subprocess-local'
+const DSH_PACKAGE = '@xpeach/xph-dsh'
+const CORE_BUILD_PACKAGE = '@xpeach/xph-subprocess-local'
 const WEB_PROFILE = PROFILE_TEMPLATES.web as ProfileTemplate
 /** XPeach product plugins loaded on top of the dsh web profile. */
 export const XPEACH_PROFILE_BUNDLES = ['@xpeach/xph-account', '@xpeach/xph-client-ui'] as const

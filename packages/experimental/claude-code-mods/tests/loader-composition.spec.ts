@@ -5,19 +5,19 @@ import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { afterEach, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import CommandRuntime from '@deepseek-ai/dsh-commands'
-import LocalFileSystem from '@deepseek-ai/dsh-fs-local'
-import WorkingDirectory from '@deepseek-ai/dsh-working-directory'
-import LlmRuntime, { createUserMessage } from '@deepseek-ai/dsh-llm'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import Include from '@xpeach/xph-cordis-plugin-include'
+import AgentRegistry from '@xpeach/xph-agent'
+import AgentLoop from '@xpeach/xph-agent-loop'
+import CommandRuntime from '@xpeach/xph-commands'
+import LocalFileSystem from '@xpeach/xph-fs-local'
+import WorkingDirectory from '@xpeach/xph-working-directory'
+import LlmRuntime, { createUserMessage } from '@xpeach/xph-llm'
+import SessionStore, { SessionId } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@xpeach/xph-tools'
 import * as ClaudeCodeMods from '../src/index.ts'
 import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent-loop/tests/mock-adapter.ts'
 
@@ -37,17 +37,17 @@ it('loads from cordis.yml, counts the model\'s tool calls, and answers /tally th
   root = await mkdtemp(join(tmpdir(), 'dsh-cc-mods-composition-'))
   const configPath = join(root, 'cordis.yml')
   const modules = new Map<string, unknown>([
-    ['@deepseek-ai/dsh-llm', LlmRuntime],
-    ['@deepseek-ai/dsh-session', SessionStore],
-    ['@deepseek-ai/dsh-session-projection', SessionProjectionRegistry],
-    ['@deepseek-ai/dsh-system-prompt', SystemPrompt],
-    ['@deepseek-ai/dsh-fs-local', LocalFileSystem],
-    ['@deepseek-ai/dsh-working-directory', WorkingDirectory],
-    ['@deepseek-ai/dsh-tools', ToolRuntime],
-    ['@deepseek-ai/dsh-agent', AgentRegistry],
-    ['@deepseek-ai/dsh-agent-loop', AgentLoop],
-    ['@deepseek-ai/dsh-commands', CommandRuntime],
-    ['@deepseek-ai/dsh-experimental-claude-code-mods', ClaudeCodeMods],
+    ['@xpeach/xph-llm', LlmRuntime],
+    ['@xpeach/xph-session', SessionStore],
+    ['@xpeach/xph-session-projection', SessionProjectionRegistry],
+    ['@xpeach/xph-system-prompt', SystemPrompt],
+    ['@xpeach/xph-fs-local', LocalFileSystem],
+    ['@xpeach/xph-working-directory', WorkingDirectory],
+    ['@xpeach/xph-tools', ToolRuntime],
+    ['@xpeach/xph-agent', AgentRegistry],
+    ['@xpeach/xph-agent-loop', AgentLoop],
+    ['@xpeach/xph-commands', CommandRuntime],
+    ['@xpeach/xph-experimental-claude-code-mods', ClaudeCodeMods],
   ])
   // A mod is a plugin like any other: here the tutorial mod's `defineMod` wrapper, mounted by file URL after the bridge.
   const firstMod = pathToFileURL(resolve(FIXTURES, 'first-mod.ts')).href

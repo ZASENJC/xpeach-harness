@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-api-speech-to-text",
+  "name": "@xpeach/xph-experimental-api-speech-to-text",
   "description": "Authenticated experimental speech transcription for browser clients",
   "version": "0.3.0",
   "publishConfig": {
@@ -46,17 +46,17 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@xpeach/xph-schemastery": "workspace:~",
     "zod": "4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-experimental-speech-to-text": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-experimental-speech-to-text": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-experimental-speech-to-text": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-experimental-speech-to-text": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*"
   }
 }

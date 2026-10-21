@@ -1,7 +1,7 @@
 /** Copy owned by the sidebar terminal feature. */
-import type {} from '@deepseek-ai/dsh-client-ui-slots'
+import type {} from '@xpeach/xph-client-ui-slots'
 
-declare module '@deepseek-ai/dsh-client-ui-slots' {
+declare module '@xpeach/xph-client-ui-slots' {
   interface LocaleNamespaceMap {
     sidebarTerminal: keyof typeof zh
   }

@@ -43,25 +43,25 @@ const DEV_ONLY_AREAS = [
 
 /** First-party public native packages: reachable at runtime but not third-party. */
 const FIRST_PARTY = new Set([
-  '@deepseek-ai/node-addon-system',
-  '@deepseek-ai/node-addon-system-darwin-arm64',
-  '@deepseek-ai/node-addon-system-darwin-x64',
-  '@deepseek-ai/node-addon-system-linux-arm64',
-  '@deepseek-ai/node-addon-system-linux-x64',
+  '@xpeach/xph-node-addon-system',
+  '@xpeach/xph-node-addon-system-darwin-arm64',
+  '@xpeach/xph-node-addon-system-darwin-x64',
+  '@xpeach/xph-node-addon-system-linux-arm64',
+  '@xpeach/xph-node-addon-system-linux-x64',
 ])
 
 /** Official SDK identity covered by the project's narrow owner authorization. */
 export const CLAUDE_AGENT_SDK_PACKAGE = '@anthropic-ai/claude-agent-sdk'
 const CLAUDE_PLATFORM_PACKAGE_PREFIX = `${CLAUDE_AGENT_SDK_PACKAGE}-`
 const CLAUDE_PLATFORM_DECLARED_LICENSE = 'SEE LICENSE IN LICENSE.md'
-const LIBREOFFICE_KIT_PACKAGE = '@deepseek-ai/libreoffice-kit'
+const LIBREOFFICE_KIT_PACKAGE = '@xpeach/xph-libreoffice-kit'
 const LIBREOFFICE_PACKAGES = new Set([
   LIBREOFFICE_KIT_PACKAGE,
-  '@deepseek-ai/libreoffice-kit-wasm',
-  '@deepseek-ai/libreoffice-kit-darwin-arm64',
-  '@deepseek-ai/libreoffice-kit-darwin-x64',
-  '@deepseek-ai/libreoffice-kit-win32-arm64',
-  '@deepseek-ai/libreoffice-kit-win32-x64',
+  '@xpeach/xph-libreoffice-kit-wasm',
+  '@xpeach/xph-libreoffice-kit-darwin-arm64',
+  '@xpeach/xph-libreoffice-kit-darwin-x64',
+  '@xpeach/xph-libreoffice-kit-win32-arm64',
+  '@xpeach/xph-libreoffice-kit-win32-x64',
 ])
 
 /**
@@ -835,7 +835,7 @@ ${bundledPython.map(dep => `| [\`${dep.name}\`](${dep.repo}) | ${dep.version} | 
 
 ## First-party native packages
 
-\`@deepseek-ai/node-addon-system\` (and its platform packages) is built and released from this repository under BSD 3-Clause. It is listed here for completeness; it is first-party, not third-party.
+\`@xpeach/xph-node-addon-system\` (and its platform packages) is built and released from this repository under BSD 3-Clause. It is listed here for completeness; it is first-party, not third-party.
 `
 }
 

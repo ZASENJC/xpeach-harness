@@ -2,20 +2,20 @@
 
 import { performance } from 'node:perf_hooks'
 import { scheduler } from 'node:timers/promises'
-import { Context } from '@deepseek-ai/cordis'
-import AgentLoop, { turnBoundaryProjectionDefinition } from '@deepseek-ai/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@deepseek-ai/dsh-agent-loop-testkit'
-import { agentPresetProjectionDefinition } from '@deepseek-ai/dsh-agent-preset-registry'
+import { Context } from '@xpeach/xph-cordis'
+import AgentLoop, { turnBoundaryProjectionDefinition } from '@xpeach/xph-agent-loop'
+import { mountAgentLoopTestDependencies } from '@xpeach/xph-agent-loop-testkit'
+import { agentPresetProjectionDefinition } from '@xpeach/xph-agent-preset-registry'
 import SessionStore, {
   interruptedTurnClosers,
   SessionId,
   SessionLogOffset,
   SessionPreparation,
-} from '@deepseek-ai/dsh-session'
-import type { AgentHandle } from '@deepseek-ai/dsh-agent'
-import * as JsonlSessionPersistence from '@deepseek-ai/dsh-session-persistence-jsonl'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import SessionQueryEngine from '@deepseek-ai/dsh-session-query'
+} from '@xpeach/xph-session'
+import type { AgentHandle } from '@xpeach/xph-agent'
+import * as JsonlSessionPersistence from '@xpeach/xph-session-persistence-jsonl'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import SessionQueryEngine from '@xpeach/xph-session-query'
 import type {
   SessionEventSearchPage,
   SessionEventSearchRequest,
@@ -23,11 +23,11 @@ import type {
   SessionSearchHit,
   SessionSearchPage,
   SessionSearchRequest,
-} from '@deepseek-ai/dsh-session-query'
-import * as SessionStatsPlugin from '@deepseek-ai/dsh-session-stats'
-import SessionTitleService from '@deepseek-ai/dsh-session-title'
-import * as SessionTurnOutlinePlugin from '@deepseek-ai/dsh-session-turn-outline'
-import TokenMeter from '@deepseek-ai/dsh-token-meter'
+} from '@xpeach/xph-session-query'
+import * as SessionStatsPlugin from '@xpeach/xph-session-stats'
+import SessionTitleService from '@xpeach/xph-session-title'
+import * as SessionTurnOutlinePlugin from '@xpeach/xph-session-turn-outline'
+import TokenMeter from '@xpeach/xph-token-meter'
 // These Host-only adapters have no public Node export and are compiled into the benchmark worker.
 import { SessionHistoryController } from '../../packages/api/session-controller/src/history.ts'
 import { installModelSelectionProjection } from '../../packages/api/session-controller/src/model-selection-projection.ts'
@@ -291,7 +291,7 @@ class SessionBenchmarkHost {
 }
 
 assertBuiltBenchmarkRuntime(import.meta.url, {
-  '@deepseek-ai/dsh-session-persistence-jsonl': import.meta.resolve('@deepseek-ai/dsh-session-persistence-jsonl'),
+  '@xpeach/xph-session-persistence-jsonl': import.meta.resolve('@xpeach/xph-session-persistence-jsonl'),
 })
 
 const [root, scenarioValue] = process.argv.slice(2)

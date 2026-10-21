@@ -1,17 +1,17 @@
-import { imageOffloadProjection } from '@deepseek-ai/dsh-compaction-image-offload/projection'
+import { imageOffloadProjection } from '@xpeach/xph-compaction-image-offload/projection'
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import { mountAgentLoopTestDependencies } from '@deepseek-ai/dsh-agent-loop-testkit'
-import { CommandId } from '@deepseek-ai/dsh-commands/brand'
-import { BasicCompactionEngine } from '@deepseek-ai/dsh-compaction-basic'
-import { CompactionId, isCompactCheckpointSource, ManualCompactionError } from '@deepseek-ai/dsh-compaction'
-import type { CompactionResult } from '@deepseek-ai/dsh-compaction'
+import { Context } from '@xpeach/xph-cordis'
+import AgentLoop from '@xpeach/xph-agent-loop'
+import { mountAgentLoopTestDependencies } from '@xpeach/xph-agent-loop-testkit'
+import { CommandId } from '@xpeach/xph-commands/brand'
+import { BasicCompactionEngine } from '@xpeach/xph-compaction-basic'
+import { CompactionId, isCompactCheckpointSource, ManualCompactionError } from '@xpeach/xph-compaction'
+import type { CompactionResult } from '@xpeach/xph-compaction'
 import {
   createAssistantMessage,
   createUserMessage,
   LlmAdapter,
-} from '@deepseek-ai/dsh-llm'
+} from '@xpeach/xph-llm'
 import type {
   ContentBlock,
   LlmResolvedModelInfo,
@@ -19,19 +19,19 @@ import type {
   RequestMessage,
   StreamChunk,
   TokenUsage,
-} from '@deepseek-ai/dsh-llm'
-import SessionStore, { buildForkSeed, Session, SessionId, type SessionEvent } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import LlmRuntime from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import TokenMeter from '@deepseek-ai/dsh-token-meter'
-import type { Agent } from '@deepseek-ai/dsh-agent'
+} from '@xpeach/xph-llm'
+import SessionStore, { buildForkSeed, Session, SessionId, type SessionEvent } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import LlmRuntime from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import TokenMeter from '@xpeach/xph-token-meter'
+import type { Agent } from '@xpeach/xph-agent'
 import type {
   SummarizationInput,
   SummaryResult,
-} from '@deepseek-ai/dsh-compaction-basic/src/summarizer.ts'
+} from '@xpeach/xph-compaction-basic/src/summarizer.ts'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'listener': { kind: 'listener' } & ContextFormed
     'rival': { kind: 'rival' } & ContextFormed

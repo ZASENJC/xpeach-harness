@@ -1,4 +1,4 @@
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { apply, type Config } from '../src/index.ts'
 

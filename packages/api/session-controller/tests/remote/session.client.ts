@@ -6,10 +6,10 @@
  * derives them from its log, and builders for the attachment references
  * the Host's log carries.
  */
-import { AttachmentId, type FileAttachmentRef, type ImageAttachmentRef } from '@deepseek-ai/dsh-attachment'
-import { ok, type RemoteMock, type RemoteTable, type StreamScript, type UnaryRuleFn } from '@deepseek-ai/dsh-remote-mock'
-import type { SessionEvent } from '@deepseek-ai/dsh-session/types'
-import type { RemoteFailure, RemoteResult } from '@deepseek-ai/dsh-typert-protocol'
+import { AttachmentId, type FileAttachmentRef, type ImageAttachmentRef } from '@xpeach/xph-attachment'
+import { ok, type RemoteMock, type RemoteTable, type StreamScript, type UnaryRuleFn } from '@xpeach/xph-remote-mock'
+import type { SessionEvent } from '@xpeach/xph-session/types'
+import type { RemoteFailure, RemoteResult } from '@xpeach/xph-typert-protocol'
 import type {
   SessionAssistantStreamBaseline, SessionFollowFrame, SessionFollowRequest,
   SessionPage, SessionPageRequest,

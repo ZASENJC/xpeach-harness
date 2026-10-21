@@ -1,8 +1,8 @@
 /** General settings row and persistent shell notice for API log uploads. */
-import { Switch, Toast } from '@deepseek-ai/dsh-client-ui-primitives'
-import type { ObservableSnapshot } from '@deepseek-ai/dsh-client-store'
-import type { ConfigFormSnapshot } from '@deepseek-ai/dsh-client-ui-settings/client'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import { Switch, Toast } from '@xpeach/xph-client-ui-primitives'
+import type { ObservableSnapshot } from '@xpeach/xph-client-store'
+import type { ConfigFormSnapshot } from '@xpeach/xph-client-ui-settings/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
 import type { UploadMutation, UploadSettings } from './upload-preference.ts'
 import css from './UploadRow.module.css'
 

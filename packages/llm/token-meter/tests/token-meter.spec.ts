@@ -1,15 +1,15 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { AssistantStreamAccumulator, createAssistantMessage, createUserMessage, createSystemMessage, ToolCallId, createMessage } from '@deepseek-ai/dsh-llm'
-import type { ContentBlock, Message, TokenUsage } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import SessionStore, { Session, SessionId, SessionSeq, canonicalHeader } from '@deepseek-ai/dsh-session'
-import type { EpochHeader, SessionEvent, SessionSeq as SessionSeqType } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import TokenMeter from '@deepseek-ai/dsh-token-meter'
-import type { TokenMeasurement, TokenMeterConfig } from '@deepseek-ai/dsh-token-meter'
+import { Context } from '@xpeach/xph-cordis'
+import { AssistantStreamAccumulator, createAssistantMessage, createUserMessage, createSystemMessage, ToolCallId, createMessage } from '@xpeach/xph-llm'
+import type { ContentBlock, Message, TokenUsage } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import SessionStore, { Session, SessionId, SessionSeq, canonicalHeader } from '@xpeach/xph-session'
+import type { EpochHeader, SessionEvent, SessionSeq as SessionSeqType } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import TokenMeter from '@xpeach/xph-token-meter'
+import type { TokenMeasurement, TokenMeterConfig } from '@xpeach/xph-token-meter'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

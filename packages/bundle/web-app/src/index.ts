@@ -1,5 +1,5 @@
 /**
- * @deepseek-ai/dsh-web-app — the browser-surface bundle's runtime glue plugin
+ * @xpeach/xph-web-app — the browser-surface bundle's runtime glue plugin
  * plus the bundle patch (`cordis.patch.yml`, declared by the `dsh.bundle.patch`
  * manifest field). The plugin owns the browser-surface glue: it resolves
  * the built frontend dist (workspace knowledge of this bundle, never user
@@ -9,22 +9,22 @@
  * `publicUrl` replaces the published bind-address URL. Non-loopback
  * HTTP binds trigger an exposure warning. App command-line values arrive
  * through the `webStartup` service expressions in the bundle patch.
- * @module @deepseek-ai/dsh-web-app
+ * @module @xpeach/xph-web-app
  */
 
 import { spawn, type ChildProcess } from 'node:child_process'
 import { createRequire } from 'node:module'
 import { dirname, join } from 'node:path'
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { auditStartupEntries } from '@deepseek-ai/dsh-app-boot'
-import type {} from '@deepseek-ai/dsh-client-connection'
-import * as FrontendStatic from '@deepseek-ai/dsh-host-frontend-static'
-import { bindUrlHost, isLoopbackHost } from '@deepseek-ai/dsh-host-webserver'
-import { launchedThroughSsh, launchEnvironmentOf } from '@deepseek-ai/dsh-launch-environment'
-import { scrubbedParentEnv } from '@deepseek-ai/dsh-subprocess'
-import type {} from '@deepseek-ai/cordis-plugin-loader'
-import type {} from '@deepseek-ai/dsh-shell-env'
+import type { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { auditStartupEntries } from '@xpeach/xph-app-boot'
+import type {} from '@xpeach/xph-client-connection'
+import * as FrontendStatic from '@xpeach/xph-host-frontend-static'
+import { bindUrlHost, isLoopbackHost } from '@xpeach/xph-host-webserver'
+import { launchedThroughSsh, launchEnvironmentOf } from '@xpeach/xph-launch-environment'
+import { scrubbedParentEnv } from '@xpeach/xph-subprocess'
+import type {} from '@xpeach/xph-cordis-plugin-loader'
+import type {} from '@xpeach/xph-shell-env'
 import { parsePublicUrl } from './public-url.ts'
 
 /** The Web GUI this process serves, provided by the `web-runtime` row. */
@@ -36,7 +36,7 @@ export interface WebApp {
   getAdvertisedUrl(): string
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** The Web GUI this process serves; absent when no Web runtime is mounted. */
     webApp: WebApp
@@ -123,10 +123,10 @@ try {
 function resolveDistIndex(): string {
   const require = createRequire(import.meta.url)
   try {
-    return join(dirname(require.resolve('@deepseek-ai/dsh-web-frontend/package.json')), 'dist', 'index.html')
+    return join(dirname(require.resolve('@xpeach/xph-web-frontend/package.json')), 'dist', 'index.html')
   } catch {
     /* v8 ignore next 2 -- reachable only when the frontend package is absent from the checkout */
-    throw new Error('web-app: @deepseek-ai/dsh-web-frontend is not resolvable from this composition')
+    throw new Error('web-app: @xpeach/xph-web-frontend is not resolvable from this composition')
   }
 }
 

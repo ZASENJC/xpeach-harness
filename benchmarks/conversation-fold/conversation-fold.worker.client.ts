@@ -1,13 +1,13 @@
 /** Compiled worker for Client history folding and live tool preparation. */
 
 import { performance } from 'node:perf_hooks'
-import { Context } from '@deepseek-ai/cordis'
-import { AssistantStreamAccumulator } from '@deepseek-ai/dsh-llm/assistant-stream'
-import { LlmAttemptId, ToolCallId } from '@deepseek-ai/dsh-llm/brand'
-import type { StreamChunk } from '@deepseek-ai/dsh-llm'
-import type { SessionEvent } from '@deepseek-ai/dsh-session/types'
-import type { ChatNode, ChatSnapshot } from '@deepseek-ai/dsh-client-ui-chat/client'
-import type { SessionEventLikeEntry } from '@deepseek-ai/dsh-api-session-controller/client'
+import { Context } from '@xpeach/xph-cordis'
+import { AssistantStreamAccumulator } from '@xpeach/xph-llm/assistant-stream'
+import { LlmAttemptId, ToolCallId } from '@xpeach/xph-llm/brand'
+import type { StreamChunk } from '@xpeach/xph-llm'
+import type { SessionEvent } from '@xpeach/xph-session/types'
+import type { ChatNode, ChatSnapshot } from '@xpeach/xph-client-ui-chat/client'
+import type { SessionEventLikeEntry } from '@xpeach/xph-api-session-controller/client'
 // These Client-only fold modules have no plain-Node package export and are compiled into this worker.
 import { ConversationNodeAssembler } from '../../packages/client/ui-conversation/src/client/conversation/assembler.ts'
 import { ConversationEventRegistry } from '../../packages/client/ui-conversation/src/client/conversation/event-registry.ts'
@@ -258,12 +258,12 @@ function preparingTool(tool: 'write' | 'bash', characters: number, definitions: 
 }
 
 assertBuiltBenchmarkRuntime(import.meta.url, {
-  '@deepseek-ai/dsh-brand': import.meta.resolve('@deepseek-ai/dsh-brand'),
-  '@deepseek-ai/dsh-client-store': import.meta.resolve('@deepseek-ai/dsh-client-store'),
-  '@deepseek-ai/dsh-llm/assistant-stream': import.meta.resolve('@deepseek-ai/dsh-llm/assistant-stream'),
-  '@deepseek-ai/dsh-session/surface': import.meta.resolve('@deepseek-ai/dsh-session/surface'),
-  '@deepseek-ai/dsh-token-meter/client': import.meta.resolve('@deepseek-ai/dsh-token-meter/client'),
-  '@deepseek-ai/dsh-util-values': import.meta.resolve('@deepseek-ai/dsh-util-values'),
+  '@xpeach/xph-brand': import.meta.resolve('@xpeach/xph-brand'),
+  '@xpeach/xph-client-store': import.meta.resolve('@xpeach/xph-client-store'),
+  '@xpeach/xph-llm/assistant-stream': import.meta.resolve('@xpeach/xph-llm/assistant-stream'),
+  '@xpeach/xph-session/surface': import.meta.resolve('@xpeach/xph-session/surface'),
+  '@xpeach/xph-token-meter/client': import.meta.resolve('@xpeach/xph-token-meter/client'),
+  '@xpeach/xph-util-values': import.meta.resolve('@xpeach/xph-util-values'),
 })
 const scope = new Context()
 try {

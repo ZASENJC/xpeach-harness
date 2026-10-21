@@ -2,7 +2,7 @@
  * pick conversation sources, pick extras, watch the import, done. */
 import { useEffect, useMemo, useState } from 'react'
 import type { JSX } from 'react'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
 import type { XPeachOps, XPeachOnboardingScan } from './ops.ts'
 import { XPeachMark as XPeachMarkInline } from './brand.tsx'
 import { SITE } from './fmt.ts'

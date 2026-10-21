@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-atomic-write",
+  "name": "@xpeach/xph-atomic-write",
   "description": "Zero-dependency atomic file replacement: exclusive-create random-suffix temp + rename carrying the caller-stated permissions (writeFileAtomic)",
   "version": "0.3.0",
   "publishConfig": {
@@ -27,9 +27,9 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   }
 }

@@ -30,14 +30,14 @@ test('the real Landlock subpath imports without platform packages or dlopen, whi
         dlopenCalls++;
         throw new Error('Landlock import attempted dlopen');
       };
-      const api = await import('@deepseek-ai/node-addon-system/landlock-run');
+      const api = await import('@xpeach/xph-node-addon-system/landlock-run');
       assert.equal(api.LAUNCHER_BIN, 'landlock-run');
       assert.deepEqual(api.grantArgs({}), []);
       assert.equal(dlopenCalls, 0);
-      await assert.rejects(import('@deepseek-ai/node-addon-system'), {
+      await assert.rejects(import('@xpeach/xph-node-addon-system'), {
         code: 'ERR_PACKAGE_PATH_NOT_EXPORTED',
       });
-      assert.throws(() => createRequire(import.meta.url).resolve('@deepseek-ai/node-addon-system'), {
+      assert.throws(() => createRequire(import.meta.url).resolve('@xpeach/xph-node-addon-system'), {
         code: 'ERR_PACKAGE_PATH_NOT_EXPORTED',
       });
     } finally {

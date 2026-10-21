@@ -3,16 +3,16 @@
  * validation, formatting, typed errors, intent dispatch, and observation-driven authorization.
  */
 
-import { provideWorkingDirectoryFixture } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { provideWorkingDirectoryFixture } from '@xpeach/xph-agent-loop-testkit'
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { PtcRuntime } from '@deepseek-ai/dsh-ptc-runtime'
-import { createScope, type Scope } from '@deepseek-ai/dsh-scope'
-import { turnBoundaryProjectionDefinition } from '@deepseek-ai/dsh-agent-loop'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import SystemPrompt, { renderPrompt } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { type ToolResult } from '@deepseek-ai/dsh-tools'
-import { FileSystem, FsError, FsTargetKey, FsVersion } from '@deepseek-ai/dsh-fs'
+import { Context } from '@xpeach/xph-cordis'
+import { PtcRuntime } from '@xpeach/xph-ptc-runtime'
+import { createScope, type Scope } from '@xpeach/xph-scope'
+import { turnBoundaryProjectionDefinition } from '@xpeach/xph-agent-loop'
+import { ToolCallId } from '@xpeach/xph-llm'
+import SystemPrompt, { renderPrompt } from '@xpeach/xph-system-prompt'
+import ToolRuntime, { type ToolResult } from '@xpeach/xph-tools'
+import { FileSystem, FsError, FsTargetKey, FsVersion } from '@xpeach/xph-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -22,18 +22,18 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@deepseek-ai/dsh-fs'
-import * as FsPolicy from '@deepseek-ai/dsh-fs-observation-policy'
-import * as ToolFs from '@deepseek-ai/dsh-tool-fs'
+} from '@xpeach/xph-fs'
+import * as FsPolicy from '@xpeach/xph-fs-observation-policy'
+import * as ToolFs from '@xpeach/xph-tool-fs'
 import { STREAM_MIN_SIZE } from '../src/read.ts'
 import { formatReadOutput } from '../src/read-render.ts'
 import type { FileReadOutcome } from '../src/read-render.ts'
 import { sessionResolveOptions } from '../src/session-cwd.ts'
-import ApprovalService from '@deepseek-ai/dsh-user-approval'
-import type { SandboxExecutionPolicy, SandboxMode } from '@deepseek-ai/dsh-sandbox'
-import SandboxPolicyService from '@deepseek-ai/dsh-sandbox-policy'
-import { SessionId, SessionLogOffset, SessionSeq } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
+import ApprovalService from '@xpeach/xph-user-approval'
+import type { SandboxExecutionPolicy, SandboxMode } from '@xpeach/xph-sandbox'
+import SandboxPolicyService from '@xpeach/xph-sandbox-policy'
+import { SessionId, SessionLogOffset, SessionSeq } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
 
 const testToolSignal = new AbortController().signal
 
@@ -1123,7 +1123,7 @@ function withPersona(...sections: string[]): string {
 
 /** Schema assembly only: these cases never execute user code. */
 class GuidancePtcRuntime extends PtcRuntime {
-  resolve(request: import('@deepseek-ai/dsh-ptc-runtime').PtcRunRequest): import('@deepseek-ai/dsh-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
+  resolve(request: import('@xpeach/xph-ptc-runtime').PtcRunRequest): import('@xpeach/xph-ptc-runtime').PtcRunSpec { return { ...request, cwd: request.cwd ?? process.cwd(), timeoutMs: request.timeoutMs ?? 120_000 } }
 
   readonly language = 'typescript'
   readonly isolation = 'fake'

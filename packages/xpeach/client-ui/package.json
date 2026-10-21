@@ -24,27 +24,27 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-api-remotes": "workspace:*",
-    "@deepseek-ai/dsh-client-locale": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-slots": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-primitives": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-api-remotes": "workspace:*",
+    "@xpeach/xph-client-locale": "workspace:*",
+    "@xpeach/xph-client-ui-slots": "workspace:*",
+    "@xpeach/xph-client-ui-primitives": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*",
     "@xpeach/xph-account": "workspace:*",
     "@types/react": "~18.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@deepseek-ai/dsh-client-ui-theme": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-sidebar": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-layout": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-chat": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-sidebar-right": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-conversation": "workspace:*",
+    "@xpeach/xph-client-ui-theme": "workspace:*",
+    "@xpeach/xph-client-ui-sidebar": "workspace:*",
+    "@xpeach/xph-client-ui-layout": "workspace:*",
+    "@xpeach/xph-client-ui-chat": "workspace:*",
+    "@xpeach/xph-client-ui-sidebar-right": "workspace:*",
+    "@xpeach/xph-client-ui-conversation": "workspace:*",
     "@types/react-dom": "~18.3.0",
-    "@deepseek-ai/dsh-client-ui-settings": "workspace:*"
+    "@xpeach/xph-client-ui-settings": "workspace:*"
   },
   "files": [
     "lib/index.js",
@@ -54,11 +54,11 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-remotes",
-        "@deepseek-ai/dsh-client-locale",
-        "@deepseek-ai/dsh-client-ui-slots",
-        "@deepseek-ai/dsh-client-ui-theme",
-        "@deepseek-ai/dsh-client-ui-sidebar-right"
+        "@xpeach/xph-api-remotes",
+        "@xpeach/xph-client-locale",
+        "@xpeach/xph-client-ui-slots",
+        "@xpeach/xph-client-ui-theme",
+        "@xpeach/xph-client-ui-sidebar-right"
       ],
       "platform": "web"
     }

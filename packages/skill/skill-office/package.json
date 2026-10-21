@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-skill-office",
+  "name": "@xpeach/xph-skill-office",
   "description": "Bundled Word, PowerPoint, and Excel workflows and LibreOffice Kit operations",
   "version": "0.3.0",
   "publishConfig": {
@@ -27,18 +27,18 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-skill": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-skill": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-skill": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/cordis-plugin-include": "workspace:~"
+    "@xpeach/xph-skill": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-cordis-plugin-include": "workspace:~"
   },
   "dependencies": {
     "@deepseek-ai/libreoffice-kit": "^0.1.5",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@xpeach/xph-schemastery": "workspace:~",
     "yaml": "^2.4.2"
   }
 }

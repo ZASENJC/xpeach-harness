@@ -5,19 +5,19 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { afterEach, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import ComputerUseRegistry from '@deepseek-ai/dsh-computer-use'
-import LocalAttachmentStore from '@deepseek-ai/dsh-attachment-local'
-import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@deepseek-ai/dsh-llm'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import Include from '@xpeach/xph-cordis-plugin-include'
+import AgentRegistry from '@xpeach/xph-agent'
+import AgentLoop from '@xpeach/xph-agent-loop'
+import ComputerUseRegistry from '@xpeach/xph-computer-use'
+import LocalAttachmentStore from '@xpeach/xph-attachment-local'
+import LlmRuntime, { LlmAdapter, ToolCallId, createUserMessage } from '@xpeach/xph-llm'
+import type { GenerateOptions, LlmResolvedModelInfo, StreamChunk } from '@xpeach/xph-llm'
+import SessionStore, { SessionId } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRuntime from '@xpeach/xph-tools'
 import * as NativeProvider from '../src/index.ts'
 import { resetFixture, screenshotBase64 } from './fixtures/cua-driver.ts'
 
@@ -60,20 +60,20 @@ it('loads from cordis.yml and logs the native screenshot before the next model r
   root = await mkdtemp(join(tmpdir(), 'dsh-native-composition-'))
   const configPath = join(root, 'cordis.yml')
   const modules = new Map<string, unknown>([
-    ['@deepseek-ai/dsh-llm', LlmRuntime],
-    ['@deepseek-ai/dsh-session', SessionStore],
-    ['@deepseek-ai/dsh-session-projection', SessionProjectionRegistry],
-    ['@deepseek-ai/dsh-system-prompt', SystemPrompt],
-    ['@deepseek-ai/dsh-tools', ToolRuntime],
-    ['@deepseek-ai/dsh-agent', AgentRegistry],
-    ['@deepseek-ai/dsh-agent-loop', AgentLoop],
-    ['@deepseek-ai/dsh-attachment-local', LocalAttachmentStore],
-    ['@deepseek-ai/dsh-computer-use', ComputerUseRegistry],
-    ['@deepseek-ai/dsh-experimental-computer-use-cua-driver-native', NativeProvider],
+    ['@xpeach/xph-llm', LlmRuntime],
+    ['@xpeach/xph-session', SessionStore],
+    ['@xpeach/xph-session-projection', SessionProjectionRegistry],
+    ['@xpeach/xph-system-prompt', SystemPrompt],
+    ['@xpeach/xph-tools', ToolRuntime],
+    ['@xpeach/xph-agent', AgentRegistry],
+    ['@xpeach/xph-agent-loop', AgentLoop],
+    ['@xpeach/xph-attachment-local', LocalAttachmentStore],
+    ['@xpeach/xph-computer-use', ComputerUseRegistry],
+    ['@xpeach/xph-experimental-computer-use-cua-driver-native', NativeProvider],
   ])
   await writeFile(configPath, [...modules.keys()].flatMap(name => [
     `- name: '${name}'`,
-    ...name === '@deepseek-ai/dsh-attachment-local' ? ['  config:', `    dshHome: ${JSON.stringify(root)}`] : [],
+    ...name === '@xpeach/xph-attachment-local' ? ['  config:', `    dshHome: ${JSON.stringify(root)}`] : [],
   ]).join('\n') + '\n')
 
   const context = ctx = new Context()

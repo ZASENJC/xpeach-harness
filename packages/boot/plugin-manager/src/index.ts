@@ -4,22 +4,22 @@ import { existsSync, readFileSync } from 'node:fs'
 import { readFile, rm } from 'node:fs/promises'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { withFileLock, writeFileAtomic } from '@deepseek-ai/dsh-atomic-write'
-import { Context } from '@deepseek-ai/cordis'
-import type { EntryOptions } from '@deepseek-ai/cordis-plugin-loader'
-import type { PatchOptions } from '@deepseek-ai/cordis-plugin-include'
-import z from '@deepseek-ai/schemastery'
-import { TypertRemoteService, Remote } from '@deepseek-ai/dsh-typert-protocol'
-import { pluginEntryId, readPluginInventory } from '@deepseek-ai/dsh-host-plugin-inventory'
+import { withFileLock, writeFileAtomic } from '@xpeach/xph-atomic-write'
+import { Context } from '@xpeach/xph-cordis'
+import type { EntryOptions } from '@xpeach/xph-cordis-plugin-loader'
+import type { PatchOptions } from '@xpeach/xph-cordis-plugin-include'
+import z from '@xpeach/xph-schemastery'
+import { TypertRemoteService, Remote } from '@xpeach/xph-typert-protocol'
+import { pluginEntryId, readPluginInventory } from '@xpeach/xph-host-plugin-inventory'
 import {
   readPluginMeta, readProfileManifest, resolveBundleDir, loadOverlayPatches, composeEntries,
   readProfilePatches, OPTIONAL_BUNDLES, bundlePatchPaths,
   evaluatePluginCompatibility, readProfileCompatibility, readProfileVersionExemptions,
   setProfileVersionExemption, PROFILE_COMPATIBILITY_FILENAME,
   OFFICIAL_ON_DEMAND_CATALOG, getDshRuntimeVersion, ResolutionRestartRequired,
-} from '@deepseek-ai/dsh-app-boot'
-import type {} from '@deepseek-ai/dsh-hmr'
-import type { ProfileContext, ProfileManifest } from '@deepseek-ai/dsh-app-boot'
+} from '@xpeach/xph-app-boot'
+import type {} from '@xpeach/xph-hmr'
+import type { ProfileContext, ProfileManifest } from '@xpeach/xph-app-boot'
 import { bundleManifest, readProfileRegistry, registryArguments, runProfilePnpm, saveManifest, viewProfilePackage } from './operations.ts'
 import { classifyInstallFailure } from './install-failure.ts'
 import { officialBundleInstallTarget } from './official-install-target.ts'
@@ -66,15 +66,15 @@ export interface Config {
 const REGISTRY_URL = /^https?:\/\/\S+$/
 
 const protectedModules = new Set([
-  '@deepseek-ai/dsh-plugin-manager', '@deepseek-ai/cordis-plugin-loader',
-  '@deepseek-ai/cordis-plugin-include', '@deepseek-ai/dsh-api-gateway',
-  '@deepseek-ai/dsh-host-webserver', '@deepseek-ai/dsh-client-modules',
-  '@deepseek-ai/dsh-client-ui-settings-plugin-inventory', '@deepseek-ai/dsh-client-ui-plugin-manager',
-  '@deepseek-ai/dsh-host-plugin-inventory', '@deepseek-ai/dsh-typert-registry',
-  '@deepseek-ai/dsh-api-remotes', '@deepseek-ai/dsh-api-remote-access',
-  '@deepseek-ai/cordis-plugin-timer', '@deepseek-ai/dsh-client-connection',
-  '@deepseek-ai/dsh-host-frontend-static', '@deepseek-ai/dsh-tools',
-  '@deepseek-ai/dsh-hmr',
+  '@xpeach/xph-plugin-manager', '@xpeach/xph-cordis-plugin-loader',
+  '@xpeach/xph-cordis-plugin-include', '@xpeach/xph-api-gateway',
+  '@xpeach/xph-host-webserver', '@xpeach/xph-client-modules',
+  '@xpeach/xph-client-ui-settings-plugin-inventory', '@xpeach/xph-client-ui-plugin-manager',
+  '@xpeach/xph-host-plugin-inventory', '@xpeach/xph-typert-registry',
+  '@xpeach/xph-api-remotes', '@xpeach/xph-api-remote-access',
+  '@xpeach/xph-cordis-plugin-timer', '@xpeach/xph-client-connection',
+  '@xpeach/xph-host-frontend-static', '@xpeach/xph-tools',
+  '@xpeach/xph-hmr',
 ])
 
 /** The profile files an installation writes and a failed or cancelled one restores. */
@@ -196,7 +196,7 @@ function parsedForRegistry(spec: string): ParsedInstallSpec {
   }
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Persistent management of the current profile's composition and packages. */
     pluginManager: PluginManager

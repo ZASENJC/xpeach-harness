@@ -1,10 +1,10 @@
-import { Context } from '@deepseek-ai/cordis'
-import { provideWorkingDirectoryFixture } from '@deepseek-ai/dsh-agent-loop-testkit'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import SessionStore, { SESSION_FORMAT_VERSION, SessionSeq, SessionId } from '@deepseek-ai/dsh-session'
-import type { SessionEvent, SessionHeader } from '@deepseek-ai/dsh-session'
-import SubagentRuntime from '@deepseek-ai/dsh-subagent'
+import { Context } from '@xpeach/xph-cordis'
+import { provideWorkingDirectoryFixture } from '@xpeach/xph-agent-loop-testkit'
+import AgentRegistry from '@xpeach/xph-agent'
+import type { Agent } from '@xpeach/xph-agent'
+import SessionStore, { SESSION_FORMAT_VERSION, SessionSeq, SessionId } from '@xpeach/xph-session'
+import type { SessionEvent, SessionHeader } from '@xpeach/xph-session'
+import SubagentRuntime from '@xpeach/xph-subagent'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
   createSessionTestController,

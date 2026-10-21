@@ -7,20 +7,20 @@
  * stack — this suite is the fixture the migrated feature specs rely on.
  */
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import { stubConfigForm } from '../src/config-form.ts'
 import { act, cleanup } from '@testing-library/react'
 import { useSyncExternalStore } from 'react'
-import { createSnapshotStore, defineStore } from '@deepseek-ai/dsh-client-store'
-import { createScope, type SessionReference } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { WorkspaceId } from '@deepseek-ai/dsh-api-workspace-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
+import { createSnapshotStore, defineStore } from '@xpeach/xph-client-store'
+import { createScope, type SessionReference } from '@xpeach/xph-api-session-controller/client'
+import type { WorkspaceId } from '@xpeach/xph-api-workspace-controller/client'
+import type { SessionId } from '@xpeach/xph-session/types'
 import type {
   PropsRenderSlots, SessionStandardProps, SlotRendererHost,
-} from '@deepseek-ai/dsh-client-ui-slots'
-import { SlotTestRuntime } from '@deepseek-ai/dsh-client-test-runtime'
+} from '@xpeach/xph-client-ui-slots'
+import { SlotTestRuntime } from '@xpeach/xph-client-test-runtime'
 
-declare module '@deepseek-ai/dsh-client-ui-slots' {
+declare module '@xpeach/xph-client-ui-slots' {
   interface SlotMap {
     'trt.panel': { kind: 'single'; scope: 'root'; owner: { label?: string } }
     'trt.chat': { kind: 'single'; scope: 'session' }

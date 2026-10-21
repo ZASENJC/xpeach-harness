@@ -1,7 +1,7 @@
 /** Filesystem ownership for the Electron-managed desktop installation. */
 
 import { join } from 'node:path'
-import { resolveDshHome } from '@deepseek-ai/dsh-home-paths'
+import { resolveDshHome } from '@xpeach/xph-home-paths'
 
 /** XPeach product home; the Desktop shell never writes into DeepSeek's ~/.dsh. */
 export const XPEACH_HOME_ENV = 'XPH_HOME'

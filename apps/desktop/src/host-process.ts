@@ -2,7 +2,7 @@
 
 import { spawn, type ChildProcess } from 'node:child_process'
 import { join } from 'node:path'
-import type { PlatformSession } from '@deepseek-ai/dsh-deepseek-account'
+import type { PlatformSession } from '@xpeach/xph-deepseek-account'
 import { desktopNodeEnvironment } from './node-environment.ts'
 
 interface ReadyEvent {

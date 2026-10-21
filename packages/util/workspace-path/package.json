@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-util-workspace-path",
+  "name": "@xpeach/xph-util-workspace-path",
   "description": "Browser-safe Workspace path and display helpers",
   "version": "0.3.0",
   "publishConfig": {
@@ -27,9 +27,9 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   }
 }

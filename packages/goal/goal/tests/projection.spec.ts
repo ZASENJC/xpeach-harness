@@ -9,19 +9,19 @@
  */
 
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry, { agentEvents } from '@deepseek-ai/dsh-agent'
-import type { Agent, AgentStatus } from '@deepseek-ai/dsh-agent'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import SessionStore from '@deepseek-ai/dsh-session'
-import type { Session } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import GoalService, { GoalId, applyGoalProjection, foldGoal, goalProjectionDefinition } from '@deepseek-ai/dsh-goal'
-import type { GoalProjection, GoalProjectionState, GoalRef } from '@deepseek-ai/dsh-goal'
-import { unsupportedInbox } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { Context } from '@xpeach/xph-cordis'
+import AgentRegistry, { agentEvents } from '@xpeach/xph-agent'
+import type { Agent, AgentStatus } from '@xpeach/xph-agent'
+import { createUserMessage } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import SessionStore from '@xpeach/xph-session'
+import type { Session } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import GoalService, { GoalId, applyGoalProjection, foldGoal, goalProjectionDefinition } from '@xpeach/xph-goal'
+import type { GoalProjection, GoalProjectionState, GoalRef } from '@xpeach/xph-goal'
+import { unsupportedInbox } from '@xpeach/xph-agent-loop-testkit'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

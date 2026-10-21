@@ -6,16 +6,16 @@
  * classification, the model-friendly terminal environment, and the model-facing
  * stdout/stderr merge for background reads. Execution policy belongs in
  * `tools/pre-execute` or a sandboxing executor.
- * @module @deepseek-ai/dsh-bash-local
+ * @module @xpeach/xph-bash-local
  */
 
-import type { Volatile } from '@deepseek-ai/cordis'
-import { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { ShellExecutor } from '@deepseek-ai/dsh-shell'
-import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellProcessRead, ShellRunResult, CollectedOutput } from '@deepseek-ai/dsh-shell'
-import type { SubprocessCollect, SubprocessHandle, SubprocessOutputReader, SubprocessSpawnSpec } from '@deepseek-ai/dsh-subprocess'
-import { clampTimeout, deadline, MAX_TIMER_DELAY_MS, timeoutOf } from '@deepseek-ai/dsh-timeout'
+import type { Volatile } from '@xpeach/xph-cordis'
+import { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { ShellExecutor } from '@xpeach/xph-shell'
+import type { ShellExecRequest, ShellExecSpec, ShellExecution, ShellProcess, ShellProcessRead, ShellRunResult, CollectedOutput } from '@xpeach/xph-shell'
+import type { SubprocessCollect, SubprocessHandle, SubprocessOutputReader, SubprocessSpawnSpec } from '@xpeach/xph-subprocess'
+import { clampTimeout, deadline, MAX_TIMER_DELAY_MS, timeoutOf } from '@xpeach/xph-timeout'
 
 /**
  * Model-friendly environment overrides: disable colors, pagers, and

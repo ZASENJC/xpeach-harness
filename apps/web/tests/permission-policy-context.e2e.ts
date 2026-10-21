@@ -10,10 +10,10 @@ import { fileURLToPath } from 'node:url'
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it, onTestFailed } from 'vitest'
-import { canonicalPath } from '@deepseek-ai/dsh-sandbox'
-import type { SessionEvent } from '@deepseek-ai/dsh-session'
-import type { WebTerminalId } from '@deepseek-ai/dsh-api-terminal-controller/types'
-import type {} from '@deepseek-ai/dsh-api-terminal-controller'
+import { canonicalPath } from '@xpeach/xph-sandbox'
+import type { SessionEvent } from '@xpeach/xph-session'
+import type { WebTerminalId } from '@xpeach/xph-api-terminal-controller/types'
+import type {} from '@xpeach/xph-api-terminal-controller'
 import {
   assertFinalWorkspaceSnapshot, assertFixtureInventory, fixtureUserPrompts, launchWebScaffold, recordFixture,
   watchConsole, webSnapshotMode, type WebScaffold,

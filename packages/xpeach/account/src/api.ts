@@ -5,9 +5,9 @@
  * token (raw Authorization) for admin surfaces. Keeping the entire HTTP seam in
  * one module means upstream New API changes touch this file and only this file.
  */
-import { RemoteError } from '@deepseek-ai/dsh-typert-protocol'
+import { RemoteError } from '@xpeach/xph-typert-protocol'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
+import type { JsonValue } from '@xpeach/xph-util-values'
 import { dirname } from 'node:path'
 import type {
   XPeachAdminLogEntry, XPeachAdminOverview, XPeachAdminPage, XPeachAdminToken,

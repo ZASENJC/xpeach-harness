@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { AttachmentId } from '@deepseek-ai/dsh-attachment'
+import { Context } from '@xpeach/xph-cordis'
+import { AttachmentId } from '@xpeach/xph-attachment'
 import LlmRuntime, {
   errorChain,
   GenerateOptions,
@@ -16,7 +16,7 @@ import LlmRuntime, {
   createMessage,
   createDeveloperMessage,
   createUserMessage,
-} from '@deepseek-ai/dsh-llm'
+} from '@xpeach/xph-llm'
 import type {
   LlmCallConfig,
   ConfigureCall,
@@ -26,10 +26,10 @@ import type {
   LlmProviderInfo,
   LlmResolvedModelInfo,
   SystemPromptUpdate,
-} from '@deepseek-ai/dsh-llm'
+} from '@xpeach/xph-llm'
 
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-declare module '@deepseek-ai/dsh-llm' {
+import type { ContextFormed } from '@xpeach/xph-llm'
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }
@@ -1587,7 +1587,7 @@ describe('LlmRuntime', () => {
   })
 
   it('LlmError extends the shared HarnessError base', async () => {
-    const { HarnessError, isHarnessError } = await import('@deepseek-ai/dsh-llm')
+    const { HarnessError, isHarnessError } = await import('@xpeach/xph-llm')
     const cause = new Error('root cause')
     const err = new LlmError('boom', 'AUTH', { cause })
     expect(err).toBeInstanceOf(HarnessError)
@@ -1597,7 +1597,7 @@ describe('LlmRuntime', () => {
   })
 
   it('HarnessError carries a code, names itself by subclass, and chains cause', async () => {
-    const { HarnessError, isHarnessError } = await import('@deepseek-ai/dsh-llm')
+    const { HarnessError, isHarnessError } = await import('@xpeach/xph-llm')
     const root = new Error('root cause')
     const err = new HarnessError('wrapper', 'UNKNOWN', { cause: root })
     expect(err).toBeInstanceOf(Error)

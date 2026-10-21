@@ -1,36 +1,36 @@
 # Minimal tool-pwsh composition: real app boot path, real pwsh executor, real
 # foreground + background tool calls; driven by the package's loader.spec.ts.
 - id: system-prompt
-  name: '@deepseek-ai/dsh-system-prompt'
+  name: '@xpeach/xph-system-prompt'
 
 - id: fs
-  name: '@deepseek-ai/dsh-fs-local'
+  name: '@xpeach/xph-fs-local'
 
 - id: session-projections
-  name: '@deepseek-ai/dsh-session-projection'
+  name: '@xpeach/xph-session-projection'
 
 - id: working-directory
-  name: '@deepseek-ai/dsh-working-directory'
+  name: '@xpeach/xph-working-directory'
 
 - id: tools
-  name: '@deepseek-ai/dsh-tools'
+  name: '@xpeach/xph-tools'
 
 - id: subprocess
-  name: '@deepseek-ai/dsh-subprocess-local'
+  name: '@xpeach/xph-subprocess-local'
 
 - id: bash
-  name: '@deepseek-ai/dsh-pwsh-local'
+  name: '@xpeach/xph-pwsh-local'
   config:
     graceMs: 200
 
 - id: shell-env
-  name: '@deepseek-ai/dsh-shell-env'
+  name: '@xpeach/xph-shell-env'
 
 - id: tasks
-  name: '@deepseek-ai/dsh-jobs-local'
+  name: '@xpeach/xph-jobs-local'
 
 - id: tool-jobs
-  name: '@deepseek-ai/dsh-tool-jobs'
+  name: '@xpeach/xph-tool-jobs'
 
 - id: tool-pwsh
-  name: '@deepseek-ai/dsh-tool-pwsh'
+  name: '@xpeach/xph-tool-pwsh'

@@ -1,8 +1,8 @@
 - insert:
     - id: experimental-inspector
-      name: '@deepseek-ai/dsh-experimental-inspector'
+      name: '@xpeach/xph-experimental-inspector'
       disabled: false
       config:
         captureFetch: true
     - id: session-inspector
-      name: '@deepseek-ai/dsh-experimental-session-inspector'
+      name: '@xpeach/xph-experimental-session-inspector'

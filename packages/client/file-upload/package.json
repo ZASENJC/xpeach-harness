@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-client-file-upload",
+  "name": "@xpeach/xph-client-file-upload",
   "description": "Agent-scoped browser file upload, streaming intake, and staged receipt service",
   "version": "0.3.0",
   "publishConfig": {
@@ -41,7 +41,7 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-remotes"
+        "@xpeach/xph-api-remotes"
       ],
       "platform": "web",
       "immediately": true
@@ -65,20 +65,20 @@
   ],
   "dependencies": {
     "zod": "4.4.3",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*"
+    "@xpeach/xph-typert-protocol": "workspace:*",
+    "@xpeach/xph-brand": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-client-connection": "workspace:*",
-    "@deepseek-ai/dsh-commands": "workspace:*",
-    "@deepseek-ai/dsh-util-crypto": "workspace:*",
-    "@deepseek-ai/dsh-api-remotes": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-attachment": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-client-connection": "workspace:*",
+    "@xpeach/xph-commands": "workspace:*",
+    "@xpeach/xph-util-crypto": "workspace:*",
+    "@xpeach/xph-api-remotes": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-attachment": "workspace:*"
   }
 }

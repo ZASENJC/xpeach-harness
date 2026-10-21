@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { createScope, type Scope } from '@deepseek-ai/dsh-scope'
+import { Context } from '@xpeach/xph-cordis'
+import { createScope, type Scope } from '@xpeach/xph-scope'
 import TurndownService from 'turndown'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import SystemPrompt, { renderPrompt } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { type ToolExecutionResult } from '@deepseek-ai/dsh-tools'
-import WebRuntime from '@deepseek-ai/dsh-web'
-import type { WebSearchProvider, WebSearchResult } from '@deepseek-ai/dsh-web'
-import * as ToolWeb from '@deepseek-ai/dsh-tool-web'
+import { ToolCallId } from '@xpeach/xph-llm'
+import SystemPrompt, { renderPrompt } from '@xpeach/xph-system-prompt'
+import ToolRuntime, { type ToolExecutionResult } from '@xpeach/xph-tools'
+import WebRuntime from '@xpeach/xph-web'
+import type { WebSearchProvider, WebSearchResult } from '@xpeach/xph-web'
+import * as ToolWeb from '@xpeach/xph-tool-web'
 import {
   formatSearchOutput,
   formatFetchOutput,
@@ -22,9 +22,9 @@ import {
   fetchMetaFromResult,
   WEB_SEARCH_MAX_QUERIES,
   WEB_SEARCH_MAX_RESULTS,
-} from '@deepseek-ai/dsh-tool-web'
-import type { ContentBlock } from '@deepseek-ai/dsh-llm'
-import type { ToolResult } from '@deepseek-ai/dsh-tools'
+} from '@xpeach/xph-tool-web'
+import type { ContentBlock } from '@xpeach/xph-llm'
+import type { ToolResult } from '@xpeach/xph-tools'
 import { parseSearchArgs } from '../src/search.ts'
 
 const testToolSignal = new AbortController().signal
@@ -40,7 +40,7 @@ async function mountTools(opts: {
   config?: ToolWeb.Config
   webConfig?: { searchProvider?: string; fetchProvider?: string }
   search?: WebSearchProvider
-  fetchProvider?: import('@deepseek-ai/dsh-web').WebFetchProvider
+  fetchProvider?: import('@xpeach/xph-web').WebFetchProvider
 } = {}): Promise<{ ctx: Context; fiber: Awaited<ReturnType<Context['plugin']>>; call: (name: string, args: unknown) => Promise<ToolExecutionResult> }> {
   const ctx = new Context()
   await ctx.plugin(SystemPrompt)

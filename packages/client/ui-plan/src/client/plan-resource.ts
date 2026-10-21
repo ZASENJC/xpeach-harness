@@ -1,12 +1,12 @@
 /** Read immutable plan arguments from a Session snapshot and earlier history pages. */
-import type { Context } from '@deepseek-ai/cordis'
-import type { SessionFollowFrame } from '@deepseek-ai/dsh-api-session-controller/types'
-import type { ResourceProvider } from '@deepseek-ai/dsh-client-resources/client'
-import { RemoteError, remoteErrorOf } from '@deepseek-ai/dsh-typert-protocol'
-import type { RemoteResult } from '@deepseek-ai/dsh-typert-protocol'
+import type { Context } from '@xpeach/xph-cordis'
+import type { SessionFollowFrame } from '@xpeach/xph-api-session-controller/types'
+import type { ResourceProvider } from '@xpeach/xph-client-resources/client'
+import { RemoteError, remoteErrorOf } from '@xpeach/xph-typert-protocol'
+import type { RemoteResult } from '@xpeach/xph-typert-protocol'
 import { parsePlanAddress, submittedPlan, type SubmittedPlan } from './plan.ts'
 
-declare module '@deepseek-ai/dsh-typert-protocol' {
+declare module '@xpeach/xph-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** The resource URL does not identify a plan invocation. */
     'plan/invalid-address': Record<string, never>
@@ -19,7 +19,7 @@ declare module '@deepseek-ai/dsh-typert-protocol' {
   }
 }
 
-declare module '@deepseek-ai/dsh-client-ui-slots' {
+declare module '@xpeach/xph-client-ui-slots' {
   interface ResourceProtocolMap {
     /** Immutable Markdown from a logged exit_plan_mode invocation. */
     plan: SubmittedPlan

@@ -3,11 +3,11 @@
  */
 
 import { z } from 'zod'
-import { lastAssistantStreamChunk, type TokenUsage } from '@deepseek-ai/dsh-llm'
-import type {} from '@deepseek-ai/dsh-llm-retry/types'
-import { SessionSeq } from '@deepseek-ai/dsh-session'
-import type { SessionEvent } from '@deepseek-ai/dsh-session'
-import type { ProjectionDefinition } from '@deepseek-ai/dsh-session-projection'
+import { lastAssistantStreamChunk, type TokenUsage } from '@xpeach/xph-llm'
+import type {} from '@xpeach/xph-llm-retry/types'
+import { SessionSeq } from '@xpeach/xph-session'
+import type { SessionEvent } from '@xpeach/xph-session'
+import type { ProjectionDefinition } from '@xpeach/xph-session-projection'
 import type { ContextPressureProjection, TokenUsageProjection } from './projection.ts'
 import { foldSurfaceProjection } from './surface-projection.ts'
 
@@ -85,7 +85,7 @@ function usageOf(event: SessionEvent): TokenUsage | undefined {
   return lastAssistantStreamChunk(event.data.stream, 'usage')?.usage
 }
 
-declare module '@deepseek-ai/dsh-session-projection/types' {
+declare module '@xpeach/xph-session-projection/types' {
   interface SessionProjectionStateMap {
     tokenUsage: TokenUsageState
     contextPressure: ContextPressureState

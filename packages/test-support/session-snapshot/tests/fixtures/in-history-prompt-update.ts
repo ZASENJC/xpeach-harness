@@ -1,6 +1,6 @@
-import type { Context } from '@deepseek-ai/cordis'
-import type {} from '@deepseek-ai/dsh-system-prompt'
-import type {} from '@deepseek-ai/dsh-tools'
+import type { Context } from '@xpeach/xph-cordis'
+import type {} from '@xpeach/xph-system-prompt'
+import type {} from '@xpeach/xph-tools'
 
 export const name = 'in-history-prompt-update'
 export const inject = ['systemPrompt']

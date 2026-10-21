@@ -1,19 +1,19 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import Include from '@xpeach/xph-cordis-plugin-include'
 import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { pathToFileURL } from 'node:url'
-import LlmRuntime, { createUserMessage, LlmAdapter, ReasoningEffortId } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, LlmCallConfig, StreamChunk } from '@deepseek-ai/dsh-llm'
-import * as LlmPiAi from '@deepseek-ai/dsh-llm-pi-ai'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import type { Session, SessionSeq } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import SessionTitleService from '@deepseek-ai/dsh-session-title'
-import * as providerPlugin from '@deepseek-ai/dsh-session-title-first-prompt-llm'
+import LlmRuntime, { createUserMessage, LlmAdapter, ReasoningEffortId } from '@xpeach/xph-llm'
+import type { GenerateOptions, LlmCallConfig, StreamChunk } from '@xpeach/xph-llm'
+import * as LlmPiAi from '@xpeach/xph-llm-pi-ai'
+import SessionStore, { SessionId } from '@xpeach/xph-session'
+import type { Session, SessionSeq } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import SessionTitleService from '@xpeach/xph-session-title'
+import * as providerPlugin from '@xpeach/xph-session-title-first-prompt-llm'
 import { anthropicTextEvents, closeMockServers, mockServer } from '../../../llm/llm-pi-ai/tests/mock-server.ts'
 
 let root: string | undefined
@@ -53,15 +53,15 @@ async function loadComposition(
   root = await mkdtemp(join(tmpdir(), 'dsh-title-loader-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@deepseek-ai/dsh-llm'",
-    "- name: '@deepseek-ai/dsh-session'",
-    "- name: '@deepseek-ai/dsh-session-projection'",
-    "- name: '@deepseek-ai/dsh-session-title'",
+    "- name: '@xpeach/xph-llm'",
+    "- name: '@xpeach/xph-session'",
+    "- name: '@xpeach/xph-session-projection'",
+    "- name: '@xpeach/xph-session-title'",
     '  config:',
     '    fallbackMaxWords: 5',
     '    fallbackMaxBytes: 40',
     '    maxTitleBytes: 80',
-    "- name: '@deepseek-ai/dsh-session-title-first-prompt-llm'",
+    "- name: '@xpeach/xph-session-title-first-prompt-llm'",
     '  config:',
     '    targetWords: 5',
     '    targetCjkCharacters: 10',
@@ -75,11 +75,11 @@ async function loadComposition(
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@deepseek-ai/dsh-llm', LlmRuntime],
-    ['@deepseek-ai/dsh-session', SessionStore],
-    ['@deepseek-ai/dsh-session-projection', SessionProjectionRegistry],
-    ['@deepseek-ai/dsh-session-title', SessionTitleService],
-    ['@deepseek-ai/dsh-session-title-first-prompt-llm', providerPlugin],
+    ['@xpeach/xph-llm', LlmRuntime],
+    ['@xpeach/xph-session', SessionStore],
+    ['@xpeach/xph-session-projection', SessionProjectionRegistry],
+    ['@xpeach/xph-session-title', SessionTitleService],
+    ['@xpeach/xph-session-title-first-prompt-llm', providerPlugin],
     ...entryModules,
   ])
   context.loader.internal = {
@@ -167,7 +167,7 @@ describe('session-title Loader composition', () => {
       'maxOutputTokens: 64',
       'timeoutMs: 60000',
     ], [
-      "- name: '@deepseek-ai/dsh-llm-pi-ai'",
+      "- name: '@xpeach/xph-llm-pi-ai'",
       '  config:',
       '    providers:',
       '      gateway:',
@@ -180,7 +180,7 @@ describe('session-title Loader composition', () => {
       '            reasoningEfforts: { low: low, high: high, max: max }',
       '            compat:',
       '              forceAdaptiveThinking: true',
-    ], new Map([['@deepseek-ai/dsh-llm-pi-ai', LlmPiAi]]))
+    ], new Map([['@xpeach/xph-llm-pi-ai', LlmPiAi]]))
 
     const { session, messageSeq } = await promptThenRequest(ctx, 'pi-ai-title', {
       provider: 'gateway',

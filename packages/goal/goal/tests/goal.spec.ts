@@ -1,22 +1,22 @@
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry, { agentEvents } from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { createUserMessage, HarnessError } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import SessionStore, { Session, SessionId, type UserMessage } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
+import { Context } from '@xpeach/xph-cordis'
+import AgentRegistry, { agentEvents } from '@xpeach/xph-agent'
+import type { Agent } from '@xpeach/xph-agent'
+import { createUserMessage, HarnessError } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import SessionStore, { Session, SessionId, type UserMessage } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
 import GoalService, {
   GoalError,
   GoalId,
   decodeGoalChange,
   foldGoal,
-} from '@deepseek-ai/dsh-goal'
-import type { GoalChangeMeta, GoalRef, GoalSnapshotChangeMeta } from '@deepseek-ai/dsh-goal'
-import { createInboxStub } from '@deepseek-ai/dsh-agent-loop-testkit'
-import { remoteMethods } from '@deepseek-ai/dsh-typert-protocol'
+} from '@xpeach/xph-goal'
+import type { GoalChangeMeta, GoalRef, GoalSnapshotChangeMeta } from '@xpeach/xph-goal'
+import { createInboxStub } from '@xpeach/xph-agent-loop-testkit'
+import { remoteMethods } from '@xpeach/xph-typert-protocol'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
     'ordinary-user-message': { kind: 'ordinary-user-message' } & ContextFormed
@@ -80,7 +80,7 @@ function stubAgentForSession(session: Session, suppliedCtx?: Context): StubAgent
 /** Build a registry-compatible agent around a fresh session. */
 function stubAgent(
   rawId: string,
-  seed?: readonly import('@deepseek-ai/dsh-session').SessionEvent[],
+  seed?: readonly import('@xpeach/xph-session').SessionEvent[],
   ctx?: Context,
 ): StubAgent {
   const session = ctx === undefined

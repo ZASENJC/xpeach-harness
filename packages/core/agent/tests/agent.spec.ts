@@ -1,8 +1,8 @@
 import { describe, expect, expectTypeOf, it } from 'vitest'
-import { Context, Service, symbols } from '@deepseek-ai/cordis'
-import { Session, SessionId } from '@deepseek-ai/dsh-session'
-import AgentRegistry, { agentEvents } from '@deepseek-ai/dsh-agent'
-import TypertRegistry from '@deepseek-ai/dsh-typert-registry'
+import { Context, Service, symbols } from '@xpeach/xph-cordis'
+import { Session, SessionId } from '@xpeach/xph-session'
+import AgentRegistry, { agentEvents } from '@xpeach/xph-agent'
+import TypertRegistry from '@xpeach/xph-typert-registry'
 
 import type {
   Agent,
@@ -11,7 +11,7 @@ import type {
   AgentStatus,
   CreateAgentOptions,
   ResumeAgentOptions,
-} from '@deepseek-ai/dsh-agent'
+} from '@xpeach/xph-agent'
 
 function stubAgent(rawId: string, overrides: Partial<Agent> = {}): Agent {
   const id = SessionId(rawId)
@@ -52,8 +52,8 @@ describe('AgentRegistry', () => {
       parameter: 'agent',
       wire: 'agentId',
       resource: 'session',
-      hostTypeSymbol: '@deepseek-ai/dsh-agent#Agent',
-      wireTypeSymbol: '@deepseek-ai/dsh-session/types#SessionId',
+      hostTypeSymbol: '@xpeach/xph-agent#Agent',
+      wireTypeSymbol: '@xpeach/xph-session/types#SessionId',
     })
     expect(lookup?.resolve(agent.id)).toBe(agent)
     const context = ctx.typert.contexts.getHost('agent')

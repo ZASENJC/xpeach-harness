@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-attachment-local",
+  "name": "@xpeach/xph-attachment-local",
   "description": "Private content-addressed DSH_HOME attachment storage",
   "version": "0.3.0",
   "publishConfig": {
@@ -29,18 +29,18 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-attachment": "workspace:*",
+    "@xpeach/xph-home-paths": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "dependencies": {
-    "@deepseek-ai/dsh-lazy-require": "workspace:*",
-    "@deepseek-ai/schemastery": "workspace:~",
+    "@xpeach/xph-lazy-require": "workspace:*",
+    "@xpeach/xph-schemastery": "workspace:~",
     "sharp": "0.35.5"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-attachment": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-attachment": "workspace:*",
+    "@xpeach/xph-home-paths": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   }
 }

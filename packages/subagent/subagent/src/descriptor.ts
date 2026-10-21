@@ -18,15 +18,15 @@
  * durable descriptor, so it neither restores the prior budget nor inherits
  * the parent's current one; the resumed route's defaults apply instead.
  *
- * @module @deepseek-ai/dsh-subagent/descriptor
+ * @module @xpeach/xph-subagent/descriptor
  */
 
-import { snapshotJsonValue } from '@deepseek-ai/dsh-util-values'
-import type { SessionEvent } from '@deepseek-ai/dsh-session'
-import type { ReasoningEffortId } from '@deepseek-ai/dsh-llm'
-import type { ToolRestriction } from '@deepseek-ai/dsh-tools'
+import { snapshotJsonValue } from '@xpeach/xph-util-values'
+import type { SessionEvent } from '@xpeach/xph-session'
+import type { ReasoningEffortId } from '@xpeach/xph-llm'
+import type { ToolRestriction } from '@xpeach/xph-tools'
 
-declare module '@deepseek-ai/dsh-session/types' {
+declare module '@xpeach/xph-session/types' {
   interface SessionEventMap {
     /**
      * Durable identity and lifecycle mode of a session-backed subagent child,

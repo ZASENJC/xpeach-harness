@@ -5,8 +5,8 @@ import { isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { execa } from 'execa'
 import { expect, it } from 'vitest'
-import { runLoaderSmoke } from '@deepseek-ai/dsh-loader-smoke'
-import { parseSessionLog } from '@deepseek-ai/dsh-llm-replay'
+import { runLoaderSmoke } from '@xpeach/xph-loader-smoke'
+import { parseSessionLog } from '@xpeach/xph-llm-replay'
 import { officeModelPatches } from './fixtures/real-office.ts'
 import { renderCliFixture } from './fixtures/render-cli.ts'
 
@@ -84,8 +84,8 @@ it.skipIf(!process.env.DEEPSEEK_API_KEY || !runtime).each(cases)('$format $kind 
         const fixture = await renderCliFixture(controlRoot, python!, intent === 'blank', callLogPath)
         const testAssetRoot = process.env.DSH_OFFICE_TEST_ASSET_ROOT ?? assetRoot
         await writeFile(configPath, JSON.stringify([
-          { insert: [{ id: 'skill-office', name: '@deepseek-ai/dsh-skill-office', config: { assetRoot: testAssetRoot, node: process.execPath, cli: fixture.cli } }] },
-          { insert: [{ id: 'workspace-dependencies', name: '@deepseek-ai/dsh-tool-workspace-dependencies', config: { source: runtime! } }] },
+          { insert: [{ id: 'skill-office', name: '@xpeach/xph-skill-office', config: { assetRoot: testAssetRoot, node: process.execPath, cli: fixture.cli } }] },
+          { insert: [{ id: 'workspace-dependencies', name: '@xpeach/xph-tool-workspace-dependencies', config: { source: runtime! } }] },
           ...officeModelPatches(),
           { id: 'session-persistence-jsonl', config: { root: sessionRoot, compression: 'none' } },
         ]))

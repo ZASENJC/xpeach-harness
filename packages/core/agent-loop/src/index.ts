@@ -2,15 +2,15 @@
  * Concrete agent-loop plugin: creates scoped ReactLoopAgents, publishes them
  * through the agent/session registries, and owns their ordered teardown.
  *
- * @module @deepseek-ai/dsh-agent-loop
+ * @module @xpeach/xph-agent-loop
  */
-import type { Volatile } from '@deepseek-ai/cosmokit'
+import type { Volatile } from '@xpeach/xph-cosmokit'
 
-import { Context, FiberState, Service } from '@deepseek-ai/cordis'
+import { Context, FiberState, Service } from '@xpeach/xph-cordis'
 import { randomUUID } from 'node:crypto'
-import z from '@deepseek-ai/schemastery'
+import z from '@xpeach/xph-schemastery'
 import { z as zod } from 'zod'
-import { brandString } from '@deepseek-ai/dsh-brand'
+import { brandString } from '@xpeach/xph-brand'
 import type {
   Agent,
   AgentFactory,
@@ -21,16 +21,16 @@ import type {
   ResumeAgentOptions,
   SessionStartSource,
   TurnBoundaryProjection,
-} from '@deepseek-ai/dsh-agent'
-import { errorChain, ReasoningEffortId } from '@deepseek-ai/dsh-llm'
-import { interruptedTurnClosers, SessionLogOffset, SessionPreparation, SessionSeq } from '@deepseek-ai/dsh-session'
-import type { Session, SessionHeader, SessionId } from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-system-prompt'
-import type {} from '@deepseek-ai/dsh-tools'
-import type {} from '@deepseek-ai/dsh-session-projection'
-import type { ProjectionDefinition } from '@deepseek-ai/dsh-session-projection'
-import { SessionPersistenceNotFoundError } from '@deepseek-ai/dsh-session-persistence'
-import type { SessionHandle, SessionPersistence } from '@deepseek-ai/dsh-session-persistence'
+} from '@xpeach/xph-agent'
+import { errorChain, ReasoningEffortId } from '@xpeach/xph-llm'
+import { interruptedTurnClosers, SessionLogOffset, SessionPreparation, SessionSeq } from '@xpeach/xph-session'
+import type { Session, SessionHeader, SessionId } from '@xpeach/xph-session'
+import type {} from '@xpeach/xph-system-prompt'
+import type {} from '@xpeach/xph-tools'
+import type {} from '@xpeach/xph-session-projection'
+import type { ProjectionDefinition } from '@xpeach/xph-session-projection'
+import { SessionPersistenceNotFoundError } from '@xpeach/xph-session-persistence'
+import type { SessionHandle, SessionPersistence } from '@xpeach/xph-session-persistence'
 import { ReactLoopAgent } from './agent.ts'
 import { inboxProjectionDefinition } from './inbox.ts'
 import { DEFAULT_MAX_PARALLEL_TOOL_CALLS } from './constants.ts'
@@ -223,7 +223,7 @@ interface PreparedAgent {
   dispose(): Promise<void>
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     agentLoop: AgentLoop
     /**

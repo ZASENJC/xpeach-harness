@@ -2,11 +2,11 @@
 
 import { delimiter, join } from 'node:path'
 import { afterEach, expect, it, vi } from 'vitest'
-import { runCli } from '@deepseek-ai/dsh/lib/bin.js'
+import { runCli } from '@xpeach/xph-dsh/lib/bin.js'
 import { runDesktopCli } from '../../desktop-host/src/cli.ts'
 import { installOfficeEngineResolution } from '../../desktop-host/src/office-engine.ts'
 
-vi.mock('@deepseek-ai/dsh/lib/bin.js', () => ({ runCli: vi.fn() }))
+vi.mock('@xpeach/xph-dsh/lib/bin.js', () => ({ runCli: vi.fn() }))
 vi.mock('../../desktop-host/src/office-engine.ts', () => ({ installOfficeEngineResolution: vi.fn() }))
 
 afterEach(() => {

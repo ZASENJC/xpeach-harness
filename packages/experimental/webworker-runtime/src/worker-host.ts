@@ -21,12 +21,12 @@
  * composition, entry mounting, the activation audit, and its diagnostics are the
  * same code the Node deployment runs. The Worker supplies module loading, the
  * platform overlay, and the command line.
- * @module @deepseek-ai/dsh-experimental-webworker-runtime/src/worker-host
+ * @module @xpeach/xph-experimental-webworker-runtime/src/worker-host
  */
 import { setActiveModuleLoader, WorkerModuleLoader, type StaticModuleFactory } from './module-system/module-loader.ts'
-import type { ProfileContext } from '@deepseek-ai/dsh-app-boot'
-import type { TypertGateway } from '@deepseek-ai/dsh-api-gateway'
-import type { HostConnectionHandle } from '@deepseek-ai/dsh-client-connection'
+import type { ProfileContext } from '@xpeach/xph-app-boot'
+import type { TypertGateway } from '@xpeach/xph-api-gateway'
+import type { HostConnectionHandle } from '@xpeach/xph-client-connection'
 import type { AlsCausality } from './polyfill/async-context/als-runtime.ts'
 import { join } from './module-system/posix-path.ts'
 import { installProcessGlobal } from './node/globals/process.ts'
@@ -221,11 +221,11 @@ export function createWorkerHost(options: WorkerHostOptions): WorkerHost {
       modules = loader
 
       const require = loader.requireFrom(root)
-      const appBoot = require('@deepseek-ai/dsh-app-boot') as AppBootFace
-      const { DSH_LAUNCH_ENVIRONMENT_KEY } = require('@deepseek-ai/dsh-launch-environment') as {
+      const appBoot = require('@xpeach/xph-app-boot') as AppBootFace
+      const { DSH_LAUNCH_ENVIRONMENT_KEY } = require('@xpeach/xph-launch-environment') as {
         DSH_LAUNCH_ENVIRONMENT_KEY: string
       }
-      const cmdline = require('@deepseek-ai/dsh-cmdline') as {
+      const cmdline = require('@xpeach/xph-cmdline') as {
         provideCmdline(ctx: unknown, host: {
           args: readonly string[]
           exit: (code: number) => void
@@ -321,7 +321,7 @@ export interface LogRenderer {
  * @param require - Image resolver, for cordis's own message renderer.
  */
 export function installLogSink(ctx: HostContext, require: (specifier: string) => unknown): void {
-  const { Logger } = require('@deepseek-ai/cordis') as { Logger: LogRenderer }
+  const { Logger } = require('@xpeach/xph-cordis') as { Logger: LogRenderer }
   const exporter: LogExporter = {
     colors: false,
     // cordis compares `exporter.levels ?? logger.level ?? INFO` against the

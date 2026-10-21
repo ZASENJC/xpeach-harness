@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-session-titles-bundle",
+  "name": "@xpeach/xph-experimental-session-titles-bundle",
   "description": "Refresh session titles as new human prompts arrive.",
   "version": "0.3.0",
   "icon": "./icon.svg",
@@ -38,12 +38,12 @@
     }
   },
   "dependencies": {
-    "@deepseek-ai/dsh-session-title-all-prompts-llm": "workspace:*"
+    "@xpeach/xph-session-title-all-prompts-llm": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   }
 }

@@ -125,7 +125,7 @@ export const zh = {
 /** The xpeach.account namespace key union. */
 export type XPeachKey = keyof typeof zh
 
-declare module '@deepseek-ai/dsh-client-ui-slots' {
+declare module '@xpeach/xph-client-ui-slots' {
   interface LocaleNamespaceMap {
     /** XPeach 🍑Code surfaces (settings card, quota pill, quota notice). */
     'xpeach.account': XPeachKey

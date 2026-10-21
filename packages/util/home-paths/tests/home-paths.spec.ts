@@ -17,7 +17,7 @@ import {
   expandHomePath,
   resolveAgentsHome,
   resolveDshHome,
-} from '@deepseek-ai/dsh-home-paths'
+} from '@xpeach/xph-home-paths'
 
 afterEach(() => {
   vi.unstubAllEnvs()

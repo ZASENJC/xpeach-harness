@@ -10,16 +10,16 @@
  */
 
 import { describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import SessionStore, { SessionId } from '@deepseek-ai/dsh-session'
-import type { Session } from '@deepseek-ai/dsh-session'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { createScope } from '@deepseek-ai/dsh-scope'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import CommandRuntime from '@deepseek-ai/dsh-commands'
-import PermissionPresetService from '@deepseek-ai/dsh-permission-presets'
-import { AUTO_PRESET } from '@deepseek-ai/dsh-permission-presets'
-import ApprovalService from '@deepseek-ai/dsh-user-approval'
+import { Context } from '@xpeach/xph-cordis'
+import SessionStore, { SessionId } from '@xpeach/xph-session'
+import type { Session } from '@xpeach/xph-session'
+import type { Agent } from '@xpeach/xph-agent'
+import { createScope } from '@xpeach/xph-scope'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import CommandRuntime from '@xpeach/xph-commands'
+import PermissionPresetService from '@xpeach/xph-permission-presets'
+import { AUTO_PRESET } from '@xpeach/xph-permission-presets'
+import ApprovalService from '@xpeach/xph-user-approval'
 import { omitsGeneratedPage } from '../../../settings/settings/tests/live-config.ts'
 
 async function harness(options: {

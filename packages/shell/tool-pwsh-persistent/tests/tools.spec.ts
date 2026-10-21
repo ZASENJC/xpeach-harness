@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { provideWorkingDirectoryFixture, unsupportedInbox } from '@deepseek-ai/dsh-agent-loop-testkit'
-import { Context } from '@deepseek-ai/cordis'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import { SESSION_FORMAT_VERSION, Session, SessionId } from '@deepseek-ai/dsh-session'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import TerminalSessionService from '@deepseek-ai/dsh-terminal'
+import { provideWorkingDirectoryFixture, unsupportedInbox } from '@xpeach/xph-agent-loop-testkit'
+import { Context } from '@xpeach/xph-cordis'
+import { ToolCallId } from '@xpeach/xph-llm'
+import { SESSION_FORMAT_VERSION, Session, SessionId } from '@xpeach/xph-session'
+import AgentRegistry from '@xpeach/xph-agent'
+import type { Agent } from '@xpeach/xph-agent'
+import TerminalSessionService from '@xpeach/xph-terminal'
 import type {
   TerminalBackend,
   TerminalBackendSession,
@@ -15,10 +15,10 @@ import type {
   TerminalSessionStatus,
   TerminalSignal,
   TerminalWaitReason,
-} from '@deepseek-ai/dsh-terminal'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRegistry from '@deepseek-ai/dsh-tools'
-import * as ToolPwshPersistent from '@deepseek-ai/dsh-tool-pwsh-persistent'
+} from '@xpeach/xph-terminal'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRegistry from '@xpeach/xph-tools'
+import * as ToolPwshPersistent from '@xpeach/xph-tool-pwsh-persistent'
 
 const contexts: Context[] = []
 let callNumber = 0

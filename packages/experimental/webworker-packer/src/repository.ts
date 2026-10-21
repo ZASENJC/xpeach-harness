@@ -5,15 +5,15 @@
  * The library half takes all of this as parameters. Keeping the lookup here is what
  * lets the same library pack a different tree, and what keeps `pack.ts` free of
  * assumptions about pnpm workspaces or the `dsh` CLI.
- * @module @deepseek-ai/dsh-experimental-webworker-packer/src/repository
+ * @module @xpeach/xph-experimental-webworker-packer/src/repository
  */
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { join, relative } from 'node:path'
 import {
   bundlePatchPaths, composeEntries, loadOverlayPatches, OPTIONAL_BUNDLES, PROFILE_TEMPLATES, resolveBundleDir,
-} from '@deepseek-ai/dsh-app-boot'
-import type { PatchOptions } from '@deepseek-ai/cordis-plugin-include'
-import { PLATFORM_ENTRY_CONFIG } from '@deepseek-ai/dsh-experimental-webworker-runtime'
+} from '@xpeach/xph-app-boot'
+import type { PatchOptions } from '@xpeach/xph-cordis-plugin-include'
+import { PLATFORM_ENTRY_CONFIG } from '@xpeach/xph-experimental-webworker-runtime'
 import { collectModuleNames, packVfsImage, type ConfigTree, type ImageInstallation, type ImageTree, type PackResult } from './pack.ts'
 
 export { packPreviewFixture } from './preview.ts'

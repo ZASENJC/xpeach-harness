@@ -1,12 +1,12 @@
 /** What the browser half registers, and that it all leaves with the fiber. */
 
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import { describe, expect, it, vi } from 'vitest'
-import { resolveSlotLabel } from '@deepseek-ai/dsh-client-ui-slots'
-import { SlotRegistry } from '@deepseek-ai/dsh-client-ui-renderer/client'
-import { LocaleRuntime } from '@deepseek-ai/dsh-client-locale/client'
-import { apply, inject } from '@deepseek-ai/dsh-client-ui-settings-plugins/client'
-import type { PluginsSettingsSectionInjected } from '@deepseek-ai/dsh-client-ui-settings-plugins/client'
+import { resolveSlotLabel } from '@xpeach/xph-client-ui-slots'
+import { SlotRegistry } from '@xpeach/xph-client-ui-renderer/client'
+import { LocaleRuntime } from '@xpeach/xph-client-locale/client'
+import { apply, inject } from '@xpeach/xph-client-ui-settings-plugins/client'
+import type { PluginsSettingsSectionInjected } from '@xpeach/xph-client-ui-settings-plugins/client'
 import { apply as hostApply } from '../src/index.ts'
 
 // These specs assert the shipped Chinese copy. The lane has no jsdom `window`,

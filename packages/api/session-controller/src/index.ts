@@ -2,21 +2,21 @@
 
 import { hostname } from 'node:os'
 import { resolve } from 'node:path'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-fs'
-import { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { errorChain, ReasoningEffortId, type MessageSource } from '@deepseek-ai/dsh-llm'
-import type {} from '@deepseek-ai/dsh-client-file-upload'
-import { canOpenNativePath, nativeFileManager, nativeFileApplications, openNativeFileApplication, openNativeAssociatedPath, revealNativePath } from '@deepseek-ai/dsh-native-command'
-import type { SessionId } from '@deepseek-ai/dsh-session'
-import type { SessionInspection } from '@deepseek-ai/dsh-session-persistence'
-import type {} from '@deepseek-ai/dsh-session-projection-cache'
-import { SessionQueryError, type SessionObservation } from '@deepseek-ai/dsh-session-query'
-import { Remote, RemoteError, TypertRemoteService, principalOf } from '@deepseek-ai/dsh-typert-protocol'
-import { canonicalClientTimeZone } from '@deepseek-ai/dsh-util-time'
-import { assertNever } from '@deepseek-ai/dsh-util-values'
-import type {} from '@deepseek-ai/dsh-api-remote-access'
+import type { Agent } from '@xpeach/xph-agent'
+import type {} from '@xpeach/xph-fs'
+import { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { errorChain, ReasoningEffortId, type MessageSource } from '@xpeach/xph-llm'
+import type {} from '@xpeach/xph-client-file-upload'
+import { canOpenNativePath, nativeFileManager, nativeFileApplications, openNativeFileApplication, openNativeAssociatedPath, revealNativePath } from '@xpeach/xph-native-command'
+import type { SessionId } from '@xpeach/xph-session'
+import type { SessionInspection } from '@xpeach/xph-session-persistence'
+import type {} from '@xpeach/xph-session-projection-cache'
+import { SessionQueryError, type SessionObservation } from '@xpeach/xph-session-query'
+import { Remote, RemoteError, TypertRemoteService, principalOf } from '@xpeach/xph-typert-protocol'
+import { canonicalClientTimeZone } from '@xpeach/xph-util-time'
+import { assertNever } from '@xpeach/xph-util-values'
+import type {} from '@xpeach/xph-api-remote-access'
 import {
   ApiSessionAgentController,
   inspectApiSession,
@@ -73,7 +73,7 @@ export { ApiSessionNotFound } from './agent.ts'
 export { SessionFileReferences } from './file-references.ts'
 export { SessionSkillCatalog } from './skill-catalog.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Host Session business API and Remote namespace owner. */
     sessionController: SessionController

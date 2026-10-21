@@ -8,16 +8,16 @@
  * not the slot runtime.
  */
 import { onTestFinished, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import { ResourceRegistry } from '../../resources/src/client/resources.ts'
-import type { PropsRenderSlots } from '@deepseek-ai/dsh-client-ui-slots'
+import type { PropsRenderSlots } from '@xpeach/xph-client-ui-slots'
 import type { Mock } from 'vitest'
 import { act } from '@testing-library/react'
 import { createElement, useSyncExternalStore } from 'react'
-import type { RemoteFailure, RemoteResult } from '@deepseek-ai/dsh-api-remotes/client'
-import type { ResourceSnapshot } from '@deepseek-ai/dsh-client-resources/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import type { WorkspaceFileStat, WorkspaceFileText } from '@deepseek-ai/dsh-api-workspace-files/types'
+import type { RemoteFailure, RemoteResult } from '@xpeach/xph-api-remotes/client'
+import type { ResourceSnapshot } from '@xpeach/xph-client-resources/client'
+import type { SessionId } from '@xpeach/xph-session/types'
+import type { WorkspaceFileStat, WorkspaceFileText } from '@xpeach/xph-api-workspace-files/types'
 import type { TextPreviewProps } from '../src/client/TextPreview.tsx'
 import { textFace } from '../src/client/face.ts'
 import type { TextInjected } from '../src/client/face.ts'
@@ -27,7 +27,7 @@ import type { TextStore } from '../src/client/store.ts'
 import type { DocumentPreviewProps } from '../src/client/document/contract.ts'
 import { TextBody } from '../src/client/text/TextBody.tsx'
 import { textBodyDefinition } from '../src/client/text/index.ts'
-import type { TabId } from '@deepseek-ai/dsh-client-ui-dockkit'
+import type { TabId } from '@xpeach/xph-client-ui-dockkit'
 
 type BodySlot = PropsRenderSlots<'sidebar.right.tab.document'>['renderSlot']
 

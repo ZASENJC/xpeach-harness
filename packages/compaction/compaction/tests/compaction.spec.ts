@@ -1,20 +1,20 @@
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
+import { createUserMessage } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
 import { describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
+import { Context } from '@xpeach/xph-cordis'
 import {
   CompactionId,
   CompactionEngine,
   compactCheckpointSource,
   isCompactCheckpointSource,
-} from '@deepseek-ai/dsh-compaction'
-import type { CompactionResult, CompactionTrigger } from '@deepseek-ai/dsh-compaction'
-import { Session, SessionId } from '@deepseek-ai/dsh-session'
-import type { SessionSeq } from '@deepseek-ai/dsh-session'
-import type { CompactionAgentContext } from '@deepseek-ai/dsh-compaction'
-import type { ManualCompactAgentContext } from '@deepseek-ai/dsh-compaction'
+} from '@xpeach/xph-compaction'
+import type { CompactionResult, CompactionTrigger } from '@xpeach/xph-compaction'
+import { Session, SessionId } from '@xpeach/xph-session'
+import type { SessionSeq } from '@xpeach/xph-session'
+import type { CompactionAgentContext } from '@xpeach/xph-compaction'
+import type { ManualCompactAgentContext } from '@xpeach/xph-compaction'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'other': { kind: 'other' } & ContextFormed
   }

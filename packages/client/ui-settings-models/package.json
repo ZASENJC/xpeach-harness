@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-client-ui-settings-models",
+  "name": "@xpeach/xph-client-ui-settings-models",
   "description": "Models settings and shared product-onboarding dialogs over existing settings and credential joins",
   "version": "0.3.0",
   "publishConfig": {
@@ -29,9 +29,9 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-client-ui-settings",
-        "@deepseek-ai/dsh-client-locale",
-        "@deepseek-ai/dsh-api-remotes"
+        "@xpeach/xph-client-ui-settings",
+        "@xpeach/xph-client-locale",
+        "@xpeach/xph-api-remotes"
       ],
       "platform": "web"
     }
@@ -42,26 +42,26 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-host-webserver": "workspace:*",
-    "@deepseek-ai/dsh-api-remotes": "workspace:*",
-    "@deepseek-ai/dsh-client-locale": "workspace:*",
-    "@deepseek-ai/dsh-client-store": "workspace:*",
-    "@deepseek-ai/dsh-client-test-runtime": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-primitives": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-settings": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-slots": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
+    "@xpeach/xph-host-webserver": "workspace:*",
+    "@xpeach/xph-api-remotes": "workspace:*",
+    "@xpeach/xph-client-locale": "workspace:*",
+    "@xpeach/xph-client-store": "workspace:*",
+    "@xpeach/xph-client-test-runtime": "workspace:*",
+    "@xpeach/xph-client-ui-primitives": "workspace:*",
+    "@xpeach/xph-client-ui-settings": "workspace:*",
+    "@xpeach/xph-client-ui-slots": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
     "react": "^18.2.0",
-    "@deepseek-ai/dsh-client-ui-renderer": "workspace:*",
-    "@deepseek-ai/dsh-util-values": "workspace:*",
-    "@deepseek-ai/dsh-remote-mock": "workspace:*",
-    "@deepseek-ai/dsh-client-product-analytics": "workspace:*"
+    "@xpeach/xph-client-ui-renderer": "workspace:*",
+    "@xpeach/xph-util-values": "workspace:*",
+    "@xpeach/xph-remote-mock": "workspace:*",
+    "@xpeach/xph-client-product-analytics": "workspace:*"
   },
   "dependencies": {
-    "@deepseek-ai/schemastery": "workspace:~"
+    "@xpeach/xph-schemastery": "workspace:~"
   },
   "files": [
     "locale/*.json",

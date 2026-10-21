@@ -1,8 +1,8 @@
 - insert:
     - id: subagent-claude-code
-      name: '@deepseek-ai/dsh-subagent-claude-code'
+      name: '@xpeach/xph-subagent-claude-code'
     - id: tool-subagent-claude-code
-      name: '@deepseek-ai/dsh-tool-subagent'
+      name: '@xpeach/xph-tool-subagent'
       config:
         provider: claude-code
         toolName: subagent_claude_code

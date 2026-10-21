@@ -1,22 +1,22 @@
 /**
- * @deepseek-ai/dsh-harness-dev-context — model context for an agent that can
+ * @xpeach/xph-harness-dev-context — model context for an agent that can
  * inspect and extend the DeepSeek Harness serving its Web GUI. It registers
  * path- and URL-free prompt sections and states the current implementation
  * checkout and Web GUI URL as runtime context, so a process started from
  * another checkout, port, or installation leaves the system prompt unchanged.
  * A Session whose admitted prompt holds the paragraphs that embedded those
  * values keeps them verbatim, so resuming it never rewrites its logged prompt.
- * @module @deepseek-ai/dsh-harness-dev-context
+ * @module @xpeach/xph-harness-dev-context
  */
 
 import { fileURLToPath } from 'node:url'
-import type { Context } from '@deepseek-ai/cordis'
+import type { Context } from '@xpeach/xph-cordis'
 import { z as zod } from 'zod'
-import type {} from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-web-app'
-import type { SessionEvent } from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-session-projection'
-import type { AssembleContext } from '@deepseek-ai/dsh-system-prompt'
+import type {} from '@xpeach/xph-agent'
+import type {} from '@xpeach/xph-web-app'
+import type { SessionEvent } from '@xpeach/xph-session'
+import type {} from '@xpeach/xph-session-projection'
+import type { AssembleContext } from '@xpeach/xph-system-prompt'
 
 /** Stable Cordis plugin name. */
 export const name = 'harness-dev-context'
@@ -85,7 +85,7 @@ const legacyPromptSchema = zod.object({ source: zod.string().nullable(), web: zo
 /** Value-bearing paragraphs of the latest nonempty system prompt a Session committed; `null` where it has none. */
 type LegacyPrompt = zod.infer<typeof legacyPromptSchema>
 
-declare module '@deepseek-ai/dsh-session-projection/types' {
+declare module '@xpeach/xph-session-projection/types' {
   interface SessionProjectionStateMap {
     /** Value-bearing harness-source and Web-surface paragraphs of the latest nonempty admitted system prompt. */
     harnessDevLegacyPrompt: LegacyPrompt

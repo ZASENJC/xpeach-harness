@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-desktop",
+  "name": "@xpeach/xph-desktop",
   "description": "Electron desktop shell for a bundled dsh runtime and external plugins",
   "version": "0.3.0",
   "private": true,
@@ -47,15 +47,15 @@
     "electron-updater": "^6.8.9",
     "semver": "^7.8.5",
     "ws": "^8.21.3",
-    "@deepseek-ai/dsh-api-gateway": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-api-gateway": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-settings-general": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-sidebar-browser": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/node-addon-system": "workspace:~",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-client-ui-settings-general": "workspace:*",
+    "@xpeach/xph-client-ui-sidebar-browser": "workspace:*",
+    "@xpeach/xph-home-paths": "workspace:*",
+    "@xpeach/xph-node-addon-system": "workspace:~",
     "@electron/get": "^5.1.0",
     "@electron/notarize": "2.5.0",
     "@types/js-yaml": "^4.0.9",
@@ -71,15 +71,15 @@
     "pnpm": "11.28.5",
     "sharp": "0.35.5",
     "typescript": "^6.0.3",
-    "@deepseek-ai/dsh-deepseek-account": "workspace:*",
+    "@xpeach/xph-deepseek-account": "workspace:*",
     "@types/ws": "^8.18.1",
-    "@deepseek-ai/dsh-client-ui-primitives": "workspace:*",
+    "@xpeach/xph-client-ui-primitives": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vite": "^6.4.3",
-    "@deepseek-ai/dsh-client-ui-theme": "workspace:*",
-    "@deepseek-ai/dsh-client-shortcuts": "workspace:*",
-    "@deepseek-ai/dsh-atomic-write": "workspace:*",
-    "@deepseek-ai/dsh-client-product-analytics": "workspace:*"
+    "@xpeach/xph-client-ui-theme": "workspace:*",
+    "@xpeach/xph-client-shortcuts": "workspace:*",
+    "@xpeach/xph-atomic-write": "workspace:*",
+    "@xpeach/xph-client-product-analytics": "workspace:*"
   }
 }

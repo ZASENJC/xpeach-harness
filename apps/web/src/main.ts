@@ -1,11 +1,11 @@
 /** Browser entry for the Web client. */
-import '@deepseek-ai/dsh-client-ui-theme/brand-font.css'
+import '@xpeach/xph-client-ui-theme/brand-font.css'
 import { migrateLegacyStorageKeys } from './storage-migrate'
 
 // XPeach rebrand: one-shot localStorage carry-over from the legacy dsh.*
 // namespace to xph.* — per-origin storage so the two products never collide.
 migrateLegacyStorageKeys()
-import { AppWebEntry, applyIndexInjections } from '@deepseek-ai/dsh-client-web'
+import { AppWebEntry, applyIndexInjections } from '@xpeach/xph-client-web'
 
 interface DesktopBootGlobal {
   dshDesktopBoot?: {

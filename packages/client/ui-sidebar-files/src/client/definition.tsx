@@ -5,17 +5,17 @@
  * it as an entry box, and the tree opens files through `tabActions.openResource`
  * for the `dsh-resource://file` viewers to claim.
  */
-import type { ShortcutCommandId } from '@deepseek-ai/dsh-client-shortcuts/client'
-import type { SidebarRightTabDefinition } from '@deepseek-ai/dsh-client-ui-sidebar-right/client'
-import type { TranslateNS } from '@deepseek-ai/dsh-client-locale/client'
+import type { ShortcutCommandId } from '@xpeach/xph-client-shortcuts/client'
+import type { SidebarRightTabDefinition } from '@xpeach/xph-client-ui-sidebar-right/client'
+import type { TranslateNS } from '@xpeach/xph-client-locale/client'
 import type {} from './locales.ts'
-import { GuideArtworkFiles } from '@deepseek-ai/dsh-client-ui-primitives'
+import { GuideArtworkFiles } from '@xpeach/xph-client-ui-primitives'
 
 /** The tab kind this package owns. */
 export const FILES_KIND = 'files'
 
 /** This implementation's identity in the tab system, and the key its body registers under. */
-export const FILES_ID = '@deepseek-ai/dsh-client-ui-sidebar-files'
+export const FILES_ID = '@xpeach/xph-client-ui-sidebar-files'
 
 /**
  * The files type's registry definition.

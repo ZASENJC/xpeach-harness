@@ -2,16 +2,16 @@
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { isDeepStrictEqual } from 'node:util'
-import { Context, FiberState, Service, resolveConfig } from '@deepseek-ai/cordis'
-import { entryListSchema, type PatchOptions } from '@deepseek-ai/cordis-plugin-include'
+import { Context, FiberState, Service, resolveConfig } from '@xpeach/xph-cordis'
+import { entryListSchema, type PatchOptions } from '@xpeach/xph-cordis-plugin-include'
 import yaml from 'js-yaml'
-import type { Entry, EntryOptions } from '@deepseek-ai/cordis-plugin-loader'
-import type {} from '@deepseek-ai/dsh-hmr'
-import { composeEntries, loadProfileDirectory, readProfilePatches, reconcileProfilePatches } from '@deepseek-ai/dsh-app-boot'
-import { withFileLock, writeFileAtomic } from '@deepseek-ai/dsh-atomic-write'
+import type { Entry, EntryOptions } from '@xpeach/xph-cordis-plugin-loader'
+import type {} from '@xpeach/xph-hmr'
+import { composeEntries, loadProfileDirectory, readProfilePatches, reconcileProfilePatches } from '@xpeach/xph-app-boot'
+import { withFileLock, writeFileAtomic } from '@xpeach/xph-atomic-write'
 import { isMap, isSeq, parseDocument, Scalar, visit } from 'yaml'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Persistent edits to the active profile's plugin configuration. */
     configEditor: ConfigEditor

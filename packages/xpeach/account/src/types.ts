@@ -1,4 +1,4 @@
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
+import type { JsonValue } from '@xpeach/xph-util-values'
 /**
  * Wire types of the generated `xpeach` Remote namespace. Client-safe: no Host
  * imports. Shapes mirror the New API management payloads the site returns.

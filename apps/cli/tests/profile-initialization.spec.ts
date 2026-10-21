@@ -11,7 +11,7 @@ import {
   readProfileManifest,
   resolveProfileDir,
   writeProfileManifest,
-} from '@deepseek-ai/dsh-app-boot'
+} from '@xpeach/xph-app-boot'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { execa } from 'execa'
 import { initializeProfileFromDefault } from '../src/profile-boot.ts'

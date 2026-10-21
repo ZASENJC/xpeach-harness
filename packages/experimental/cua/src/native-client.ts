@@ -1,9 +1,9 @@
 /** Agent-scoped JSONL requests over a connection to the shared native helper. */
 import { randomUUID } from 'node:crypto'
 import assert from 'node:assert/strict'
-import type { SubprocessRuntime } from '@deepseek-ai/dsh-subprocess'
-import type { ToolExecution } from '@deepseek-ai/dsh-tools'
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
+import type { SubprocessRuntime } from '@xpeach/xph-subprocess'
+import type { ToolExecution } from '@xpeach/xph-tools'
+import type { JsonValue } from '@xpeach/xph-util-values'
 import { z } from 'zod'
 import type { Readable, Writable } from 'node:stream'
 

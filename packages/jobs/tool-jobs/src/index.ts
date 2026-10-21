@@ -5,23 +5,23 @@
  * collected to the owning agent: injected into a busy owner's next step, or
  * opening a turn on an idle one under the default `wakeup` delivery, unbounded
  * unless `maxConsecutiveWakes` caps it per owner.
- * @module @deepseek-ai/dsh-tool-jobs
+ * @module @xpeach/xph-tool-jobs
  */
 
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { boundContextSummary, createUserMessage, type ContentBlock } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import { TextRetainer } from '@deepseek-ai/dsh-output-retention'
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import type { GenericCallView, ToolDefinition, ToolExecution } from '@deepseek-ai/dsh-tools'
-import { JobId } from '@deepseek-ai/dsh-jobs'
-import type { JobView, JobRead } from '@deepseek-ai/dsh-jobs'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-agent'
+import type { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { boundContextSummary, createUserMessage, type ContentBlock } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import { TextRetainer } from '@xpeach/xph-output-retention'
+import { defineTool } from '@xpeach/xph-tools'
+import type { GenericCallView, ToolDefinition, ToolExecution } from '@xpeach/xph-tools'
+import { JobId } from '@xpeach/xph-jobs'
+import type { JobView, JobRead } from '@xpeach/xph-jobs'
+import type { Agent } from '@xpeach/xph-agent'
+import type {} from '@xpeach/xph-agent'
 import { publicJob, renderModelDelta, statusLine } from './render.ts'
 import type { PublicJobSnapshot } from './render.ts'
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'tool-jobs': { kind: 'tool-jobs' } & ContextFormed
   }

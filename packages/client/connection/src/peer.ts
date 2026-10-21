@@ -2,13 +2,13 @@
  * The Peer: one party admitted to this Host. Its creator fixes the principal
  * it speaks for and owns its lifetime; Gateway hands it to each Remote call as
  * `invocation.peer`.
- * @module @deepseek-ai/dsh-client-connection/src/peer
+ * @module @xpeach/xph-client-connection/src/peer
  */
 
 import { randomUUID } from 'node:crypto'
-import type { Context } from '@deepseek-ai/cordis'
-import { createScope, type Scope } from '@deepseek-ai/dsh-scope'
-import type { PeerId, PeerScope, Principal } from '@deepseek-ai/dsh-typert-protocol'
+import type { Context } from '@xpeach/xph-cordis'
+import { createScope, type Scope } from '@xpeach/xph-scope'
+import type { PeerId, PeerScope, Principal } from '@xpeach/xph-typert-protocol'
 
 /** Construction options for one {@link Peer}. */
 export interface PeerOptions {

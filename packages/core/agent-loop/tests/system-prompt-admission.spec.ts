@@ -1,18 +1,18 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry, { installModelSelection, type Agent, type ModelSelectionRef } from '@deepseek-ai/dsh-agent'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import LlmRuntime, { createUserMessage, LlmError, type GenerateOptions } from '@deepseek-ai/dsh-llm'
-import { toPiContext } from '@deepseek-ai/dsh-llm-pi-ai/src/context.ts'
-import SessionStore, { Session, SessionId } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
+import { Context } from '@xpeach/xph-cordis'
+import AgentRegistry, { installModelSelection, type Agent, type ModelSelectionRef } from '@xpeach/xph-agent'
+import AgentLoop from '@xpeach/xph-agent-loop'
+import LlmRuntime, { createUserMessage, LlmError, type GenerateOptions } from '@xpeach/xph-llm'
+import { toPiContext } from '@xpeach/xph-llm-pi-ai/src/context.ts'
+import SessionStore, { Session, SessionId } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@xpeach/xph-tools'
 import { MockAdapter, textResponse } from './mock-adapter.ts'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
-    'test-compaction': { kind: 'test-compaction' } & import('@deepseek-ai/dsh-llm').ContextFormed
+    'test-compaction': { kind: 'test-compaction' } & import('@xpeach/xph-llm').ContextFormed
   }
 }
 

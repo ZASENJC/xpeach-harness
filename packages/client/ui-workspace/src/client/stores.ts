@@ -5,9 +5,9 @@
  * register() receives the factory and the browser derives its PropsStore
  * share from the return type.
  */
-import { defineStore, type EngineStoreHandle } from '@deepseek-ai/dsh-client-store'
-import type { SessionListState } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
+import { defineStore, type EngineStoreHandle } from '@xpeach/xph-client-store'
+import type { SessionListState } from '@xpeach/xph-api-session-controller/client'
+import type { SessionId } from '@xpeach/xph-session/types'
 import { reconcileManualOrder, type ArchivedFilter, type SessionRowState } from './tree.ts'
 
 /** Browser-local order account for the hierarchy-free flat Session list. */

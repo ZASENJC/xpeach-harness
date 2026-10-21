@@ -9,7 +9,7 @@ import { homedir } from 'node:os'
 import { basename, dirname, join } from 'node:path'
 import { randomUUID } from 'node:crypto'
 import { zstdCompressSync, zstdDecompressSync } from 'node:zlib'
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
+import type { JsonValue } from '@xpeach/xph-util-values'
 import { chatgptDatabaseFiles, decodeChatgptDatabase } from './chatgpt-db.ts'
 
 import type {
@@ -604,7 +604,7 @@ export function importAssets(
       const id = 'mcp-' + server.name.replace(/[^A-Za-z0-9._-]+/g, '-').toLowerCase()
       const lines = [
         '    - id: ' + id,
-        "      name: '@deepseek-ai/dsh-mcp-client'",
+        "      name: '@xpeach/xph-mcp-client'",
         '      config:',
         '        transport: ' + (url !== undefined ? 'streamable-http' : 'stdio'),
         '        serverName: ' + JSON.stringify(server.name),

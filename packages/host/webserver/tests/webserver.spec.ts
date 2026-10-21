@@ -18,9 +18,9 @@ import { dirname, join } from 'node:path'
 import type { Duplex } from 'node:stream'
 import { pathToFileURL } from 'node:url'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { Context, FiberState } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
+import { Context, FiberState } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import Include from '@xpeach/xph-cordis-plugin-include'
 import HttpServer, { bindUrlHost, isLoopbackHost, normalizeBindAddress, renderIndexInjections, type TlsConfig } from '../src/index.ts'
 import { materializeTlsFixture, type TlsFixture } from './tls-fixture.ts'
 
@@ -93,7 +93,7 @@ async function loadComposition(
   const root = await mkdtemp(join(tmpdir(), 'dsh-webserver-loader-'))
   const configPath = join(root, 'cordis.yml')
   await writeFile(configPath, [
-    "- name: '@deepseek-ai/dsh-host-webserver'",
+    "- name: '@xpeach/xph-host-webserver'",
     '  config:',
     `    host: '${host}'`,
     `    port: ${String(port)}`,
@@ -122,7 +122,7 @@ async function loadComposition(
   await context.plugin(Loader)
   context.loader.builtins.include = Include
   const modules = new Map<string, unknown>([
-    ['@deepseek-ai/dsh-host-webserver', HttpServer],
+    ['@xpeach/xph-host-webserver', HttpServer],
   ])
   context.loader.internal = {
     version: 'v2',
@@ -141,7 +141,7 @@ async function loadComposition(
 
 /** The webserver row's fiber in a Loaded composition. */
 function webserverFiber(context: Context) {
-  return [...context.loader.entries()].find(entry => entry.options.name === '@deepseek-ai/dsh-host-webserver')?.fiber
+  return [...context.loader.entries()].find(entry => entry.options.name === '@xpeach/xph-host-webserver')?.fiber
 }
 
 /** The port a started listener bound; a test that reads it before `listen` fails here. */

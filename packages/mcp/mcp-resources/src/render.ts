@@ -1,11 +1,11 @@
 /**
  * Resource-result projection keeps binary payloads out of model history.
  *
- * @module @deepseek-ai/dsh-mcp-resources
+ * @module @xpeach/xph-mcp-resources
  */
 
-import type { ContentBlock } from '@deepseek-ai/dsh-llm'
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
+import type { ContentBlock } from '@xpeach/xph-llm'
+import type { JsonValue } from '@xpeach/xph-util-values'
 
 /**
  * Render resource JSON while retaining raw binary data only for programmatic callers.

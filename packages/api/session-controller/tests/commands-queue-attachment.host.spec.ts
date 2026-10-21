@@ -1,24 +1,24 @@
-import { RemoteError } from '@deepseek-ai/dsh-typert-protocol'
-import { Context } from '@deepseek-ai/cordis'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent, Inbox, ModelSelectionRef } from '@deepseek-ai/dsh-agent'
-import { AttachmentError, AttachmentId } from '@deepseek-ai/dsh-attachment'
-import type { ImageAttachmentRef } from '@deepseek-ai/dsh-attachment'
-import { createAssistantMessage, createUserMessage, MessageId } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
+import { RemoteError } from '@xpeach/xph-typert-protocol'
+import { Context } from '@xpeach/xph-cordis'
+import AgentRegistry from '@xpeach/xph-agent'
+import type { Agent, Inbox, ModelSelectionRef } from '@xpeach/xph-agent'
+import { AttachmentError, AttachmentId } from '@xpeach/xph-attachment'
+import type { ImageAttachmentRef } from '@xpeach/xph-attachment'
+import { createAssistantMessage, createUserMessage, MessageId } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
 import SessionStore, {
   SESSION_FORMAT_VERSION, Session, SessionId, SessionLogOffset, SessionSeq,
-} from '@deepseek-ai/dsh-session'
-import type { SessionEvent, SessionHeader, UserMessage } from '@deepseek-ai/dsh-session'
-import { snapshotSubagentDescriptor, SUBAGENT_DESCRIPTOR_VERSION } from '@deepseek-ai/dsh-subagent'
-import { subagentIdentityProjectionDefinition } from '@deepseek-ai/dsh-subagent/src/projection.ts'
+} from '@xpeach/xph-session'
+import type { SessionEvent, SessionHeader, UserMessage } from '@xpeach/xph-session'
+import { snapshotSubagentDescriptor, SUBAGENT_DESCRIPTOR_VERSION } from '@xpeach/xph-subagent'
+import { subagentIdentityProjectionDefinition } from '@xpeach/xph-subagent/src/projection.ts'
 import { describe, expect, it, vi } from 'vitest'
 import { ApiSessionAgentController } from '../src/agent.ts'
 import { SessionCommandController } from '../src/commands.ts'
-import { createInboxStub } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { createInboxStub } from '@xpeach/xph-agent-loop-testkit'
 import { installSessionReadTestServices, testSessionPersistence } from './test-remote.ts'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

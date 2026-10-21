@@ -11,9 +11,9 @@ import {
   PROTOCOL_VERSION,
   type SessionNotification,
 } from '@agentclientprotocol/sdk'
-import { withFileLock, writeFileAtomic } from '@deepseek-ai/dsh-atomic-write'
-import { startMockLlmServer } from '@deepseek-ai/dsh-llm-mock-server'
-import { entryListSchema } from '@deepseek-ai/cordis-plugin-include'
+import { withFileLock, writeFileAtomic } from '@xpeach/xph-atomic-write'
+import { startMockLlmServer } from '@xpeach/xph-llm-mock-server'
+import { entryListSchema } from '@xpeach/xph-cordis-plugin-include'
 import { execa } from 'execa'
 import * as yaml from 'js-yaml'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
@@ -117,9 +117,9 @@ function createProfileLifecycleFixture(): ProfileLifecycleFixture {
   writeFileSync(join(bundleDir, 'cordis.patch.yml'), [
     '- insert:',
     '    - id: hmr-timer',
-    "      name: '@deepseek-ai/cordis-plugin-timer'",
+    "      name: '@xpeach/xph-cordis-plugin-timer'",
     '    - id: hmr',
-    "      name: '@deepseek-ai/dsh-hmr'",
+    "      name: '@xpeach/xph-hmr'",
     '      config:',
     '        root: []',
     '    - id: profile-lifecycle-fixture',
@@ -212,7 +212,7 @@ function createEnvironmentProbeProfile(home: string, project: string): void {
     name: 'dsh-profile-environment-probe',
     private: true,
     dependencies: {},
-    dsh: { profile: { bundles: ['@deepseek-ai/dsh-base'] } },
+    dsh: { profile: { bundles: ['@xpeach/xph-base'] } },
   }, undefined, 2))
   writeFileSync(join(profileDir, 'cordis.patch.yml'), [
     '- insert:',
@@ -235,7 +235,7 @@ interface StartupFixture {
  * A custom profile whose ordinary provider plugin injects `cmdlineArgs`, plus
  * a row that reads its app-owned service through a `!!js` config expression.
  * Both plugin modules resolve
- * `@deepseek-ai/dsh-cmdline` and `commander` through the profile module
+ * `@xpeach/xph-cmdline` and `commander` through the profile module
  * fallback, exactly as an installed out-of-tree bundle does.
  */
 function createStartupFixture(): StartupFixture {
@@ -248,7 +248,7 @@ function createStartupFixture(): StartupFixture {
   mkdirSync(bundleDir, { recursive: true })
   writeFileSync(join(bundleDir, 'startup.mjs'), [
     "import { Command } from 'commander'",
-    "import { parseCmdline } from '@deepseek-ai/dsh-cmdline'",
+    "import { parseCmdline } from '@xpeach/xph-cmdline'",
     "export const name = 'fixture-startup'",
     "export const inject = ['cmdlineArgs']",
     'export function apply(ctx) {',
@@ -287,9 +287,9 @@ function createStartupFixture(): StartupFixture {
   writeFileSync(join(bundleDir, 'cordis.patch.yml'), [
     '- insert:',
     '    - id: hmr-timer',
-    "      name: '@deepseek-ai/cordis-plugin-timer'",
+    "      name: '@xpeach/xph-cordis-plugin-timer'",
     '    - id: hmr',
-    "      name: '@deepseek-ai/dsh-hmr'",
+    "      name: '@xpeach/xph-hmr'",
     '      config:',
     '        root: []',
     '    - id: startup-fixture',
@@ -424,7 +424,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
     writeFileSync(patch, [
       '- insert:',
       '    - id: missing-sdk-startup-plugin',
-      '      name: "@deepseek-ai/dsh-missing-sdk-startup-plugin"',
+      '      name: "@xpeach/xph-missing-sdk-startup-plugin"',
       '',
     ].join('\n'))
     try {
@@ -436,7 +436,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       expect(result.code).toBe(0)
       expect(result.stdout).toBe('')
       expect(result.stderr).toContain('warning: 1 entry did not activate')
-      expect(result.stderr).toContain('@deepseek-ai/dsh-missing-sdk-startup-plugin')
+      expect(result.stderr).toContain('@xpeach/xph-missing-sdk-startup-plugin')
     } finally {
       rmSync(home, { recursive: true, force: true })
     }
@@ -684,7 +684,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       }
       expect(manifest.dependencies).toEqual({})
       expect(manifest.dsh.profile).toEqual({
-        bundles: ['@deepseek-ai/dsh-base', '@deepseek-ai/dsh-web-app'],
+        bundles: ['@xpeach/xph-base', '@xpeach/xph-web-app'],
       })
       expect(readFileSync(join(dir, 'cordis.patch.yml'), 'utf8')).toContain('[]')
       expect(readFileSync(join(dir, 'pnpm-workspace.yaml'), 'utf8')).toContain('nodeLinker: hoisted')
@@ -1126,14 +1126,14 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
         dsh: { profile: { bundles: string[] } }
       }
       expect(Object.keys(installed.dependencies).sort()).toEqual(['bundle-alias', 'ordinary-library'])
-      expect(installed.dsh.profile.bundles).toEqual(['@deepseek-ai/dsh-base', 'bundle-alias'])
-      installed.dsh.profile.bundles = ['@deepseek-ai/dsh-base']
+      expect(installed.dsh.profile.bundles).toEqual(['@xpeach/xph-base', 'bundle-alias'])
+      installed.dsh.profile.bundles = ['@xpeach/xph-base']
       writeFileSync(manifestPath, JSON.stringify(installed))
       const refreshed = await runBuiltBin(['plugin', '--profile', 'alias', 'root'], { DSH_HOME: home }, home)
       expect(refreshed.code).toBe(0)
       expect(refreshed.stderr).not.toContain('declares no dsh.bundle')
       const active = JSON.parse(readFileSync(manifestPath, 'utf8')) as { dsh: { profile: { bundles: string[] } } }
-      expect(active.dsh.profile.bundles).toEqual(['@deepseek-ai/dsh-base'])
+      expect(active.dsh.profile.bundles).toEqual(['@xpeach/xph-base'])
       const removed = await runBuiltBin(['plugin', '--profile', 'alias', 'remove', 'bundle-alias'], { DSH_HOME: home }, home)
       expect(removed.code).toBe(0)
       const remaining = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
@@ -1141,7 +1141,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
         dsh: { profile: { bundles: string[] } }
       }
       expect(Object.keys(remaining.dependencies)).toEqual(['ordinary-library'])
-      expect(remaining.dsh.profile.bundles).toEqual(['@deepseek-ai/dsh-base'])
+      expect(remaining.dsh.profile.bundles).toEqual(['@xpeach/xph-base'])
     } finally {
       rmSync(home, { recursive: true, force: true })
     }
@@ -1157,7 +1157,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
         name: 'dsh-profile-up',
         private: true,
         dependencies: { 'late-bundle': 'file:./late-bundle' },
-        dsh: { profile: { bundles: ['@deepseek-ai/dsh-base'] } },
+        dsh: { profile: { bundles: ['@xpeach/xph-base'] } },
       }))
       writeFileSync(join(profileDir, 'cordis.patch.yml'), '[]\n')
       // v1: no dsh manifest — a plain dependency.
@@ -1165,7 +1165,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       const first = await runBuiltBin(['plugin', '--profile', 'up', 'root'], { DSH_HOME: home })
       expect(first.code).toBe(0)
       let manifest = JSON.parse(readFileSync(join(profileDir, 'package.json'), 'utf8')) as { dsh: { profile: { bundles: string[] } } }
-      expect(manifest.dsh.profile.bundles).toEqual(['@deepseek-ai/dsh-base'])
+      expect(manifest.dsh.profile.bundles).toEqual(['@xpeach/xph-base'])
       // v2: the installed package now declares dsh.bundle (an update landed).
       writeFileSync(join(installed, 'package.json'), JSON.stringify({
         name: 'late-bundle', version: '2.0.0', dsh: { bundle: { patch: './cordis.patch.yml' } },
@@ -1174,7 +1174,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       const second = await runBuiltBin(['plugin', '--profile', 'up', 'root'], { DSH_HOME: home })
       expect(second.code).toBe(0)
       manifest = JSON.parse(readFileSync(join(profileDir, 'package.json'), 'utf8')) as { dsh: { profile: { bundles: string[] } } }
-      expect(manifest.dsh.profile.bundles).toEqual(['@deepseek-ai/dsh-base'])
+      expect(manifest.dsh.profile.bundles).toEqual(['@xpeach/xph-base'])
     } finally {
       rmSync(home, { recursive: true, force: true })
     }
@@ -1189,10 +1189,10 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       const { stdout, code, stderr } = await runBuiltBin(['web', '--dump-default-config'], { DSH_HOME: home })
       expect(code).toBe(0)
       expect(stderr).toBe('')
-      expect(stdout).toContain("name: '@deepseek-ai/dsh-agent-loop'")
+      expect(stdout).toContain("name: '@xpeach/xph-agent-loop'")
       expect(stdout).toContain('agents: []')
-      expect(stdout).toContain('# == @deepseek-ai/dsh-base')
-      expect(stdout).toContain("name: '@deepseek-ai/dsh-host-webserver'")
+      expect(stdout).toContain('# == @xpeach/xph-base')
+      expect(stdout).toContain("name: '@xpeach/xph-host-webserver'")
       expect(existsSync(join(home, 'profiles', 'node_modules'))).toBe(false)
     }, SPAWN_TIMEOUT_MS + 30_000)
 
@@ -1203,7 +1203,7 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       )
       expect(code).toBe(0)
       expect(stderr).toBe('')
-      expect(stdout).toContain('# == @deepseek-ai/dsh-web-app')
+      expect(stdout).toContain('# == @xpeach/xph-web-app')
       expect(existsSync(join(home, 'profiles', 'rescue', 'package.json'))).toBe(true)
     }, SPAWN_TIMEOUT_MS + 30_000)
 
@@ -1226,9 +1226,9 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       )
       expect(code).toBe(0)
       expect(stderr).toBe('')
-      expect(stdout).toContain("name: '@deepseek-ai/dsh-headless'")
+      expect(stdout).toContain("name: '@xpeach/xph-headless'")
       expect(stdout).not.toMatch(/name: '@deepseek-ai\/dsh-host-/)
-      expect(stdout).not.toContain("name: '@deepseek-ai/dsh-web-app'")
+      expect(stdout).not.toContain("name: '@xpeach/xph-web-app'")
       expect(stdout).not.toMatch(/name: '@deepseek-ai\/dsh-client-/)
     }, SPAWN_TIMEOUT_MS + 30_000)
 
@@ -1241,45 +1241,45 @@ describe.skipIf(!existsSync(dshBin))('dsh BUILT bin (node lib/bin.js, no tsx)', 
       expect(stderr).toBe('')
       const rows = yaml.load(stdout, { schema: entryListSchema }) as Array<{ id?: string; name?: string }>
       expect(rows.map(row => [row.id, row.name])).toEqual([
-        ['sdk-app-startup', '@deepseek-ai/dsh-sdk-app'],
-        ['sdk-jsonrpc-server', '@deepseek-ai/dsh-sdk-jsonrpc-server'],
-        ['deepseek-llm-api-extensions', '@deepseek-ai/dsh-deepseek-llm-api-extensions'],
-        ['session-log-deepseek', '@deepseek-ai/dsh-session-log-deepseek'],
-        ['plugin-package-inventory-deepseek', '@deepseek-ai/dsh-plugin-package-inventory-deepseek'],
-        ['llm-deepseek', '@deepseek-ai/dsh-llm-deepseek-api-key'],
-        ['sandbox', '@deepseek-ai/dsh-sandbox-local'],
-        ['filesystem', '@deepseek-ai/dsh-fs-local'],
-        ['attachment-local', '@deepseek-ai/dsh-attachment-local'],
-        ['tool-fs', '@deepseek-ai/dsh-tool-fs'],
-        ['working-directory', '@deepseek-ai/dsh-working-directory'],
-        ['tool-working-directory', '@deepseek-ai/dsh-tool-working-directory'],
-        ['session-projection', '@deepseek-ai/dsh-session-projection'],
-        ['token-meter', '@deepseek-ai/dsh-token-meter'],
-        ['compaction-basic', '@deepseek-ai/dsh-compaction-basic'],
-        ['image-offload', '@deepseek-ai/dsh-compaction-image-offload'],
-        ['sandbox-policy', '@deepseek-ai/dsh-sandbox-policy'],
-        ['subprocess', '@deepseek-ai/dsh-subprocess-local'],
-        ['pty', '@deepseek-ai/dsh-terminal'],
-        ['terminal-bash', '@deepseek-ai/dsh-terminal-bash'],
-        ['terminal-pwsh', '@deepseek-ai/dsh-terminal-bash'],
-        ['timer', '@deepseek-ai/cordis-plugin-timer'],
-        ['llm', '@deepseek-ai/dsh-llm'],
-        ['session', '@deepseek-ai/dsh-session'],
-        ['session-title', '@deepseek-ai/dsh-session-title'],
-        ['system-prompt', '@deepseek-ai/dsh-system-prompt'],
-        ['tools', '@deepseek-ai/dsh-tools'],
-        ['mcp-resources', '@deepseek-ai/dsh-mcp-resources'],
-        ['agent', '@deepseek-ai/dsh-agent'],
-        ['llm-retry', '@deepseek-ai/dsh-llm-retry'],
-        ['jobs', '@deepseek-ai/dsh-jobs-local'],
-        ['agent-loop', '@deepseek-ai/dsh-agent-loop'],
-        ['persistent-bash', '@deepseek-ai/dsh-tool-bash-persistent'],
-        ['persistent-pwsh', '@deepseek-ai/dsh-tool-pwsh-persistent'],
-        ['sessions', '@deepseek-ai/dsh-session-persistence-jsonl'],
+        ['sdk-app-startup', '@xpeach/xph-sdk-app'],
+        ['sdk-jsonrpc-server', '@xpeach/xph-sdk-jsonrpc-server'],
+        ['deepseek-llm-api-extensions', '@xpeach/xph-deepseek-llm-api-extensions'],
+        ['session-log-deepseek', '@xpeach/xph-session-log-deepseek'],
+        ['plugin-package-inventory-deepseek', '@xpeach/xph-plugin-package-inventory-deepseek'],
+        ['llm-deepseek', '@xpeach/xph-llm-deepseek-api-key'],
+        ['sandbox', '@xpeach/xph-sandbox-local'],
+        ['filesystem', '@xpeach/xph-fs-local'],
+        ['attachment-local', '@xpeach/xph-attachment-local'],
+        ['tool-fs', '@xpeach/xph-tool-fs'],
+        ['working-directory', '@xpeach/xph-working-directory'],
+        ['tool-working-directory', '@xpeach/xph-tool-working-directory'],
+        ['session-projection', '@xpeach/xph-session-projection'],
+        ['token-meter', '@xpeach/xph-token-meter'],
+        ['compaction-basic', '@xpeach/xph-compaction-basic'],
+        ['image-offload', '@xpeach/xph-compaction-image-offload'],
+        ['sandbox-policy', '@xpeach/xph-sandbox-policy'],
+        ['subprocess', '@xpeach/xph-subprocess-local'],
+        ['pty', '@xpeach/xph-terminal'],
+        ['terminal-bash', '@xpeach/xph-terminal-bash'],
+        ['terminal-pwsh', '@xpeach/xph-terminal-bash'],
+        ['timer', '@xpeach/xph-cordis-plugin-timer'],
+        ['llm', '@xpeach/xph-llm'],
+        ['session', '@xpeach/xph-session'],
+        ['session-title', '@xpeach/xph-session-title'],
+        ['system-prompt', '@xpeach/xph-system-prompt'],
+        ['tools', '@xpeach/xph-tools'],
+        ['mcp-resources', '@xpeach/xph-mcp-resources'],
+        ['agent', '@xpeach/xph-agent'],
+        ['llm-retry', '@xpeach/xph-llm-retry'],
+        ['jobs', '@xpeach/xph-jobs-local'],
+        ['agent-loop', '@xpeach/xph-agent-loop'],
+        ['persistent-bash', '@xpeach/xph-tool-bash-persistent'],
+        ['persistent-pwsh', '@xpeach/xph-tool-pwsh-persistent'],
+        ['sessions', '@xpeach/xph-session-persistence-jsonl'],
       ])
-      expect(stdout).toContain('# == @deepseek-ai/dsh-sdk-minimal')
-      expect(stdout).not.toContain('@deepseek-ai/dsh-base')
-      expect(stdout).not.toContain('@deepseek-ai/dsh-web-app')
+      expect(stdout).toContain('# == @xpeach/xph-sdk-minimal')
+      expect(stdout).not.toContain('@xpeach/xph-base')
+      expect(stdout).not.toContain('@xpeach/xph-web-app')
     }, SPAWN_TIMEOUT_MS * 2 + 30_000)
 
     it('composes the profile user layer and a --patch overlay in order', async () => {

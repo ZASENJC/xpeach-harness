@@ -1,6 +1,6 @@
 /** XPeach right-pane console: account + full site model market + playground. */
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { InjectFace, PropsLocale } from '@deepseek-ai/dsh-client-ui-slots'
+import type { InjectFace, PropsLocale } from '@xpeach/xph-client-ui-slots'
 import type { XPeachHealthRow, XPeachOps, XPeachData, XPeachPricingRow, XPeachSiteCatalog, XPeachNetworkSnapshot } from './ops.ts'
 import { XPeachAdmin } from './XPeachAdmin.tsx'
 import { XPeachUser } from './XPeachUser.tsx'

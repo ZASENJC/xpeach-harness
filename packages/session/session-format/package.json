@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-session-format",
+  "name": "@xpeach/xph-session-format",
   "description": "Streaming adjacent Session format migration machinery",
   "version": "0.3.0",
   "publishConfig": {
@@ -27,12 +27,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-util-values": "workspace:*"
+    "@xpeach/xph-util-values": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   }
 }

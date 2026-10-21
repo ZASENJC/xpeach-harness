@@ -3,9 +3,9 @@
  * account summary, a 7-day token sparkline, and a top-up entry. */
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { JSX } from 'react'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
-import { HoverCard } from '@deepseek-ai/dsh-client-ui-primitives'
-import type {} from '@deepseek-ai/dsh-client-ui-settings/client'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
+import { HoverCard } from '@xpeach/xph-client-ui-primitives'
+import type {} from '@xpeach/xph-client-ui-settings/client'
 import type { XPeachOps, XPeachSelfLogRow, XPeachUserSelfRow } from './ops.ts'
 import { quotaUsd, SITE } from './fmt.ts'
 import css from './xpeach.module.css'

@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-config-editor",
+  "name": "@xpeach/xph-config-editor",
   "description": "Persist plugin configuration through profile patches and Loader reconciliation",
   "version": "0.3.0",
   "publishConfig": {
@@ -29,27 +29,27 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-hmr": "workspace:*",
-    "@deepseek-ai/cordis-plugin-include": "workspace:~",
-    "@deepseek-ai/dsh-app-boot": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-hmr": "workspace:*",
+    "@xpeach/xph-cordis-plugin-include": "workspace:~",
+    "@xpeach/xph-app-boot": "workspace:*"
   },
   "dependencies": {
-    "@deepseek-ai/dsh-atomic-write": "workspace:*",
+    "@xpeach/xph-atomic-write": "workspace:*",
     "yaml": "^2.8.1",
     "js-yaml": "^4.3.2"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/dsh-hmr": "workspace:*",
-    "@deepseek-ai/cordis-plugin-include": "workspace:~",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-hmr": "workspace:*",
+    "@xpeach/xph-cordis-plugin-include": "workspace:~",
     "@types/js-yaml": "^4.0.9",
-    "@deepseek-ai/dsh-app-boot": "workspace:*"
+    "@xpeach/xph-app-boot": "workspace:*"
   },
   "peerDependenciesMeta": {
-    "@deepseek-ai/dsh-hmr": {
+    "@xpeach/xph-hmr": {
       "optional": true
     }
   }

@@ -1,12 +1,12 @@
 /** Host-wide durable reminders and shared human/model management. */
 import { randomUUID } from 'node:crypto'
-import z from '@deepseek-ai/schemastery'
-import { Context, Service } from '@deepseek-ai/cordis'
-import { TypertRemoteService, Remote } from '@deepseek-ai/dsh-typert-protocol'
-import type { Domain } from '@deepseek-ai/dsh-storage-domain'
-import { delegationDepthOf } from '@deepseek-ai/dsh-subagent'
-import type { SessionId } from '@deepseek-ai/dsh-session'
-import type { SessionActivity } from '@deepseek-ai/dsh-workspace'
+import z from '@xpeach/xph-schemastery'
+import { Context, Service } from '@xpeach/xph-cordis'
+import { TypertRemoteService, Remote } from '@xpeach/xph-typert-protocol'
+import type { Domain } from '@xpeach/xph-storage-domain'
+import { delegationDepthOf } from '@xpeach/xph-subagent'
+import type { SessionId } from '@xpeach/xph-session'
+import type { SessionActivity } from '@xpeach/xph-workspace'
 import { ScheduleRuntime } from './runtime.ts'
 import { scheduleDomain } from './storage.ts'
 import { deliveryHistoryPage } from './delivery-history.ts'
@@ -61,7 +61,7 @@ export {
 } from './domain.ts'
 
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Durable Host-wide reminder management. */
     schedule: ScheduleService

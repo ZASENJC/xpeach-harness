@@ -1,5 +1,5 @@
 /** Inline exit status for a settled command. */
-import { Tag } from '@deepseek-ai/dsh-client-ui-primitives'
+import { Tag } from '@xpeach/xph-client-ui-primitives'
 import css from './ExitCodeBadge.module.css'
 
 /**

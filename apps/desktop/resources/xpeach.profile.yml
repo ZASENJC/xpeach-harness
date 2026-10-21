@@ -1,7 +1,7 @@
 # XPeach product profile: replaces the DeepSeek brand, sign-in surface and
 # model provider with the XPeach relay, and loads the XPeach product plugins.
 - id: ui-settings-general
-  name: "@deepseek-ai/dsh-client-ui-settings-general"
+  name: "@xpeach/xph-client-ui-settings-general"
   config:
     welcomeNoticeVersion: 2026-09-28.1
 - id: ui-settings-account
@@ -18,7 +18,7 @@
   disabled: true
 - id: llm-deepseek
   disabled: true # 站点目录无 deepseek-* 模型(实测 /v1/models 仅 swe-2-max);启用即报 AUTH
-  name: "@deepseek-ai/dsh-llm-deepseek-api-key"
+  name: "@xpeach/xph-llm-deepseek-api-key"
   config:
     apiKeyEnv: XPEACH_RELAY_KEY
     baseURL: https://fast.xpeach.codes/v1
@@ -49,12 +49,12 @@
           - text
           - image
 - id: agent-default-model
-  name: "@deepseek-ai/dsh-agent-default-model"
+  name: "@xpeach/xph-agent-default-model"
   config:
     provider: xpeach
     model: swe-2-max
 - id: llm-pi-ai
-  name: "@deepseek-ai/dsh-llm-pi-ai"
+  name: "@xpeach/xph-llm-pi-ai"
   config:
     providers:
       xpeach:
@@ -78,11 +78,11 @@
       name: '@xpeach/xph-client-ui'
 
 - id: locale
-  name: "@deepseek-ai/dsh-client-locale"
+  name: "@xpeach/xph-client-locale"
   config:
     preference: zh
 - id: permission
-  name: "@deepseek-ai/dsh-permission-presets"
+  name: "@xpeach/xph-permission-presets"
   config:
     presets:
       read-only:
@@ -96,7 +96,7 @@
         approval: never
     defaultPreset: danger-full-access
 - id: agent-preset-registry
-  name: "@deepseek-ai/dsh-agent-preset-registry"
+  name: "@xpeach/xph-agent-preset-registry"
   config:
     default: standard
     selectedDefault: ptc

@@ -1,5 +1,5 @@
 /** One retained task's rule, saved deliveries, run-time edits, deletion, and original-Session link. */
-import { assertNever } from '@deepseek-ai/dsh-util-values'
+import { assertNever } from '@xpeach/xph-util-values'
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import clsx from 'clsx'
@@ -7,14 +7,14 @@ import {
   Button, IconChevronDownOutlineRegular, IconChevronRightOutlineRegular, IconChevronUpOutlineRegular,
   IconClockOutlineRegular, IconCloseOutlineRegular,
   IconEllipsisOutlineRegular, IconTrashOutlineRegular, Modal, Pill, ReferenceIconRegular, Tooltip,
-} from '@deepseek-ai/dsh-client-ui-primitives'
-import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
-import type { RemoteResult } from '@deepseek-ai/dsh-api-remotes/client'
+} from '@xpeach/xph-client-ui-primitives'
+import type { PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
+import type { RemoteResult } from '@xpeach/xph-api-remotes/client'
 import type {
   ScheduleCatalogEntry, ScheduleId, ScheduleRecord, ScheduleTimingChange, ScheduleUpdateContent,
   ScheduleUpdateRequest, ScheduleUpdateResult,
-} from '@deepseek-ai/dsh-schedule/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
+} from '@xpeach/xph-schedule/client'
+import type { SessionId } from '@xpeach/xph-session/types'
 import { CatalogFeedback } from './CatalogFeedback.tsx'
 import { IconCalendarOutlineRegular } from './CalendarIcon.tsx'
 import { ClockPicker } from './ClockPicker.tsx'

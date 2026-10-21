@@ -1,17 +1,17 @@
 /** Controller and UI-domain fixture shapes for the client test runtime. */
 import type {
   ISession, SessionEventLikeEntry, SessionSnapshot, SessionSummary,
-} from '@deepseek-ai/dsh-api-session-controller/client'
-import type { WorkspaceSnapshot } from '@deepseek-ai/dsh-api-workspace-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
+} from '@xpeach/xph-api-session-controller/client'
+import type { WorkspaceSnapshot } from '@xpeach/xph-api-workspace-controller/client'
+import type { SessionId } from '@xpeach/xph-session/types'
 import {
   EMPTY_CONVERSATION_SNAPSHOT,
   type ConversationSnapshot,
-} from '@deepseek-ai/dsh-client-ui-conversation/client'
+} from '@xpeach/xph-client-ui-conversation/client'
 import {
   EMPTY_CHAT_SNAPSHOT,
   type ChatSnapshot,
-} from '@deepseek-ai/dsh-client-ui-chat/client'
+} from '@xpeach/xph-client-ui-chat/client'
 
 /**
  * Fixture overrides for the session behavior face: any subset of the

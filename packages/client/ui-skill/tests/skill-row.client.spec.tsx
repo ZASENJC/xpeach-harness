@@ -2,11 +2,11 @@
 
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import type { StartedToolCall, ToolResultNode } from '@deepseek-ai/dsh-client-ui-chat/client'
-import type { ToolCallOwnerProps } from '@deepseek-ai/dsh-client-ui-tool/client'
-import { makeTranslate } from '@deepseek-ai/dsh-client-test-runtime'
-import { zh as commonZh } from '@deepseek-ai/dsh-client-locale/src/locales/zh.ts'
-import { PartialArguments } from '@deepseek-ai/dsh-util-values'
+import type { StartedToolCall, ToolResultNode } from '@xpeach/xph-client-ui-chat/client'
+import type { ToolCallOwnerProps } from '@xpeach/xph-client-ui-tool/client'
+import { makeTranslate } from '@xpeach/xph-client-test-runtime'
+import { zh as commonZh } from '@xpeach/xph-client-locale/src/locales/zh.ts'
+import { PartialArguments } from '@xpeach/xph-util-values'
 import { SkillRow } from '../src/client/SkillRow.tsx'
 import { zh } from '../src/client/locales.ts'
 

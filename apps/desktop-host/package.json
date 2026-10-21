@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-desktop-host",
+  "name": "@xpeach/xph-desktop-host",
   "description": "Private Node-mode host process for the Electron desktop application",
   "version": "0.3.0",
   "private": true,
@@ -13,23 +13,23 @@
   "dependencies": {
     "koffi": "3.1.1",
     "@deepseek-ai/libreoffice-kit": "^0.1.5",
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh": "workspace:*",
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-app-boot": "workspace:*",
-    "@deepseek-ai/dsh-client-connection": "workspace:*",
-    "@deepseek-ai/dsh-host-webserver": "workspace:*",
-    "@deepseek-ai/dsh-home-paths": "workspace:*",
-    "@deepseek-ai/dsh-jobs": "workspace:*",
-    "@deepseek-ai/dsh-schedule": "workspace:*",
-    "@deepseek-ai/dsh-tool-workspace-dependencies": "workspace:*",
-    "@deepseek-ai/dsh-skill-office": "workspace:*",
-    "@deepseek-ai/dsh-deepseek-account": "workspace:*",
-    "@deepseek-ai/dsh-workspace": "workspace:*"
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-dsh": "workspace:*",
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-app-boot": "workspace:*",
+    "@xpeach/xph-client-connection": "workspace:*",
+    "@xpeach/xph-host-webserver": "workspace:*",
+    "@xpeach/xph-home-paths": "workspace:*",
+    "@xpeach/xph-jobs": "workspace:*",
+    "@xpeach/xph-schedule": "workspace:*",
+    "@xpeach/xph-tool-workspace-dependencies": "workspace:*",
+    "@xpeach/xph-skill-office": "workspace:*",
+    "@xpeach/xph-deepseek-account": "workspace:*",
+    "@xpeach/xph-workspace": "workspace:*"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis-plugin-loader": "workspace:~",
-    "@deepseek-ai/cordis-plugin-include": "workspace:~",
-    "@deepseek-ai/dsh-skill": "workspace:*"
+    "@xpeach/xph-cordis-plugin-loader": "workspace:~",
+    "@xpeach/xph-cordis-plugin-include": "workspace:~",
+    "@xpeach/xph-skill": "workspace:*"
   }
 }

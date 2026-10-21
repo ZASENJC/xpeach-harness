@@ -1,19 +1,19 @@
 import { randomUUID } from 'node:crypto'
 import { afterEach, beforeEach, describe, expect, expectTypeOf, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { Session, SessionId } from '@deepseek-ai/dsh-session'
-import { ToolCallId } from '@deepseek-ai/dsh-llm/brand'
-import { createUserMessage } from '@deepseek-ai/dsh-llm'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import { bindScopeParent, createScope, scopeOf } from '@deepseek-ai/dsh-scope'
-import type { ScopeKey } from '@deepseek-ai/dsh-scope'
-import { JobId } from '@deepseek-ai/dsh-jobs'
+import { Context } from '@xpeach/xph-cordis'
+import { Session, SessionId } from '@xpeach/xph-session'
+import { ToolCallId } from '@xpeach/xph-llm/brand'
+import { createUserMessage } from '@xpeach/xph-llm'
+import AgentRegistry from '@xpeach/xph-agent'
+import type { Agent } from '@xpeach/xph-agent'
+import { bindScopeParent, createScope, scopeOf } from '@xpeach/xph-scope'
+import type { ScopeKey } from '@xpeach/xph-scope'
+import { JobId } from '@xpeach/xph-jobs'
 import type {
   JobEvent, JobEventFilter, JobHandle, JobHooks, JobKind, JobOutcome, JobOutputSource, JobSpec, JobView,
-} from '@deepseek-ai/dsh-jobs'
-import LocalJobRegistry, { type Config as JobsConfig } from '@deepseek-ai/dsh-jobs-local'
-import { unsupportedInbox } from '@deepseek-ai/dsh-agent-loop-testkit'
+} from '@xpeach/xph-jobs'
+import LocalJobRegistry, { type Config as JobsConfig } from '@xpeach/xph-jobs-local'
+import { unsupportedInbox } from '@xpeach/xph-agent-loop-testkit'
 
 vi.mock('node:crypto', async (importOriginal) => {
   const actual = await importOriginal<typeof import('node:crypto')>()
@@ -22,7 +22,7 @@ vi.mock('node:crypto', async (importOriginal) => {
 
 const randomUuid = vi.mocked(randomUUID)
 
-declare module '@deepseek-ai/dsh-jobs' {
+declare module '@xpeach/xph-jobs' {
   interface JobKindMap {
     'test-task': 'test-task'
     workflow: 'workflow'
@@ -178,7 +178,7 @@ describe('LocalJobRegistry.start', () => {
     const ctx = new Context()
     await ctx.plugin(LocalJobRegistry)
     expect(() => ctx.jobs.start(producer().spec))
-      .toThrow('background jobs unavailable: no job controller serves this agent (load @deepseek-ai/dsh-tool-jobs in its composition)')
+      .toThrow('background jobs unavailable: no job controller serves this agent (load @xpeach/xph-tool-jobs in its composition)')
   })
 
   it('refuses an owner whose own composition attaches no controller', async () => {

@@ -1,13 +1,13 @@
 /** Agent-facing current-profile management using the same service as Web controls. */
-import { assertNever } from '@deepseek-ai/dsh-util-values'
-import type { Context } from '@deepseek-ai/cordis'
+import { assertNever } from '@xpeach/xph-util-values'
+import type { Context } from '@xpeach/xph-cordis'
 import type {} from './index.ts'
-import type {} from '@deepseek-ai/dsh-sandbox-policy'
-import type {} from '@deepseek-ai/dsh-user-approval'
-import { approveEscalation } from '@deepseek-ai/dsh-sandbox'
+import type {} from '@xpeach/xph-sandbox-policy'
+import type {} from '@xpeach/xph-user-approval'
+import { approveEscalation } from '@xpeach/xph-sandbox'
 import type { ChangeResult, ManagementError, PluginEntryId, PluginInstallFailureKind, RestartReason } from './types.ts'
-import { defineTool } from '@deepseek-ai/dsh-tools'
-import { getDshRuntimeVersion } from '@deepseek-ai/dsh-app-boot'
+import { defineTool } from '@xpeach/xph-tools'
+import { getDshRuntimeVersion } from '@xpeach/xph-app-boot'
 
 /** What the model does next for each refusal the manager reports. */
 const ERROR_STEPS: Record<ManagementError['code'], string> = {

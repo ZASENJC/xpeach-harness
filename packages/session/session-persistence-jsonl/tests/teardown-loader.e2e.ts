@@ -1,11 +1,11 @@
 /** JSONL teardown preserves events emitted by an asynchronously disposing injected consumer. */
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import * as SessionPlugin from '@deepseek-ai/dsh-session'
-import { SessionId, type Session } from '@deepseek-ai/dsh-session'
-import * as JsonlPlugin from '@deepseek-ai/dsh-session-persistence-jsonl'
-import { SessionHandleClosedError } from '@deepseek-ai/dsh-session-persistence'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import Include from '@xpeach/xph-cordis-plugin-include'
+import * as SessionPlugin from '@xpeach/xph-session'
+import { SessionId, type Session } from '@xpeach/xph-session'
+import * as JsonlPlugin from '@xpeach/xph-session-persistence-jsonl'
+import { SessionHandleClosedError } from '@xpeach/xph-session-persistence'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
@@ -48,9 +48,9 @@ it('waits for injected consumer teardown, persists its final event, and releases
     const configPath = join(root, 'cordis.yml')
     await writeFile(configPath, [
       '- id: sessions',
-      "  name: '@deepseek-ai/dsh-session'",
+      "  name: '@xpeach/xph-session'",
       '- id: persistence',
-      "  name: '@deepseek-ai/dsh-session-persistence-jsonl'",
+      "  name: '@xpeach/xph-session-persistence-jsonl'",
       '  config:',
       `    root: ${JSON.stringify(root)}`,
       '    compression: none',
@@ -66,8 +66,8 @@ it('waits for injected consumer teardown, persists its final event, and releases
       loadCache: new Map(),
       async import(specifier: string) {
         switch (specifier) {
-          case '@deepseek-ai/dsh-session': return SessionPlugin
-          case '@deepseek-ai/dsh-session-persistence-jsonl': return JsonlPlugin
+          case '@xpeach/xph-session': return SessionPlugin
+          case '@xpeach/xph-session-persistence-jsonl': return JsonlPlugin
           case 'async-persistence-consumer': return consumer
           default: throw new Error(`Unexpected plugin: ${specifier}`)
         }

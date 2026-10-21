@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-experimental-plugin-market-bundle",
+  "name": "@xpeach/xph-experimental-plugin-market-bundle",
   "description": "Experimental custom plugin markets: a Discover tab that browses and installs bundles from plugin market indexes",
   "version": "0.3.0",
   "icon": "./icon.svg",
@@ -33,14 +33,14 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-client-ui-plugin-market": "workspace:*",
-    "@deepseek-ai/dsh-plugin-market": "workspace:*"
+    "@xpeach/xph-client-ui-plugin-market": "workspace:*",
+    "@xpeach/xph-plugin-market": "workspace:*"
   },
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "dsh": {
     "bundle": {

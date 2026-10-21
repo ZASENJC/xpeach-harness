@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-jobs",
+  "name": "@xpeach/xph-jobs",
   "description": "Background job registry (ctx.jobs) for the DeepSeek Harness — shared ids, owner isolation, polling, cancellation, and completion listeners for long-running tool work",
   "version": "0.3.0",
   "publishConfig": {
@@ -36,22 +36,22 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-workspace": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-brand": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-workspace": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "peerDependenciesMeta": {
-    "@deepseek-ai/dsh-workspace": {
+    "@xpeach/xph-workspace": {
       "optional": true
     }
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-agent": "workspace:*",
-    "@deepseek-ai/dsh-brand": "workspace:*",
-    "@deepseek-ai/dsh-session": "workspace:*",
-    "@deepseek-ai/dsh-workspace": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-agent": "workspace:*",
+    "@xpeach/xph-brand": "workspace:*",
+    "@xpeach/xph-session": "workspace:*",
+    "@xpeach/xph-workspace": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~"
   }
 }

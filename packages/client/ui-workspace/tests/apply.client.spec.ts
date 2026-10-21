@@ -1,19 +1,19 @@
-import { createSnapshotStore } from '@deepseek-ai/dsh-client-store'
-import { Context } from '@deepseek-ai/cordis'
+import { createSnapshotStore } from '@xpeach/xph-client-store'
+import { Context } from '@xpeach/xph-cordis'
 import { describe, expect, it, onTestFinished, vi } from 'vitest'
 import type {
   ISessions, SessionListState, SessionReference, SessionSnapshot, SessionSummary,
-} from '@deepseek-ai/dsh-api-session-controller/client'
-import { SessionForkError } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { WorkspaceId, WorkspaceSnapshot, WorkspaceView } from '@deepseek-ai/dsh-api-workspace-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import { SlotRegistry } from '@deepseek-ai/dsh-client-ui-renderer/client'
-import type { HostObservable, PropsRenderSlots, StoredEntry } from '@deepseek-ai/dsh-client-ui-slots'
-import type { ShortcutCommand } from '@deepseek-ai/dsh-client-shortcuts/client'
-import { RemoteError, TestRemote } from '@deepseek-ai/dsh-client-test-runtime'
-import { LocaleRuntime } from '@deepseek-ai/dsh-client-locale/client'
-import { apply, inject } from '@deepseek-ai/dsh-client-ui-workspace/client'
-import type { WorkspaceBrowserInjected, WorkspacePickerInjected } from '@deepseek-ai/dsh-client-ui-workspace/client'
+} from '@xpeach/xph-api-session-controller/client'
+import { SessionForkError } from '@xpeach/xph-api-session-controller/client'
+import type { WorkspaceId, WorkspaceSnapshot, WorkspaceView } from '@xpeach/xph-api-workspace-controller/client'
+import type { SessionId } from '@xpeach/xph-session/types'
+import { SlotRegistry } from '@xpeach/xph-client-ui-renderer/client'
+import type { HostObservable, PropsRenderSlots, StoredEntry } from '@xpeach/xph-client-ui-slots'
+import type { ShortcutCommand } from '@xpeach/xph-client-shortcuts/client'
+import { RemoteError, TestRemote } from '@xpeach/xph-client-test-runtime'
+import { LocaleRuntime } from '@xpeach/xph-client-locale/client'
+import { apply, inject } from '@xpeach/xph-client-ui-workspace/client'
+import type { WorkspaceBrowserInjected, WorkspacePickerInjected } from '@xpeach/xph-client-ui-workspace/client'
 import {
   type ArchiveSessionInjected, type ForkSessionInjected, menuOpenStateFactory, type PinSessionInjected,
   type RenameSessionInjected, type RowToastInjected, type SessionArchiveConfirmInjected, type SessionRenameDialogInjected,

@@ -4,25 +4,25 @@ import { mkdtemp, rm } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@deepseek-ai/dsh-agent-loop-testkit'
-import LocalAttachmentStore from '@deepseek-ai/dsh-attachment-local'
-import ComputerUseRegistry from '@deepseek-ai/dsh-computer-use'
-import FileSystem from '@deepseek-ai/dsh-fs-local'
-import { LlmAdapter, ToolCallId, type LlmResolvedModelInfo, type StreamChunk } from '@deepseek-ai/dsh-llm'
-import NodeRuntime from '@deepseek-ai/dsh-ptc-runtime-node'
-import Sandbox from '@deepseek-ai/dsh-sandbox-local'
-import SandboxPolicy from '@deepseek-ai/dsh-sandbox-policy'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import Subprocess from '@deepseek-ai/dsh-subprocess-local'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import { mountAgentLoopTestDependencies, mountAgentLoopTestHarness } from '@xpeach/xph-agent-loop-testkit'
+import LocalAttachmentStore from '@xpeach/xph-attachment-local'
+import ComputerUseRegistry from '@xpeach/xph-computer-use'
+import FileSystem from '@xpeach/xph-fs-local'
+import { LlmAdapter, ToolCallId, type LlmResolvedModelInfo, type StreamChunk } from '@xpeach/xph-llm'
+import NodeRuntime from '@xpeach/xph-ptc-runtime-node'
+import Sandbox from '@xpeach/xph-sandbox-local'
+import SandboxPolicy from '@xpeach/xph-sandbox-policy'
+import { SessionId } from '@xpeach/xph-session'
+import Subprocess from '@xpeach/xph-subprocess-local'
 import { expect, it } from 'vitest'
 import * as Cua from '../src/index.ts'
 import { installNativeFixture, startFixtureHost } from './native-fixture.ts'
-import { Request } from '@deepseek-ai/dsh-cua/protocol'
+import { Request } from '@xpeach/xph-cua/protocol'
 
 const bridge = fileURLToPath(new URL('../../cua/lib/bridge.js', import.meta.url))
-const bootstrap = join(dirname(fileURLToPath(import.meta.resolve('@deepseek-ai/dsh-ptc-runtime-node/package.json'))), 'lib/persistent-process.js')
+const bootstrap = join(dirname(fileURLToPath(import.meta.resolve('@xpeach/xph-ptc-runtime-node/package.json'))), 'lib/persistent-process.js')
 
 class VisualAdapter extends LlmAdapter {
   override resolveModel(provider: string, model: string): Promise<LlmResolvedModelInfo> {
@@ -69,7 +69,7 @@ it.skipIf(process.platform === 'win32' || !existsSync(bridge) || !existsSync(boo
           return result.value ?? null
         } } }],
       }))
-      expect((await run('await import("@deepseek-ai/dsh-cua/bridge")', 'unresolved')).error?.message).toContain('Cannot find package')
+      expect((await run('await import("@xpeach/xph-cua/bridge")', 'unresolved')).error?.message).toContain('Cannot find package')
       const section = (await ctx.systemPrompt.assemble()).sections.find(value => value.name === 'computer-use:dsh-cua')
       const initialization = section?.text.split('Persistent PTC initialization:\n')[1]
       expect(initialization).toContain('/lib/bridge.js')

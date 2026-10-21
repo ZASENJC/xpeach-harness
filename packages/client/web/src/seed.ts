@@ -10,13 +10,13 @@ import * as React from 'react'
 import * as ReactJsxRuntime from 'react/jsx-runtime'
 import * as ReactDom from 'react-dom'
 import * as ReactDomClient from 'react-dom/client'
-import * as Cordis from '@deepseek-ai/cordis'
+import * as Cordis from '@xpeach/xph-cordis'
 import * as Zod from 'zod'
 import * as ReactVirtual from '@tanstack/react-virtual'
-import * as ClientStore from '@deepseek-ai/dsh-client-store'
-import * as UiSlots from '@deepseek-ai/dsh-client-ui-slots'
-import * as UiPrimitives from '@deepseek-ai/dsh-client-ui-primitives'
-import * as UiDockkit from '@deepseek-ai/dsh-client-ui-dockkit'
+import * as ClientStore from '@xpeach/xph-client-store'
+import * as UiSlots from '@xpeach/xph-client-ui-slots'
+import * as UiPrimitives from '@xpeach/xph-client-ui-primitives'
+import * as UiDockkit from '@xpeach/xph-client-ui-dockkit'
 import type { PlatformModule } from './platform.ts'
 
 /**
@@ -32,12 +32,12 @@ export function getStaticModules(): Record<string, unknown> {
     'react/jsx-runtime': ReactJsxRuntime,
     'react-dom': ReactDom,
     'react-dom/client': ReactDomClient,
-    '@deepseek-ai/cordis': Cordis,
+    '@xpeach/xph-cordis': Cordis,
     'zod': Zod,
     '@tanstack/react-virtual': ReactVirtual,
-    '@deepseek-ai/dsh-client-store': ClientStore,
-    '@deepseek-ai/dsh-client-ui-slots': UiSlots,
-    '@deepseek-ai/dsh-client-ui-primitives': UiPrimitives,
-    '@deepseek-ai/dsh-client-ui-dockkit': UiDockkit,
+    '@xpeach/xph-client-store': ClientStore,
+    '@xpeach/xph-client-ui-slots': UiSlots,
+    '@xpeach/xph-client-ui-primitives': UiPrimitives,
+    '@xpeach/xph-client-ui-dockkit': UiDockkit,
   } satisfies Record<PlatformModule, unknown>
 }

@@ -1,8 +1,8 @@
 /** V4 framing with native tool-role admission and released physical rows. */
 
-import { SessionFormatError, isSessionFormatJsonObject } from '@deepseek-ai/dsh-session-format'
-import type { SessionFormatCodec, SessionFormatCurrentEncoder, SessionFormatHeader, SessionFormatEvent } from '@deepseek-ai/dsh-session-format'
-import { releasedV2SessionFormatCodec } from '@deepseek-ai/dsh-session-format-v2-to-v3'
+import { SessionFormatError, isSessionFormatJsonObject } from '@xpeach/xph-session-format'
+import type { SessionFormatCodec, SessionFormatCurrentEncoder, SessionFormatHeader, SessionFormatEvent } from '@xpeach/xph-session-format'
+import { releasedV2SessionFormatCodec } from '@xpeach/xph-session-format-v2-to-v3'
 import { assertV4SourceRowAdmission } from './message-sources.ts'
 import { assertV4RetiredSyntax } from './retired-syntax.ts'
 import { assertV4SystemMessageFields } from './system-message.ts'

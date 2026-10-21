@@ -1,11 +1,11 @@
 /** ACP wire-content admission and projection owned by the ACP adapter. @module */
 
 import type { ContentBlock as AcpContentBlock } from '@agentclientprotocol/sdk'
-import type { Context } from '@deepseek-ai/cordis'
-import { isImageAdmissionError } from '@deepseek-ai/dsh-attachment'
-import type { ImageAttachmentRef, ImageMediaType, SaveImageAttachment } from '@deepseek-ai/dsh-attachment'
-import type { ModelSelection } from '@deepseek-ai/dsh-agent'
-import type { ContentBlock } from '@deepseek-ai/dsh-llm'
+import type { Context } from '@xpeach/xph-cordis'
+import { isImageAdmissionError } from '@xpeach/xph-attachment'
+import type { ImageAttachmentRef, ImageMediaType, SaveImageAttachment } from '@xpeach/xph-attachment'
+import type { ModelSelection } from '@xpeach/xph-agent'
+import type { ContentBlock } from '@xpeach/xph-llm'
 
 /** Raster formats shared by ACP image blocks and the core attachment vocabulary. */
 const IMAGE_MEDIA_TYPES: readonly ImageMediaType[] = [

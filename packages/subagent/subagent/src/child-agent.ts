@@ -3,28 +3,28 @@
  * durable session metadata, the resolved child `AgentOptions`, the delegated
  * policy seed, and the scoped setup used by local activations.
  *
- * @module @deepseek-ai/dsh-subagent/child-agent
+ * @module @xpeach/xph-subagent/child-agent
  */
 
-import type { Context } from '@deepseek-ai/cordis'
-import type { Agent, AgentOptions, CreateAgentOptions } from '@deepseek-ai/dsh-agent'
-import type { SandboxMode } from '@deepseek-ai/dsh-sandbox'
-import type { Session, SessionId } from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-system-prompt'
-import type { ToolRestriction } from '@deepseek-ai/dsh-tools'
+import type { Context } from '@xpeach/xph-cordis'
+import type { Agent, AgentOptions, CreateAgentOptions } from '@xpeach/xph-agent'
+import type { SandboxMode } from '@xpeach/xph-sandbox'
+import type { Session, SessionId } from '@xpeach/xph-session'
+import type {} from '@xpeach/xph-system-prompt'
+import type { ToolRestriction } from '@xpeach/xph-tools'
 // Type-only: make `ctx.get('sandboxPolicy')`, `ctx.get('approval')`, and
 // `ctx.get('permissionPresets')` resolve to their services when composed — delegation consumes them
 // opportunistically (the documented `ctx.get` pattern), never as a hard dep —
 // and merge the inherited permission session-event payloads.
-import type {} from '@deepseek-ai/dsh-sandbox-policy'
-import type {} from '@deepseek-ai/dsh-user-approval'
-import type {} from '@deepseek-ai/dsh-permission-presets'
+import type {} from '@xpeach/xph-sandbox-policy'
+import type {} from '@xpeach/xph-user-approval'
+import type {} from '@xpeach/xph-permission-presets'
 // Type-only: make `ctx.get('agentPresets')` resolve to the preset roster when
 // composed — a child inherits its parent's composition opportunistically (the
 // documented `ctx.get` pattern), never as a hard dep. A rosterless deployment
 // keeps its model-facing rows on the host plane, where the child already sees
 // them through the tool registry's global layer.
-import type {} from '@deepseek-ai/dsh-agent-preset-registry'
+import type {} from '@xpeach/xph-agent-preset-registry'
 import { delegationDepthOf } from './depth.ts'
 import { SubagentError } from './error.ts'
 

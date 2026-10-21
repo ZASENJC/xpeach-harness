@@ -1,10 +1,10 @@
 import { externalTestParent } from '../../../subagent/subagent/tests/external-activation-helpers.ts'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { provideWorkingDirectoryFixture } from '@deepseek-ai/dsh-agent-loop-testkit'
-import { Context } from '@deepseek-ai/cordis'
-import type { Agent } from '@deepseek-ai/dsh-agent'
-import type {} from '@deepseek-ai/dsh-agent-instructions'
-import { compactCheckpointSource, CompactionId } from '@deepseek-ai/dsh-compaction'
+import { provideWorkingDirectoryFixture } from '@xpeach/xph-agent-loop-testkit'
+import { Context } from '@xpeach/xph-cordis'
+import type { Agent } from '@xpeach/xph-agent'
+import type {} from '@xpeach/xph-agent-instructions'
+import { compactCheckpointSource, CompactionId } from '@xpeach/xph-compaction'
 import LlmRuntime, {
   createMessage,
   createSystemMessage,
@@ -16,34 +16,34 @@ import LlmRuntime, {
   type GenerateOptions,
   type StreamChunk,
   type ToolSchema,
-} from '@deepseek-ai/dsh-llm'
+} from '@xpeach/xph-llm'
 import PermissionPresetService, {
   AUTO_PRESET,
   type Config as PermissionConfig,
-} from '@deepseek-ai/dsh-permission-presets'
+} from '@xpeach/xph-permission-presets'
 import SessionStore, {
   SessionId,
   SessionLogOffset,
   type Session,
-} from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
+} from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
 import SubagentRuntime, {
   NO_START_CAPABILITIES,
   SUBAGENT_DESCRIPTOR_VERSION,
   type SubagentStartRequest,
-} from '@deepseek-ai/dsh-subagent'
-import type {} from '@deepseek-ai/dsh-shell'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import * as ToolSubagent from '@deepseek-ai/dsh-tool-subagent'
+} from '@xpeach/xph-subagent'
+import type {} from '@xpeach/xph-shell'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import * as ToolSubagent from '@xpeach/xph-tool-subagent'
 import ToolRuntime, {
   defineContentToolFixture,
   RUN_CODE_NAME,
   TOOL_ABORTED_BEFORE_DISPATCH,
   type PreToolDecision,
   type ToolExecutionToken,
-} from '@deepseek-ai/dsh-tools'
-import ApprovalService, { setApprovalPolicy, type ApprovalOutcome } from '@deepseek-ai/dsh-user-approval'
-import * as AutoReview from '@deepseek-ai/dsh-experimental-auto-review'
+} from '@xpeach/xph-tools'
+import ApprovalService, { setApprovalPolicy, type ApprovalOutcome } from '@xpeach/xph-user-approval'
+import * as AutoReview from '@xpeach/xph-experimental-auto-review'
 
 const EXPECTED_REVIEW_POLICY = `REVIEW_POLICY
 You are the final authorization reviewer for exactly one pending tool call. Your decision replaces human approval for this call. If you allow it, the call executes immediately with full host access and no later confirmation.

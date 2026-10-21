@@ -2,23 +2,23 @@
  * Shared service mounting, real AgentLoop drivers, and structural Inbox stubs
  * for agent-loop tests. Callers retain ownership of their contexts, adapters,
  * optional plugins, agents, and teardown.
- * @module @deepseek-ai/dsh-agent-loop-testkit
+ * @module @xpeach/xph-agent-loop-testkit
  */
 
-import type { Context } from '@deepseek-ai/cordis'
-import AgentRegistry from '@deepseek-ai/dsh-agent'
-import type { Agent, AgentOptions, Inbox, InboxTarget } from '@deepseek-ai/dsh-agent'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import LlmRuntime from '@deepseek-ai/dsh-llm'
-import SessionStore from '@deepseek-ai/dsh-session'
-import type { SessionHeader, SessionId, UserMessage } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import type { Config as SystemPromptConfig } from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime from '@deepseek-ai/dsh-tools'
-import type { Config as ToolRuntimeConfig } from '@deepseek-ai/dsh-tools'
-import FsLocal from '@deepseek-ai/dsh-fs-local'
-import WorkingDirectory from '@deepseek-ai/dsh-working-directory'
+import type { Context } from '@xpeach/xph-cordis'
+import AgentRegistry from '@xpeach/xph-agent'
+import type { Agent, AgentOptions, Inbox, InboxTarget } from '@xpeach/xph-agent'
+import AgentLoop from '@xpeach/xph-agent-loop'
+import LlmRuntime from '@xpeach/xph-llm'
+import SessionStore from '@xpeach/xph-session'
+import type { SessionHeader, SessionId, UserMessage } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import type { Config as SystemPromptConfig } from '@xpeach/xph-system-prompt'
+import ToolRuntime from '@xpeach/xph-tools'
+import type { Config as ToolRuntimeConfig } from '@xpeach/xph-tools'
+import FsLocal from '@xpeach/xph-fs-local'
+import WorkingDirectory from '@xpeach/xph-working-directory'
 
 export { createInboxStub, unsupportedInbox } from './inbox.ts'
 export { provideWorkingDirectoryFixture } from './working-directory-fixture.ts'

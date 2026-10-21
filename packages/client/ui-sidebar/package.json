@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-client-ui-sidebar",
+  "name": "@xpeach/xph-client-ui-sidebar",
   "description": "Sidebar plugin: session multi-level tree, search, grouping, state dots",
   "version": "0.3.0",
   "publishConfig": {
@@ -29,13 +29,13 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-workspace-controller",
-        "@deepseek-ai/dsh-client-ui-renderer",
-        "@deepseek-ai/dsh-client-ui-layout",
-        "@deepseek-ai/dsh-client-ui-session",
-        "@deepseek-ai/dsh-client-ui-workspace",
-        "@deepseek-ai/dsh-client-locale",
-        "@deepseek-ai/dsh-client-shortcuts"
+        "@xpeach/xph-api-workspace-controller",
+        "@xpeach/xph-client-ui-renderer",
+        "@xpeach/xph-client-ui-layout",
+        "@xpeach/xph-client-ui-session",
+        "@xpeach/xph-client-ui-workspace",
+        "@xpeach/xph-client-locale",
+        "@xpeach/xph-client-shortcuts"
       ],
       "platform": "web"
     }
@@ -46,24 +46,24 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-api-workspace-controller": "workspace:*",
-    "@deepseek-ai/dsh-client-locale": "workspace:*",
-    "@deepseek-ai/dsh-client-store": "workspace:*",
-    "@deepseek-ai/dsh-client-test-runtime": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-layout": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-primitives": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-renderer": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-slots": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-session": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-workspace": "workspace:*",
-    "@deepseek-ai/cordis": "workspace:~",
+    "@xpeach/xph-api-workspace-controller": "workspace:*",
+    "@xpeach/xph-client-locale": "workspace:*",
+    "@xpeach/xph-client-store": "workspace:*",
+    "@xpeach/xph-client-test-runtime": "workspace:*",
+    "@xpeach/xph-client-ui-layout": "workspace:*",
+    "@xpeach/xph-client-ui-primitives": "workspace:*",
+    "@xpeach/xph-client-ui-renderer": "workspace:*",
+    "@xpeach/xph-client-ui-slots": "workspace:*",
+    "@xpeach/xph-client-ui-session": "workspace:*",
+    "@xpeach/xph-client-ui-workspace": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
     "react": "^18.2.0",
     "clsx": "^2.0.0",
-    "@deepseek-ai/dsh-client-shortcuts": "workspace:*",
-    "@deepseek-ai/dsh-client-product-analytics": "workspace:*"
+    "@xpeach/xph-client-shortcuts": "workspace:*",
+    "@xpeach/xph-client-product-analytics": "workspace:*"
   },
   "files": [
     "locale/*.json",

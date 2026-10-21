@@ -20,15 +20,15 @@
  */
 
 import { posix, win32 } from 'node:path'
-import type { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import type {} from '@deepseek-ai/dsh-fs'
-import type { FsDirEntry, FsInfo, FsPathInfo, FsTarget } from '@deepseek-ai/dsh-fs'
-import type {} from '@deepseek-ai/dsh-sandbox-policy'
-import type {} from '@deepseek-ai/dsh-session'
-import type {} from '@deepseek-ai/dsh-session-persistence'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import { Remote, RemoteError, TypertRemoteService, type TypertLookup } from '@deepseek-ai/dsh-typert-protocol'
+import type { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import type {} from '@xpeach/xph-fs'
+import type { FsDirEntry, FsInfo, FsPathInfo, FsTarget } from '@xpeach/xph-fs'
+import type {} from '@xpeach/xph-sandbox-policy'
+import type {} from '@xpeach/xph-session'
+import type {} from '@xpeach/xph-session-persistence'
+import type { SessionId } from '@xpeach/xph-session/types'
+import { Remote, RemoteError, TypertRemoteService, type TypertLookup } from '@xpeach/xph-typert-protocol'
 import { WorkspaceChangeFeed } from './changes.ts'
 import type {
   WorkspaceByteRange,
@@ -44,7 +44,7 @@ import type {
 
 export type * from './types.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Host owner of the `workspaceFiles` Remote namespace. */
     workspaceFiles: WorkspaceFiles
@@ -59,7 +59,7 @@ export interface WorkspaceFileScope {
   readonly workspaceRoot: string
 }
 
-declare module '@deepseek-ai/dsh-typert-protocol' {
+declare module '@xpeach/xph-typert-protocol' {
   interface TypertLookupMap {
     /** Resolve a Session id to its workspace root without loading its event body or activating an Agent. */
     workspaceFileScope: TypertLookup<WorkspaceFileScope, SessionId>
@@ -204,8 +204,8 @@ export class WorkspaceFiles extends TypertRemoteService {
         parameter: 'workspaceFileScope',
         wire: 'workspaceFileScopeId',
         resource: 'session',
-        hostTypeSymbol: '@deepseek-ai/dsh-api-workspace-files#WorkspaceFileScope',
-        wireTypeSymbol: '@deepseek-ai/dsh-session/types#SessionId',
+        hostTypeSymbol: '@xpeach/xph-api-workspace-files#WorkspaceFileScope',
+        wireTypeSymbol: '@xpeach/xph-session/types#SessionId',
         resolve: async (sessionId) => {
           const live = scope.sessions.get(sessionId)?.header
           const stored = live === undefined

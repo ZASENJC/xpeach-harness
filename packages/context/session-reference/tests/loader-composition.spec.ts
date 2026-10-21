@@ -5,23 +5,23 @@ import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { afterEach, describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import Include from '@deepseek-ai/cordis-plugin-include'
-import { agentEvents, type Agent } from '@deepseek-ai/dsh-agent'
-import { createUserMessage, ToolCallId } from '@deepseek-ai/dsh-llm'
-import * as systemPromptPlugin from '@deepseek-ai/dsh-system-prompt'
-import * as toolsPlugin from '@deepseek-ai/dsh-tools'
-import * as fsPlugin from '@deepseek-ai/dsh-fs-local'
-import * as toolFsPlugin from '@deepseek-ai/dsh-tool-fs'
-import * as sessionPlugin from '@deepseek-ai/dsh-session'
-import * as sessionProjectionPlugin from '@deepseek-ai/dsh-session-projection'
-import * as workingDirectoryPlugin from '@deepseek-ai/dsh-working-directory'
-import { Session, SessionId } from '@deepseek-ai/dsh-session'
-import * as queryPlugin from '@deepseek-ai/dsh-session-query-sqlite'
-import * as referencePlugin from '@deepseek-ai/dsh-session-reference'
-import * as spillPlugin from '@deepseek-ai/dsh-spill-local'
-import { sessionDir } from '@deepseek-ai/dsh-spill-local'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import Include from '@xpeach/xph-cordis-plugin-include'
+import { agentEvents, type Agent } from '@xpeach/xph-agent'
+import { createUserMessage, ToolCallId } from '@xpeach/xph-llm'
+import * as systemPromptPlugin from '@xpeach/xph-system-prompt'
+import * as toolsPlugin from '@xpeach/xph-tools'
+import * as fsPlugin from '@xpeach/xph-fs-local'
+import * as toolFsPlugin from '@xpeach/xph-tool-fs'
+import * as sessionPlugin from '@xpeach/xph-session'
+import * as sessionProjectionPlugin from '@xpeach/xph-session-projection'
+import * as workingDirectoryPlugin from '@xpeach/xph-working-directory'
+import { Session, SessionId } from '@xpeach/xph-session'
+import * as queryPlugin from '@xpeach/xph-session-query-sqlite'
+import * as referencePlugin from '@xpeach/xph-session-reference'
+import * as spillPlugin from '@xpeach/xph-spill-local'
+import { sessionDir } from '@xpeach/xph-spill-local'
 import * as sourcePlugin from './fixtures/source-session.ts'
 
 let context: Context | undefined
@@ -46,16 +46,16 @@ describe('session-reference real Loader composition', () => {
     await ctx.plugin(Loader)
     ctx.loader.builtins.include = Include
     const modules = new Map<string, unknown>([
-      ['@deepseek-ai/dsh-session', sessionPlugin],
-      ['@deepseek-ai/dsh-session-projection', sessionProjectionPlugin],
-      ['@deepseek-ai/dsh-working-directory', workingDirectoryPlugin],
-      ['@deepseek-ai/dsh-system-prompt', systemPromptPlugin],
-      ['@deepseek-ai/dsh-tools', toolsPlugin],
-      ['@deepseek-ai/dsh-fs-local', fsPlugin],
-      ['@deepseek-ai/dsh-tool-fs', toolFsPlugin],
-      ['@deepseek-ai/dsh-session-query-sqlite', queryPlugin],
-      ['@deepseek-ai/dsh-session-reference', referencePlugin],
-      ['@deepseek-ai/dsh-spill-local', spillPlugin],
+      ['@xpeach/xph-session', sessionPlugin],
+      ['@xpeach/xph-session-projection', sessionProjectionPlugin],
+      ['@xpeach/xph-working-directory', workingDirectoryPlugin],
+      ['@xpeach/xph-system-prompt', systemPromptPlugin],
+      ['@xpeach/xph-tools', toolsPlugin],
+      ['@xpeach/xph-fs-local', fsPlugin],
+      ['@xpeach/xph-tool-fs', toolFsPlugin],
+      ['@xpeach/xph-session-query-sqlite', queryPlugin],
+      ['@xpeach/xph-session-reference', referencePlugin],
+      ['@xpeach/xph-spill-local', spillPlugin],
       ['./source-session.ts', sourcePlugin],
     ])
     ctx.loader.internal = {

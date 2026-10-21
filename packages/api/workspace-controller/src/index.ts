@@ -1,10 +1,10 @@
 /** Host Workspace Remote owner: explicit commands and reconnect-safe state. */
 
-import { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { Remote, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
-import type {} from '@deepseek-ai/dsh-api-remote-access'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
+import { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { Remote, TypertRemoteService } from '@xpeach/xph-typert-protocol'
+import type {} from '@xpeach/xph-api-remote-access'
+import type { SessionId } from '@xpeach/xph-session/types'
 import { WorkspaceCommands } from './commands.ts'
 import { DirectoryPickerController } from './directory-picker.ts'
 import { WorkspaceFeed, workspaceView } from './feed.ts'
@@ -44,7 +44,7 @@ export interface Config {
 /** Directory policy after schema defaults have been applied. */
 type ResolvedConfig = Config & { documentsLookupTimeoutMs: number }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Host Workspace business API and Remote namespace owner. */
     workspaceController: WorkspaceController

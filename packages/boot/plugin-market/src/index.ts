@@ -1,27 +1,27 @@
 /** Host reader of configured plugin market indexes for the Discover page and the `plugin_market` tool. */
 
-import type { Context, Volatile } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
+import type { Context, Volatile } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
 import semver from 'semver'
-import { evaluatePluginCompatibility, getDshRuntimeVersion } from '@deepseek-ai/dsh-app-boot'
-import { marketInstallTarget, type MarketIndex, type MarketPlugin, type MarketVersion } from '@deepseek-ai/dsh-plugin-market-index'
-import type { BundleInfo } from '@deepseek-ai/dsh-plugin-manager/types'
-import { MAX_TIMER_DELAY_MS } from '@deepseek-ai/dsh-timeout'
-import { Remote, RemoteError, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
+import { evaluatePluginCompatibility, getDshRuntimeVersion } from '@xpeach/xph-app-boot'
+import { marketInstallTarget, type MarketIndex, type MarketPlugin, type MarketVersion } from '@xpeach/xph-plugin-market-index'
+import type { BundleInfo } from '@xpeach/xph-plugin-manager/types'
+import { MAX_TIMER_DELAY_MS } from '@xpeach/xph-timeout'
+import { Remote, RemoteError, TypertRemoteService } from '@xpeach/xph-typert-protocol'
 import { normalizeIndexUrl } from './index-url.ts'
 import { parseIndexInWorker } from './parse-thread.ts'
 import { MarketSearch } from './search.ts'
 // Type-only: the `pluginManager` service, `settings.update`, and the Loader's `loader/volatile-update` event.
-import type {} from '@deepseek-ai/dsh-plugin-manager'
-import type {} from '@deepseek-ai/dsh-settings'
-import type {} from '@deepseek-ai/cordis-plugin-loader'
+import type {} from '@xpeach/xph-plugin-manager'
+import type {} from '@xpeach/xph-settings'
+import type {} from '@xpeach/xph-cordis-plugin-loader'
 import type {
   MarketCompatibility, MarketIndexSummary, MarketInstallation, MarketListingEntry, MarketListingVersion, MarketQuery, MarketSearchResult,
 } from './types.ts'
 
 export type * from './types.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Configured plugin market index sources and their validated listings. */
     pluginMarket: PluginMarket

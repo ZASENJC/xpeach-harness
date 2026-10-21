@@ -1,4 +1,4 @@
 - id: sandbox
-  name: '@deepseek-ai/dsh-sandbox-local'
+  name: '@xpeach/xph-sandbox-local'
 - id: skills
-  name: '@deepseek-ai/dsh-skill'
+  name: '@xpeach/xph-skill'

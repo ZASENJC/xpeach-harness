@@ -8,9 +8,9 @@
 import type { Browser, Page } from 'playwright'
 import { chromium } from 'playwright'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
-import { ToolCallId, createAssistantMessage, createToolResultMessage, createUserMessage } from '@deepseek-ai/dsh-llm'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import type { SubagentSettledMessageSource } from '@deepseek-ai/dsh-subagent'
+import { ToolCallId, createAssistantMessage, createToolResultMessage, createUserMessage } from '@xpeach/xph-llm'
+import { SessionId } from '@xpeach/xph-session'
+import type { SubagentSettledMessageSource } from '@xpeach/xph-subagent'
 import { launchWebScaffold, watchConsole, type WebScaffold } from './scaffold.ts'
 import { connectFreshWorkspace, newEnglishPage } from './support.ts'
 

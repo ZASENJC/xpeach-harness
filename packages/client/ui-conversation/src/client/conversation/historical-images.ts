@@ -1,10 +1,10 @@
 /** Session-scoped durable image URL cache shared by Conversation targets. */
-import type { Context } from '@deepseek-ai/cordis'
-import type { ImageAttachmentRef } from '@deepseek-ai/dsh-attachment'
-import type { ISessions, SessionBinding } from '@deepseek-ai/dsh-api-session-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import { bytesToBase64 } from '@deepseek-ai/dsh-util-crypto'
-import { WeakMapWithValues } from '@deepseek-ai/dsh-util-values'
+import type { Context } from '@xpeach/xph-cordis'
+import type { ImageAttachmentRef } from '@xpeach/xph-attachment'
+import type { ISessions, SessionBinding } from '@xpeach/xph-api-session-controller/client'
+import type { SessionId } from '@xpeach/xph-session/types'
+import { bytesToBase64 } from '@xpeach/xph-util-crypto'
+import { WeakMapWithValues } from '@xpeach/xph-util-values'
 
 interface ImageUrlEntry {
   readonly binding: SessionBinding

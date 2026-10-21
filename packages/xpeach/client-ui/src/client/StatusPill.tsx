@@ -1,9 +1,9 @@
 /** Floating XPeach quota pill in the shell overlay: live token state at a glance. */
-import type {} from '@deepseek-ai/dsh-client-ui-layout/client'
-import type {} from '@deepseek-ai/dsh-client-locale/client'
-import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
+import type {} from '@xpeach/xph-client-ui-layout/client'
+import type {} from '@xpeach/xph-client-locale/client'
+import type {} from '@xpeach/xph-client-ui-renderer/client'
 import { useEffect, useRef, useState } from 'react'
-import type { InjectFace, PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
+import type { InjectFace, PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
 import type { XPeachTokenLogEntry, XPeachTokenUsage } from '@xpeach/xph-account/types'
 import type { XPeachOps } from './ops.ts'
 import { XPeachMark } from './brand.tsx'

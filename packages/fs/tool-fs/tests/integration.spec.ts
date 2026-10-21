@@ -5,23 +5,23 @@
  * messages.
  */
 
-import { mountAgentLoopTestDependencies, provideWorkingDirectoryFixture } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { mountAgentLoopTestDependencies, provideWorkingDirectoryFixture } from '@xpeach/xph-agent-loop-testkit'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { Context } from '@deepseek-ai/cordis'
-import { SessionId } from '@deepseek-ai/dsh-session'
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import { PtcRuntime, type PtcRunRequest, type PtcRunResult, type PtcRunSpec } from '@deepseek-ai/dsh-ptc-runtime'
-import SandboxPolicyService from '@deepseek-ai/dsh-sandbox-policy'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import type { FsVersion } from '@deepseek-ai/dsh-fs'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@deepseek-ai/dsh-tools'
-import { LocalFileSystem } from '@deepseek-ai/dsh-fs-local'
-import * as FsPolicy from '@deepseek-ai/dsh-fs-observation-policy'
-import * as ToolFs from '@deepseek-ai/dsh-tool-fs'
+import { Context } from '@xpeach/xph-cordis'
+import { SessionId } from '@xpeach/xph-session'
+import AgentLoop from '@xpeach/xph-agent-loop'
+import { PtcRuntime, type PtcRunRequest, type PtcRunResult, type PtcRunSpec } from '@xpeach/xph-ptc-runtime'
+import SandboxPolicyService from '@xpeach/xph-sandbox-policy'
+import { ToolCallId } from '@xpeach/xph-llm'
+import type { FsVersion } from '@xpeach/xph-fs'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRuntime, { TOOL_ABORTED_BEFORE_DISPATCH } from '@xpeach/xph-tools'
+import { LocalFileSystem } from '@xpeach/xph-fs-local'
+import * as FsPolicy from '@xpeach/xph-fs-observation-policy'
+import * as ToolFs from '@xpeach/xph-tool-fs'
 
 const testToolSignal = new AbortController().signal
 

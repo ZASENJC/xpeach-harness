@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-client-ui-plugin-market",
+  "name": "@xpeach/xph-client-ui-plugin-market",
   "description": "Discover tab of the dsh web Plugins page: browse configured plugin market indexes and install their bundles",
   "version": "0.3.0",
   "publishConfig": {
@@ -28,9 +28,9 @@
   "dsh": {
     "client": {
       "inject": [
-        "@deepseek-ai/dsh-api-remotes",
-        "@deepseek-ai/dsh-client-locale",
-        "@deepseek-ai/dsh-client-ui-plugin-manager"
+        "@xpeach/xph-api-remotes",
+        "@xpeach/xph-client-locale",
+        "@xpeach/xph-client-ui-plugin-manager"
       ],
       "platform": "web"
     }
@@ -41,23 +41,23 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@deepseek-ai/cordis": "workspace:~"
+    "@xpeach/xph-cordis": "workspace:~"
   },
   "devDependencies": {
-    "@deepseek-ai/cordis": "workspace:~",
-    "@deepseek-ai/dsh-api-remotes": "workspace:*",
-    "@deepseek-ai/dsh-client-locale": "workspace:*",
-    "@deepseek-ai/dsh-client-store": "workspace:*",
-    "@deepseek-ai/dsh-client-test-runtime": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-plugin-manager": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-primitives": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-renderer": "workspace:*",
-    "@deepseek-ai/dsh-client-ui-slots": "workspace:*",
-    "@deepseek-ai/dsh-package-manifest": "workspace:*",
-    "@deepseek-ai/dsh-plugin-manager": "workspace:*",
-    "@deepseek-ai/dsh-plugin-market": "workspace:*",
-    "@deepseek-ai/dsh-plugin-market-index": "workspace:*",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:*",
+    "@xpeach/xph-cordis": "workspace:~",
+    "@xpeach/xph-api-remotes": "workspace:*",
+    "@xpeach/xph-client-locale": "workspace:*",
+    "@xpeach/xph-client-store": "workspace:*",
+    "@xpeach/xph-client-test-runtime": "workspace:*",
+    "@xpeach/xph-client-ui-plugin-manager": "workspace:*",
+    "@xpeach/xph-client-ui-primitives": "workspace:*",
+    "@xpeach/xph-client-ui-renderer": "workspace:*",
+    "@xpeach/xph-client-ui-slots": "workspace:*",
+    "@xpeach/xph-package-manifest": "workspace:*",
+    "@xpeach/xph-plugin-manager": "workspace:*",
+    "@xpeach/xph-plugin-market": "workspace:*",
+    "@xpeach/xph-plugin-market-index": "workspace:*",
+    "@xpeach/xph-typert-protocol": "workspace:*",
     "@testing-library/react": "^16.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

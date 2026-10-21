@@ -11,12 +11,12 @@
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { dirname, join } from 'node:path'
-import { Context } from '@deepseek-ai/cordis'
-import z from '@deepseek-ai/schemastery'
-import { Remote, RemoteError, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol'
-import { credentialRef, type CredentialRef } from '@deepseek-ai/dsh-credentials'
-import type { JsonValue } from '@deepseek-ai/dsh-util-values'
-import { launchEnvironmentOf } from '@deepseek-ai/dsh-launch-environment'
+import { Context } from '@xpeach/xph-cordis'
+import z from '@xpeach/xph-schemastery'
+import { Remote, RemoteError, TypertRemoteService } from '@xpeach/xph-typert-protocol'
+import { credentialRef, type CredentialRef } from '@xpeach/xph-credentials'
+import type { JsonValue } from '@xpeach/xph-util-values'
+import { launchEnvironmentOf } from '@xpeach/xph-launch-environment'
 import { XPeachApi } from './api.ts'
 import { scanOnboarding, importConversations as importThreads, importAssets as importLocalAssets } from './onboarding.ts'
 import { DEFAULT_ROUTE_URL, ROUTES, chooseBest, probeRoutes } from './network.ts'
@@ -34,7 +34,7 @@ import type {
 
 export type * from './types.ts'
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** XPeach site account Remote namespace owner. */
     xpeachAccount: XPeachAccount
@@ -51,7 +51,7 @@ declare module '@deepseek-ai/cordis' {
   }
 }
 
-declare module '@deepseek-ai/dsh-typert-protocol' {
+declare module '@xpeach/xph-typert-protocol' {
   interface RemoteErrorDetailsMap {
     /** No credential resolved for the configured reference. */
     'xpeach/missing-credential': { readonly ref: string }

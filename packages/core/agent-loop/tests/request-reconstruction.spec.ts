@@ -6,20 +6,20 @@
  */
 
 import { describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import LlmRuntime, { createUserMessage, LlmError, ReasoningEffortId  } from '@deepseek-ai/dsh-llm'
-import type { GenerateOptions, LlmModelReasoningInfo, LlmResolvedModelInfo, StreamChunk } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import SessionStore, { Session, SessionId, foldRequestHeader } from '@deepseek-ai/dsh-session'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
-import AgentRegistry, { type Agent } from '@deepseek-ai/dsh-agent'
+import { Context } from '@xpeach/xph-cordis'
+import LlmRuntime, { createUserMessage, LlmError, ReasoningEffortId  } from '@xpeach/xph-llm'
+import type { GenerateOptions, LlmModelReasoningInfo, LlmResolvedModelInfo, StreamChunk } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import SessionStore, { Session, SessionId, foldRequestHeader } from '@xpeach/xph-session'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@xpeach/xph-tools'
+import AgentRegistry, { type Agent } from '@xpeach/xph-agent'
 
-import AgentLoop from '@deepseek-ai/dsh-agent-loop'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
+import AgentLoop from '@xpeach/xph-agent-loop'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
 import { MockAdapter, textResponse, toolCallResponse } from './mock-adapter.ts'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'outer-wrapper': { kind: 'outer-wrapper' } & ContextFormed
     'test': { kind: 'test' } & ContextFormed

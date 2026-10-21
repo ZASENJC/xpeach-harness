@@ -1,17 +1,17 @@
 import { describe, expect, it } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import { createMessage, createUserMessage } from '@deepseek-ai/dsh-llm'
-import type { TokenUsage } from '@deepseek-ai/dsh-llm'
-import SessionStore from '@deepseek-ai/dsh-session'
-import type { Session, SessionSeq } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import TokenMeter from '@deepseek-ai/dsh-token-meter'
-import type { ContextPressureProjection, TokenUsageProjection } from '@deepseek-ai/dsh-token-meter/client'
-import { RetryId } from '@deepseek-ai/dsh-llm-retry'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import { CompactionId } from '@deepseek-ai/dsh-compaction'
+import { Context } from '@xpeach/xph-cordis'
+import { createMessage, createUserMessage } from '@xpeach/xph-llm'
+import type { TokenUsage } from '@xpeach/xph-llm'
+import SessionStore from '@xpeach/xph-session'
+import type { Session, SessionSeq } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import TokenMeter from '@xpeach/xph-token-meter'
+import type { ContextPressureProjection, TokenUsageProjection } from '@xpeach/xph-token-meter/client'
+import { RetryId } from '@xpeach/xph-llm-retry'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import { CompactionId } from '@xpeach/xph-compaction'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'test': { kind: 'test' } & ContextFormed
   }

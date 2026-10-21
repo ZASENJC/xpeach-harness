@@ -1,7 +1,7 @@
 /** DeepSeek `GET /models` listing: one authenticated request and per-entry decoding. */
-import { APP_IDENTITY, attributionHeaders, LlmError } from '@deepseek-ai/dsh-llm'
-import type { ModelModality } from '@deepseek-ai/dsh-llm'
-import { timeoutOf } from '@deepseek-ai/dsh-timeout'
+import { APP_IDENTITY, attributionHeaders, LlmError } from '@xpeach/xph-llm'
+import type { ModelModality } from '@xpeach/xph-llm'
+import { timeoutOf } from '@xpeach/xph-timeout'
 
 const LISTED_MODALITIES = ['text', 'image'] as const satisfies readonly ModelModality[]
 

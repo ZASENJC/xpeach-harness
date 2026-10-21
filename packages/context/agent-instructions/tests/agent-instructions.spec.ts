@@ -1,18 +1,18 @@
 import { chmod, mkdtemp, mkdir, rm, stat, symlink, utimes, writeFile } from 'node:fs/promises'
-import { provideWorkingDirectoryFixture } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { provideWorkingDirectoryFixture } from '@xpeach/xph-agent-loop-testkit'
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { tmpdir } from 'node:os'
 import { afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
-import { Context } from '@deepseek-ai/cordis'
-import Loader from '@deepseek-ai/cordis-plugin-loader'
-import * as AgentInstructions from '@deepseek-ai/dsh-agent-instructions'
-import LlmRuntime, { createUserMessage, ToolCallId, type Message, type MessageSource, type StreamChunk } from '@deepseek-ai/dsh-llm'
-import type { ContextFormed } from '@deepseek-ai/dsh-llm'
-import SessionStore, { SessionId, SessionSeq, type SessionEvent, type SurfaceIntent, type UserMessage } from '@deepseek-ai/dsh-session'
-import SessionProjectionRegistry from '@deepseek-ai/dsh-session-projection'
-import AgentRegistry, { agentEvents, type Agent } from '@deepseek-ai/dsh-agent'
-import AgentLoop, { turnBoundaryProjectionDefinition } from '@deepseek-ai/dsh-agent-loop'
-import { FileSystem, FsTargetKey, FsVersion } from '@deepseek-ai/dsh-fs'
+import { Context } from '@xpeach/xph-cordis'
+import Loader from '@xpeach/xph-cordis-plugin-loader'
+import * as AgentInstructions from '@xpeach/xph-agent-instructions'
+import LlmRuntime, { createUserMessage, ToolCallId, type Message, type MessageSource, type StreamChunk } from '@xpeach/xph-llm'
+import type { ContextFormed } from '@xpeach/xph-llm'
+import SessionStore, { SessionId, SessionSeq, type SessionEvent, type SurfaceIntent, type UserMessage } from '@xpeach/xph-session'
+import SessionProjectionRegistry from '@xpeach/xph-session-projection'
+import AgentRegistry, { agentEvents, type Agent } from '@xpeach/xph-agent'
+import AgentLoop, { turnBoundaryProjectionDefinition } from '@xpeach/xph-agent-loop'
+import { FileSystem, FsTargetKey, FsVersion } from '@xpeach/xph-fs'
 import type {
   FsDirEntry,
   FsEditOutcome,
@@ -22,20 +22,20 @@ import type {
   FsTarget,
   FsWriteIntent,
   FsWriteOutcome,
-} from '@deepseek-ai/dsh-fs'
-import LocalFileSystem from '@deepseek-ai/dsh-fs-local'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { defineContentToolFixture } from '@deepseek-ai/dsh-tools'
+} from '@xpeach/xph-fs'
+import LocalFileSystem from '@xpeach/xph-fs-local'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRuntime, { defineContentToolFixture } from '@xpeach/xph-tools'
 import type {
   ToolExecution,
   ToolExecutionToken,
-} from '@deepseek-ai/dsh-tools'
-import * as ToolFs from '@deepseek-ai/dsh-tool-fs'
+} from '@xpeach/xph-tools'
+import * as ToolFs from '@xpeach/xph-tool-fs'
 import {
   discoverBaselineInstructionFiles,
   loadBaselineInstructions,
   renderAgentInstructions,
-} from '@deepseek-ai/dsh-agent-instructions'
+} from '@xpeach/xph-agent-instructions'
 import {
   applyInstructionVersionUpdates,
   baselineInstructionState,
@@ -48,9 +48,9 @@ import { MockAdapter, textResponse, toolCallResponse } from '../../../core/agent
 import {
   mountAgentLoopTestDependencies,
   mountAgentLoopTestHarness,
-} from '@deepseek-ai/dsh-agent-loop-testkit'
+} from '@xpeach/xph-agent-loop-testkit'
 
-declare module '@deepseek-ai/dsh-llm' {
+declare module '@xpeach/xph-llm' {
   interface MessageSourceMap {
     'downstream': { kind: 'downstream' } & ContextFormed
     'other': { kind: 'other' } & ContextFormed
@@ -810,7 +810,7 @@ describe('workspace context instruction discovery', () => {
       vi.stubEnv('DSH_AGENTS_HOME', '')
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
-      const isolated = await import('@deepseek-ai/dsh-agent-instructions')
+      const isolated = await import('@xpeach/xph-agent-instructions')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root })
 
       expect(files.map(file => file.displayPath)).toEqual(['~/.agents/AGENTS.md'])
@@ -833,7 +833,7 @@ describe('workspace context instruction discovery', () => {
       vi.stubEnv('DSH_HOME', '')
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
-      const isolated = await import('@deepseek-ai/dsh-agent-instructions')
+      const isolated = await import('@xpeach/xph-agent-instructions')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root })
 
       expect(files.map(file => file.displayPath)).toEqual(['~/.dsh/AGENTS.md'])
@@ -854,7 +854,7 @@ describe('workspace context instruction discovery', () => {
 
       vi.resetModules()
       vi.doMock('node:os', () => ({ homedir: () => home }))
-      const isolated = await import('@deepseek-ai/dsh-agent-instructions')
+      const isolated = await import('@xpeach/xph-agent-instructions')
       pinHarnessHome('~/.dsh')
       const files = await isolated.discoverBaselineInstructionFiles({ cwd: root })
 
@@ -3519,7 +3519,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@deepseek-ai/dsh-agent-instructions')
+      const isolated = await import('@xpeach/xph-agent-instructions')
       pinHarnessHome(home)
       await isolated.loadBaselineInstructions({ cwd: root, maxBytes: 65536 })
       observedStats.clear()
@@ -3555,7 +3555,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@deepseek-ai/dsh-agent-instructions')
+      const isolated = await import('@xpeach/xph-agent-instructions')
 
       pinHarnessHome(home)
       const rendered = await isolated.loadBaselineInstructions({ cwd: root, maxBytes: 65536 })
@@ -3594,7 +3594,7 @@ describe('workspace context request injection', () => {
           },
         }
       })
-      const isolated = await import('@deepseek-ai/dsh-agent-instructions')
+      const isolated = await import('@xpeach/xph-agent-instructions')
 
       pinHarnessHome(home)
       await expect(isolated.loadBaselineInstructions({ cwd, maxBytes: 65536 }))

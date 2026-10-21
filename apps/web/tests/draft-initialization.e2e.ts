@@ -4,9 +4,9 @@ import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Page } from 'playwright'
 import { expect, it, onTestFinished } from 'vitest'
-import type { SessionId } from '@deepseek-ai/dsh-session'
-import type { ClientModuleLoaderTarget } from '@deepseek-ai/dsh-client-modules/client'
-import { formatSessionReferenceMention } from '@deepseek-ai/dsh-session-reference'
+import type { SessionId } from '@xpeach/xph-session'
+import type { ClientModuleLoaderTarget } from '@xpeach/xph-client-modules/client'
+import { formatSessionReferenceMention } from '@xpeach/xph-session-reference'
 import { launchWebScaffold, watchConsole, type WebScaffold } from './scaffold.ts'
 import { newEnglishPage, writeComposerDraft } from './support.ts'
 
@@ -62,7 +62,7 @@ async function observeDraftApi(page: Page): Promise<void> {
         Object.defineProperty(globalThis, '__ModuleLoader__', { configurable: true, writable: true, value: target })
         let load = target.load.bind(target)
         const observeLoad: ClientModuleLoaderTarget['load'] = (registration) => {
-          if (registration.id !== '@deepseek-ai/dsh-client-ui-workspace' || registration.chunk !== undefined) {
+          if (registration.id !== '@xpeach/xph-client-ui-workspace' || registration.chunk !== undefined) {
             load(registration)
             return
           }

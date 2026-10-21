@@ -1,5 +1,5 @@
 /**
- * Integration tests: the REAL `@deepseek-ai/dsh-pwsh-local` executor plus the
+ * Integration tests: the REAL `@xpeach/xph-pwsh-local` executor plus the
  * `pwsh` tool, exercised through `ctx.tools.execute()` with a real PowerShell
  * process. These verify the world — actual commands run, stdout/stderr come
  * back, exit codes render, timeouts abort, background jobs settle through the
@@ -9,22 +9,22 @@
  * gate.
  */
 
-import { provideWorkingDirectoryFixture } from '@deepseek-ai/dsh-agent-loop-testkit'
+import { provideWorkingDirectoryFixture } from '@xpeach/xph-agent-loop-testkit'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { spawnSync } from 'node:child_process'
-import { Context } from '@deepseek-ai/cordis'
-import { ToolCallId } from '@deepseek-ai/dsh-llm'
-import SystemPrompt from '@deepseek-ai/dsh-system-prompt'
-import ToolRuntime, { TOOL_ABORTED } from '@deepseek-ai/dsh-tools'
-import LocalJobRegistry from '@deepseek-ai/dsh-jobs-local'
-import * as ToolJobs from '@deepseek-ai/dsh-tool-jobs'
-import LocalSubprocessRuntime from '@deepseek-ai/dsh-subprocess-local'
-import { PwshLocalExecutor, resolvePwshPath } from '@deepseek-ai/dsh-pwsh-local'
-import * as ToolPwsh from '@deepseek-ai/dsh-tool-pwsh'
-import * as BashEnvPlugin from '@deepseek-ai/dsh-shell-env'
+import { Context } from '@xpeach/xph-cordis'
+import { ToolCallId } from '@xpeach/xph-llm'
+import SystemPrompt from '@xpeach/xph-system-prompt'
+import ToolRuntime, { TOOL_ABORTED } from '@xpeach/xph-tools'
+import LocalJobRegistry from '@xpeach/xph-jobs-local'
+import * as ToolJobs from '@xpeach/xph-tool-jobs'
+import LocalSubprocessRuntime from '@xpeach/xph-subprocess-local'
+import { PwshLocalExecutor, resolvePwshPath } from '@xpeach/xph-pwsh-local'
+import * as ToolPwsh from '@xpeach/xph-tool-pwsh'
+import * as BashEnvPlugin from '@xpeach/xph-shell-env'
 
 const testToolSignal = new AbortController().signal
 

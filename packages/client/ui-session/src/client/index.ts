@@ -1,5 +1,5 @@
 /** Session Controller adapter for React selector hooks and Slot scope data. */
-import { Service, type Context } from '@deepseek-ai/cordis'
+import { Service, type Context } from '@xpeach/xph-cordis'
 import type {
   ISessions,
   SessionBinding,
@@ -9,13 +9,13 @@ import type {
   SessionSnapshot,
   SessionSummary,
   UseProjection,
-} from '@deepseek-ai/dsh-api-session-controller/client'
-import type { SessionId } from '@deepseek-ai/dsh-session/types'
-import type {} from '@deepseek-ai/dsh-api-remotes/client'
-import type { RemoteEndpoint } from '@deepseek-ai/dsh-api-remote-access/client'
-import { notifySubscribers } from '@deepseek-ai/dsh-client-store'
-import { WeakMapWithValues } from '@deepseek-ai/dsh-util-values'
-import { standardHookPropName } from '@deepseek-ai/dsh-client-ui-slots'
+} from '@xpeach/xph-api-session-controller/client'
+import type { SessionId } from '@xpeach/xph-session/types'
+import type {} from '@xpeach/xph-api-remotes/client'
+import type { RemoteEndpoint } from '@xpeach/xph-api-remote-access/client'
+import { notifySubscribers } from '@xpeach/xph-client-store'
+import { WeakMapWithValues } from '@xpeach/xph-util-values'
+import { standardHookPropName } from '@xpeach/xph-client-ui-slots'
 import type {
   HostObservable,
   KeyedStandardSource,
@@ -25,9 +25,9 @@ import type {
   SlotScopeAdapter,
   SnapshotSelectorHook,
   StandardSourceBinding,
-} from '@deepseek-ai/dsh-client-ui-slots'
+} from '@xpeach/xph-client-ui-slots'
 // Type-only service merge for ctx.slots.
-import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
+import type {} from '@xpeach/xph-client-ui-renderer/client'
 import { renderSessionArea } from './session-provider.tsx'
 
 /** Selector hook over the Session Controller list and current selection. */
@@ -149,7 +149,7 @@ class PendingInteractionDomain<T extends SessionPendingInteractionBase> {
   }
 }
 
-declare module '@deepseek-ai/dsh-client-ui-slots' {
+declare module '@xpeach/xph-client-ui-slots' {
   interface SlotScopeTargetMap {
     session: SessionReference
   }
@@ -186,13 +186,13 @@ declare module '@deepseek-ai/dsh-client-ui-slots' {
   }
 }
 
-declare module '@deepseek-ai/dsh-api-session-controller/client' {
+declare module '@xpeach/xph-api-session-controller/client' {
   interface SessionReferenceSourceMap {
     mainView: unknown
   }
 }
 
-declare module '@deepseek-ai/cordis' {
+declare module '@xpeach/xph-cordis' {
   interface Context {
     /** Session Controller adapter and session-scoped source registry. */
     uiSession: UiSession

@@ -1,10 +1,10 @@
 /** XPeach quota-notice chain entry: relay failures get a branded card with a top-up link. */
-import type {} from '@deepseek-ai/dsh-client-ui-chat/client'
-import type {} from '@deepseek-ai/dsh-client-locale/client'
-import type {} from '@deepseek-ai/dsh-client-ui-renderer/client'
+import type {} from '@xpeach/xph-client-ui-chat/client'
+import type {} from '@xpeach/xph-client-locale/client'
+import type {} from '@xpeach/xph-client-ui-renderer/client'
 import { useEffect } from 'react'
-import type { PropsLocale, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
-import type { QuotaNoticeOwnerProps } from '@deepseek-ai/dsh-client-ui-chat/client'
+import type { PropsLocale, PropsRuntime } from '@xpeach/xph-client-ui-slots'
+import type { QuotaNoticeOwnerProps } from '@xpeach/xph-client-ui-chat/client'
 import { XPeachMark } from './brand.tsx'
 import css from './xpeach.module.css'
 

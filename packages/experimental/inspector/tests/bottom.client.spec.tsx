@@ -2,10 +2,10 @@
 /** Bottom Inspector lifetime and shortcuts through the production slot renderer. */
 import { afterEach, expect, it } from 'vitest'
 import { act } from '@testing-library/react'
-import { SlotTestRuntime } from '@deepseek-ai/dsh-client-test-runtime'
-import { LocaleRuntime } from '@deepseek-ai/dsh-client-locale/client'
-import ShortcutsService from '@deepseek-ai/dsh-client-shortcuts/client'
-import type { ShortcutCommandId } from '@deepseek-ai/dsh-client-shortcuts/client'
+import { SlotTestRuntime } from '@xpeach/xph-client-test-runtime'
+import { LocaleRuntime } from '@xpeach/xph-client-locale/client'
+import ShortcutsService from '@xpeach/xph-client-shortcuts/client'
+import type { ShortcutCommandId } from '@xpeach/xph-client-shortcuts/client'
 import { registerInspectorPage } from '../src/client/bottom/page.tsx'
 import { inspectorId } from '../src/shared/identity.ts'
 
