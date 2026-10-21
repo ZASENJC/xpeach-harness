@@ -30,8 +30,9 @@ const FILE_SETTINGS = ['DSH_DESKTOP_WINDOWS_CER_FILE', 'DSH_DESKTOP_WINDOWS_SIGN
 export function localMacOSPackageEnvironment(environment = process.env) {
   return {
     ...Object.fromEntries(Object.entries(environment).filter(([name]) => !AMBIENT_RELEASE_SETTING.test(name))),
-    // XPeach keeps its own bundle identity; a caller-supplied id still wins.
-    DSH_DESKTOP_APP_ID: environment.DSH_DESKTOP_APP_ID ?? XPEACH_APP_ID,
+    // This preset exists to ignore inherited release settings, so the bundle
+    // identity is always the product constant rather than an ambient value.
+    DSH_DESKTOP_APP_ID: XPEACH_APP_ID,
     DSH_DESKTOP_UNSIGNED: '1',
   }
 }

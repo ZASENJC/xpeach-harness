@@ -86,11 +86,14 @@ export function desktopUpdateMetadataFilename(version, platform, channel = 'nigh
   if (valid(version) === null) {
     throw new Error(`desktop auto-update: invalid Desktop version ${JSON.stringify(version)}`)
   }
-  if (platform !== 'darwin' && platform !== 'win32') {
+  if (platform !== 'darwin' && platform !== 'win32' && platform !== 'linux') {
     throw new Error(`desktop auto-update: unsupported metadata platform ${platform}`)
   }
   resolveDesktopUpdateChannel({ DSH_DESKTOP_UPDATE_CHANNEL: channel })
-  return `${channel}${platform === 'darwin' ? '-mac' : ''}.yml`
+  // electron-builder names the channel metadata per platform: latest-mac.yml,
+  // latest.yml (Windows) and latest-linux.yml.
+  const suffix = platform === 'darwin' ? '-mac' : platform === 'linux' ? '-linux' : ''
+  return `${channel}${suffix}.yml`
 }
 
 /**

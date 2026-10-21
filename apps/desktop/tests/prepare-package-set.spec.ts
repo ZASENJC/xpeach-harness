@@ -30,6 +30,8 @@ describe('desktop package-set selection', () => {
       ['@deepseek-ai/dsh-desktop-host', packed('@deepseek-ai/dsh-desktop-host', {
         dependencies: { '@deepseek-ai/dsh': '^1.0.0' },
       })],
+      ['@xpeach/xph-account', packed('@xpeach/xph-account')],
+      ['@xpeach/xph-client-ui', packed('@xpeach/xph-client-ui')],
       ['@deepseek-ai/dsh-base', packed('@deepseek-ai/dsh-base', {
         peerDependencies: { '@deepseek-ai/cordis': '^1.0.0' },
       })],
@@ -43,6 +45,8 @@ describe('desktop package-set selection', () => {
       '@deepseek-ai/dsh-base',
       '@deepseek-ai/dsh-desktop-host',
       '@deepseek-ai/platform-package',
+      '@xpeach/xph-account',
+      '@xpeach/xph-client-ui',
     ])
   })
 
@@ -72,9 +76,11 @@ describe('desktop package-set selection', () => {
         },
       })],
       ['@deepseek-ai/dsh-desktop-host', packed('@deepseek-ai/dsh-desktop-host')],
+      ['@xpeach/xph-account', packed('@xpeach/xph-account')],
+      ['@xpeach/xph-client-ui', packed('@xpeach/xph-client-ui')],
     ])
     expect(selectDesktopPackageClosure(available).map(entry => entry.manifest.name)).toEqual([
-      '@deepseek-ai/dsh', '@deepseek-ai/dsh-desktop-host',
+      '@deepseek-ai/dsh', '@deepseek-ai/dsh-desktop-host', '@xpeach/xph-account', '@xpeach/xph-client-ui',
     ])
   })
 

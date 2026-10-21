@@ -47,7 +47,10 @@ describe('desktop release metadata', () => {
 const coordinators: InstanceType<typeof DesktopUpdateCoordinator>[] = []
 afterEach(() => { for (const item of coordinators.splice(0)) item.dispose() })
 
-function fixture(channel: 'nightly' | 'latest' = 'nightly', version = '1.1.0-alpha.1') {
+function fixture(channel: 'nightly' | 'latest' = 'nightly', version = '1.1.0-alpha.1', silent = false) {
+  // These cases drive the manual flow unless a case opts into the shipped default.
+  if (silent) delete process.env.XPEACH_SILENT_UPDATE
+  else process.env.XPEACH_SILENT_UPDATE = '0'
   const events = new EventEmitter()
   const checkForUpdates = vi.fn(async () => ({
     isUpdateAvailable: true,
@@ -113,6 +116,13 @@ describe('desktop update coordinator', () => {
       await expect(f.coordinator.install('1.1.0-rc.2')).rejects.toThrow(/not ready/u)
     } finally { prepared.resolve(['verified']); await downloading }
     expect(f.coordinator.state.phase).toBe('ready')
+  })
+
+  it('ships silent updates unless XPEACH_SILENT_UPDATE=0 turns them off', () => {
+    expect(fixture('nightly', '1.1.0-alpha.1', true).updater)
+      .toMatchObject({ autoDownload: true, autoInstallOnAppQuit: true })
+    expect(fixture().updater).toMatchObject({ autoDownload: false, autoInstallOnAppQuit: false })
+    delete process.env.XPEACH_SILENT_UPDATE
   })
 
   it('consumes late updater errors until an in-flight check settles after disposal', async () => {

@@ -33,6 +33,8 @@ function fixture(jitter = 0, random = () => 0.5) {
 }
 
 describe('ordinary update polling', () => {
+  // These cases exercise the manual flow; the silent default has its own coverage.
+  beforeEach(() => { process.env.XPEACH_SILENT_UPDATE = '0' })
   it('checks immediately, doubles failed delays up to the cap, and resets after success', async () => {
     const f = fixture()
     f.checkForUpdates.mockRejectedValue(new Error('offline'))

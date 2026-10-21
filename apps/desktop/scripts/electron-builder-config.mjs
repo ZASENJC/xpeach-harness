@@ -116,7 +116,7 @@ export function createElectronBuilderConfig(
   return {
     appId,
     executableName: 'xpeach-harness',
-    protocols: [{ name: 'DeepSeek Harness', schemes: ['dsh'] }],
+    protocols: [{ name: 'XPeach Harness', schemes: ['dsh'] }],
     extraMetadata: {
       dshDesktopAppId: appId,
       dshDesktopUpdateChannel: update?.channel ?? 'nightly',
@@ -178,7 +178,7 @@ export function createElectronBuilderConfig(
       identity: unsigned ? '-' : macOSSigning?.signingIdentity,
       forceCodeSigning: !unsigned,
       hardenedRuntime: true,
-      extendInfo: { NSMicrophoneUsageDescription: 'DeepSeek Harness uses your microphone to transcribe speech into message drafts.' },
+      extendInfo: { NSMicrophoneUsageDescription: 'XPeach Harness uses your microphone to transcribe speech into message drafts.' },
       entitlements: fileURLToPath(new URL('./macos-entitlements.plist', import.meta.url)),
       entitlementsInherit: fileURLToPath(new URL('./macos-entitlements.plist', import.meta.url)),
       // Prepared runtime files retain their signatures; PAK resources are sealed by their enclosing bundle.
