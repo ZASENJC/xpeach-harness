@@ -62,7 +62,9 @@
         apiKeyEnv: XPEACH_RELAY_KEY
         api: openai-completions
         baseURL: https://fast.xpeach.codes/v1
-        models: []
+        # The catalog is not frozen here: the account plugin writes the site's
+        # live model list into this namespace at boot and after every bind.
+
 
 - id: ui-brand-official
   disabled: true

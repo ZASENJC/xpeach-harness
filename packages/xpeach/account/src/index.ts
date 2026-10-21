@@ -108,6 +108,11 @@ export interface Config {
 export class XPeachAccount extends TypertRemoteService {
   static inject = ['typert', 'credentials', 'settings']
 
+  /** Whether this process already refreshed the picker catalog from the site. */
+  private catalogSynced = false
+  /** Guards a catalog refresh already in flight. */
+  private catalogSyncing = false
+
   static Config: z<Config> = z.object({
     baseURL: z.string().default('https://fast.xpeach.codes'),
     apiKeyEnv: z.string().role('credential-ref').default('XPEACH_API_KEY'),
@@ -160,6 +165,7 @@ export class XPeachAccount extends TypertRemoteService {
     this.sessionKeyFile = resolved.sessionKeyFile
     this.sessionKeyVar = resolved.sessionKeyVar
     this.bootstrapKey()
+
     this.api = new XPeachApi({
       baseURL: this.activeBaseURL,
       timeoutMs: this.timeoutMs,
@@ -303,6 +309,29 @@ export class XPeachAccount extends TypertRemoteService {
    * models, else the DSH-oriented SWE group, else the richest non-admin group.
    * A token left on the admin group (or no group) sees an empty /v1/models.
    */
+  /**
+   * Refresh the picker's catalog once per process.
+   *
+   * The site's model list changes without a rebind, so a profile that bound once
+   * would otherwise keep a stale (or, on first boot, empty) list forever. The
+   * first state read is the earliest point where both the settings service and
+   * the bound token exist; later calls are no-ops.
+   */
+  private syncCatalogOnce(): void {
+    if (this.catalogSyncing || this.catalogSynced) return
+    const key = this.readKeyFile() ?? process.env[this.keyVar]?.trim()
+    if (key === undefined || key.length === 0) return
+    this.catalogSyncing = true
+    void this.syncModelCatalog(new AbortController().signal)
+      .then((result) => {
+        // A settings service that is not up yet leaves the flag clear so the next
+        // state read retries instead of freezing an empty picker.
+        if (result.ok) this.catalogSynced = true
+      })
+      .catch(() => undefined)
+      .finally(() => { this.catalogSyncing = false })
+  }
+
   private async defaultGroups(signal: AbortSignal): Promise<string[]> {
     const [counts, me] = await Promise.all([this.groupModelCounts(signal), this.api.adminSelf(signal)])
     if (me.group !== undefined && (counts.get(me.group) ?? 0) > 0) return [me.group]
@@ -593,6 +622,7 @@ export class XPeachAccount extends TypertRemoteService {
   @Remote('keyState')
   async keyState(_request: XPeachSelfRequest, signal: AbortSignal): Promise<XPeachBindResult> {
     signal.throwIfAborted()
+    this.syncCatalogOnce()
     const key = this.readKeyFile() ?? process.env[this.keyVar]?.trim()
     const admin = this.resolveAdmin()
     const adminBits = admin === undefined ? {} : { adminBound: true, adminPreview: admin.slice(0, 4) + '…' + admin.slice(-4) }
