@@ -2,22 +2,34 @@
 
 English | [中文](CONTRIBUTING.zh.md)
 
-Thank you for your interest in contributing to DeepSeek Harness!
+Thanks for your interest in XPeach Harness.
 
-We deeply believe in the power of open source communities, and that belief has shaped this project from the very beginning.
+This repository is the client for the [🍑Code](https://xpeach.codes) relay. It is built on an
+everything-is-a-plugin core, so most changes belong in one package rather than across the tree.
 
-DeepSeek Harness is still at an early stage and under active development. We are sorry that we cannot accept external pull requests at the moment. However, contributing code to this repository is far from the only way to help. There are many other ways to get involved:
+## Before you start
 
-- Identify and report issues or bugs in GitHub Discussions:
-  - Upvote discussions that you would like to bring to the team's attention. We are a very small team and may not be able to reply to every post, but we monitor them and consider them when allocating resources.
-- Contribute to the ecosystem:
-  - Create a plugin that excites you and share it with others:
-    - Associate your GitHub project with the `dsh-plugin` topic to help others discover your plugin.
-  - Write blog posts and how-to guides about DeepSeek Harness.
-  - Answer questions and help other members of the community.
+- Read [`docs/architecture.md`](docs/architecture.md) for the package layout.
+- Read [`AGENTS.md`](AGENTS.md) for the conventions this repository enforces, including the
+  pre-stable API and session-data rules.
+- Run `pnpm run build` and the relevant tests before opening a pull request.
 
-DeepSeek Harness is designed to be deeply customizable. We do not believe that packages in the official repository are inherently more important than packages created by the community. You may consider this repository an idea, an official showcase, and a source of inspiration, but not a mandate from us.
+## Ways to help
 
-We have already seen exciting projects emerge from the community, and we hope to see the ecosystem continue to grow in its own directions.
+- **Report a bug.** Open a [GitHub Issue](https://github.com/yellowpeachxgp/xpeach-harness/issues)
+  with the app version, your platform, and the smallest reproduction you can manage.
+- **Request a model or a route.** Groups and models are served by the site, not by this client.
+  Tell us what your token cannot reach and we will look at the relay side.
+- **Improve the client.** UI slots, tools and provider adapters are independent plugin packages;
+  a focused pull request against one of them is easiest to review.
 
-Into the unknown.
+## Pull requests
+
+- Keep one change per pull request and explain the user-visible effect.
+- Match the surrounding style; the repository enforces formatting and type checks in CI.
+- Add or update tests for behaviour you change. Snapshots and fixtures follow the product, so
+  refresh them with the commands named in their test file.
+
+## License
+
+By contributing you agree that your contribution is licensed under the [MIT License](LICENSE).

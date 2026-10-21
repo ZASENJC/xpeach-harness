@@ -1,96 +1,88 @@
-# DeepSeek Harness
+# XPeach Harness
 
 [English](README.md) | 中文
 
-DeepSeek Harness（`dsh`）是由 [DeepSeek AI](https://deepseek.com) 开发的开源 agent harness（智能体框架）。
+**XPeach Harness**（`xph`）是 [🍑Code](https://xpeach.codes) 中转站的桌面端与 Web 客户端。
 
-它构建于**一切皆插件**的架构之上，由 [Cordis](https://github.com/cordiverse/cordis) 驱动，其设计参见论文 [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512)。
+🍑Code 是一个 OpenAI 兼容的中转站：一个端点，接住所有前沿模型；一份账单，算清每一次调用。
 
-文档：[https://deepseek-harness.github.io/deepseek-harness/](https://deepseek-harness.github.io/deepseek-harness/)
+用站点的「系统访问令牌」绑定一次，工作台就活在你的中转额度里：Claude、GPT、DeepSeek
+在同一個模型选择器里出现，每次调用都记进你的令牌用量，剩余额度一直显示在窗口角落。
 
-## 开发者预览
+## 你能得到什么
 
-DeepSeek Harness 处于 _开发者预览_ 阶段，正在快速迭代。**未来将出现破坏兼容性的变更。**
-
-运行本项目前，请阅读[安全说明](SAFETY.zh.md)。
-
-<a id="run"></a>
+- **一个端点，全部模型。** `swe-2-max`、`gpt-6-astra`、`claude-opus-5`、`deepseek-v4-flash`
+  以及中转站目录里的其余模型，全部从 `/v1/models` 实时拉取——不需要手工维护清单。
+- **只绑一次。** 粘贴站点「个人设置 → 系统访问令牌」里的 Access Token，应用会自己铸一把
+  `sk-` 中转令牌并保存好，对话、工具调用、后台任务都记在同一处。
+- **额度看得见。** 角落的 🍑 胶囊显示剩余额度、今日消费和最近七天；点开是完整明细。
+- **日志对得上账单。** 每次调用都记下模型、输入输出 token、耗时和时间。
+- **线路会自己挑。** 三条中转线路持续探测，最快的胜出并自动切换，你不需要知道过程。
+- **一切皆插件。** 智能体内核、工具、界面插槽、模型适配都是可组合的插件层，
+  一个工作区可以只带你需要的那部分。
 
 ## 运行
 
-### 通过 `npm` 运行
+### 桌面端
 
-安装 `Node.js`，然后运行：
+到 [Releases](https://github.com/yellowpeachxgp/xpeach-harness/releases) 下载对应平台的安装包：
+
+| 平台 | 文件 |
+|---|---|
+| macOS（Apple 芯片） | `xpeach-harness-<version>-arm64.dmg` |
+| Windows（x64） | `xpeach-harness-setup-<version>.exe` |
+| Linux（x64） | `xpeach-harness-<version>-x64.AppImage` |
+
+应用会自动更新：新版本在后台下载好，你退出时自动装上。
+
+### 命令行
 
 ```sh
-npx @deepseek-ai/dsh web
+pnpm xph web
 ```
 
-该命令默认会在 `http://127.0.0.1:3080` 启动 Web UI，本机启动时还会用默认浏览器打开页面。通过 SSH 启动时只打印宿主机 URL，因为本地转发地址由 SSH 客户端或编辑器持有。传入 `--no-open` 可仅运行服务器而不打开浏览器。详见 [Web UI 指南](docs/user/guide/index.zh.md)。
+`xph` 把数据放在 `~/.xph`，与机器上其他任何 harness 安装完全分开——会话、凭据、设置、日志都是。
 
-<a id="run-from-source"></a>
+## 第一次使用
 
-### 从源码运行
+1. 打开应用，工作台停在欢迎页。
+2. 粘贴站点 Access Token。**令牌只保存在本机**，不会上传。
+3. 选择这把中转令牌要服务的模型分组（SWE、GPT、Claude、DeepSeek…）。
+4. 新建会话。选择器里会列出你的令牌能调用的全部模型。
 
-如需从仓库源码运行：
+如果你之前用过别的 harness，可以把旧对话**一次性、单向、只读**地导入——
+**设置 → XPeach → 从 DeepSeek 导入对话**。
+
+## 数据与隐私
+
+| 内容 | 位置 |
+|---|---|
+| 会话、附件、设置 | `~/.xph` |
+| 站点 Access Token | `~/.xph/profiles/xpeach/xpeach.admin`（0600） |
+| 中转 `sk-` 令牌 | `~/.xph/profiles/xpeach/xpeach.key`（0600） |
+| 线路状态 | `~/.xph/profiles/xpeach/xpeach.route.json` |
+
+除了你发往中转站的请求，没有任何数据离开这台机器。
+
+## 从源码构建
 
 ```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
+git clone https://github.com/yellowpeachxgp/xpeach-harness.git
+cd xpeach-harness
 pnpm install
 pnpm run build
-pnpm dsh web
+pnpm xph web
 ```
 
-`pnpm run build` 会准备仓库产物。`pnpm dsh web` 会直接使用这些已构建产物，不会重新构建。
+桌面端打包与发布流程见 [`packaging/README.zh.md`](apps/desktop/packaging/README.zh.md)。
 
-## 社区与支持
+## 社区
 
-- 通过 [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions) 提交反馈或 bug 报告。
-- 为你的插件仓库添加 [`dsh-plugin`](https://github.com/topics/dsh-plugin) 话题，便于被发现。
-- 欢迎加入 DeepSeek Harness 企微群！扫描下方二维码填写入群问卷，小助手会定期发送入群邀请。
+- 站点与控制台：[xpeach.codes](https://xpeach.codes)
+- 问题与需求：[GitHub Issues](https://github.com/yellowpeachxgp/xpeach-harness/issues)
 
-<table>
-  <thead>
-    <tr>
-      <th align="center">入群问卷</th>
-      <th align="center">微信公众号</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td align="center"><a href="https://trtgsjkv6r.feishu.cn/share/base/form/shrcnIt5twSVdLGD52KJBckGCgg"><img src="https://cdn.deepseek.com/harness/readme/community-wecom-survey.png" alt="DeepSeek Harness 入群问卷二维码" width="180" height="180"></a></td>
-      <td align="center"><img src="https://cdn.deepseek.com/harness/readme/community-wechat-official-account.png" alt="DeepSeek Harness 团队微信公众号二维码" width="180" height="180"></td>
-    </tr>
-  </tbody>
-</table>
-
-## 参与贡献
-
-参见 [CONTRIBUTING.md](CONTRIBUTING.zh.md)。
-
-## 开发
-
-请先阅读[开发指南](docs/development.zh.md)与[架构文档](docs/architecture.zh.md)。
-
-`pnpm run dev:web` 会在一个终端里完成构建、启动，并在源码修改时重建 client bundle；`make help` 列出 Web 与 Desktop 对应的 Make target。完整表格见开发指南的「应用命令」一节。
-
-面向 agent：请遵循 [AGENTS.md](AGENTS.md)。
-
-## 引用
-
-```bibtex
-@misc{deepseek-harness2026,
-  title={DeepSeek Harness: Everything is a Plugin},
-  author={DeepSeek-AI},
-  year={2026},
-  publisher={GitHub},
-  howpublished={\url{https://github.com/deepseek-ai/deepseek-harness}},
-}
-```
-
-## 许可证
+## 许可
 
 [MIT](LICENSE)
 
-第三方依赖及其许可证见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+第三方依赖及其许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

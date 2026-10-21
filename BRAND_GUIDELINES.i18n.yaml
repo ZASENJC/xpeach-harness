@@ -2,6 +2,18 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write BRAND_GUIDELINES.md
-/deepseek-harness-brand-asset-usage-guidelines:
-  en: 23933888033edf18
-  zh: eaa5afb9e2cb4d25
+/xpeach-harness-brand-asset-usage-guidelines:
+  en: 082817f57faac805
+  zh: 8f14026976c20997
+/xpeach-harness-brand-asset-usage-guidelines/names:
+  en: eb037ae4111a56c3
+  zh: 9fdc3a794d155158
+/xpeach-harness-brand-asset-usage-guidelines/marks:
+  en: fbb494690dfb0b29
+  zh: 4bc33886da097349
+/xpeach-harness-brand-asset-usage-guidelines/distribution:
+  en: 0ebbe462a0ea7be1
+  zh: ac1dc0a5f4414399
+/xpeach-harness-brand-asset-usage-guidelines/relationship-to-upstream:
+  en: 252c5bcba7317b84
+  zh: 30e26e8e38ac6427

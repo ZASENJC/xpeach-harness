@@ -4,16 +4,16 @@
 #   pnpm run verify-translation-pairing --write SAFETY.md
 /safety:
   en: a374f70c56b3f221
-  zh: a07f7a9ba9af40fc
+  zh: 28f63fb548a6ff87
 /safety/experimental-status:
-  en: 39a995a6c819f73e
-  zh: e577df19392736ac
+  en: 4432e6bfa6407c66
+  zh: 7bc125e72a38dada
 /safety/sandbox-limitations:
-  en: a2b6cf1311f3abb6
-  zh: c3694663312f4d6c
+  en: 40dc1e4d7b47a68e
+  zh: 99befe610d15c206
 /safety/responsible-use:
   en: ca3e9da7c0b360fe
-  zh: c0a6891a197d48cd
+  zh: 72b5bc57c5fb0a8e
 /safety/no-warranty-or-liability:
-  en: 71a2989f530f2018
-  zh: e90e55f11068a91f
+  en: 91921c4759965f74
+  zh: 952ba9600feff92a

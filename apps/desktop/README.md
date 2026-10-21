@@ -2,7 +2,7 @@
 description: "Desktop runs the Harness workspace in a native application. This reference covers application behavior, development and integration; the packaging, Windows signing and publication guides own build and release operations."
 ---
 
-# DeepSeek Harness Desktop
+# XPeach Harness Desktop
 
 English | [中文](README.zh.md)
 

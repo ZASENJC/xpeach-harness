@@ -2,33 +2,33 @@
 # section, a hash of its English and Chinese blocks outside code blocks and generated regions.
 # After editing either side, bring the other along and re-record with:
 #   pnpm run verify-translation-pairing --write README.md
-/deepseek-harness:
-  en: f68c4f080ce55ff2
-  zh: 88a76d7f7f0b260e
-/deepseek-harness/developer-preview:
-  en: 4ef4d8a71ac143f0
-  zh: 1bfc3149ba8e5543
-/deepseek-harness/run:
+/xpeach-harness:
+  en: 422dde996cbf472f
+  zh: 3863110fd554267c
+/xpeach-harness/what-you-get:
+  en: d2f00f5ece2f73ef
+  zh: 903b707b9b0df05b
+/xpeach-harness/run:
   en: 4e0248e4c6474fc6
   zh: eb2fb8d78c7d6bc0
-/deepseek-harness/run/run-from-npm:
-  en: e22005cd42e6cbad
-  zh: 0f536f4208df1d60
-/deepseek-harness/run/run-from-source:
-  en: 819e3f7c144d0d64
-  zh: de815f040975dba7
-/deepseek-harness/community-and-support:
-  en: 20acf6451fdc869b
-  zh: d06246dd019ecef7
-/deepseek-harness/contributing:
-  en: cabc2d3e9f8898bd
-  zh: 83b6d238bae29ce3
-/deepseek-harness/development:
-  en: 803ca2b11b497bed
-  zh: 8b4071eb0e7783ef
-/deepseek-harness/citation:
-  en: 6704e9e5a8d49a91
-  zh: 85c9cdd8d56f8e9d
-/deepseek-harness/license:
+/xpeach-harness/run/desktop-app:
+  en: e49c6b09c35fdb9f
+  zh: 884e8d28aae756ce
+/xpeach-harness/run/command-line:
+  en: 91016b7fd170a21f
+  zh: ec08f1fd14982c02
+/xpeach-harness/first-run:
+  en: 0d3511dcb1040be2
+  zh: a6c34079a26a12fb
+/xpeach-harness/data-and-privacy:
+  en: 99429615e6efe741
+  zh: 45f6284548c84662
+/xpeach-harness/building-from-source:
+  en: f425b800e2d80c5c
+  zh: a2d3b6903551651d
+/xpeach-harness/community:
+  en: ca297df95b6f42ab
+  zh: 2b94d6a710ba7c23
+/xpeach-harness/license:
   en: 926995344fc1c72b
-  zh: c92fab5abf85932f
+  zh: 6c1f2cc46ef9e4a3

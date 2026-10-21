@@ -1,74 +1,90 @@
-# DeepSeek Harness
+# XPeach Harness
 
 English | [中文](README.zh.md)
 
-DeepSeek Harness (`dsh`) is an open-source agent harness developed by [DeepSeek AI](https://deepseek.com).
+**XPeach Harness** (`xph`) is the desktop and web client for [🍑Code](https://xpeach.codes) —
+an OpenAI-compatible relay that puts every frontier model behind one endpoint and one bill.
 
-It is built on an **everything-is-a-plugin** architecture and powered by [Cordis](https://github.com/cordiverse/cordis), whose design is described in [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512).
+Bind once with your site Access Token, and the workbench runs on your relay credit:
+Claude, GPT and DeepSeek routes appear in one picker, every call is metered against your
+token, and the balance stays visible in the window chrome.
 
-Documentation: [https://deepseek-harness.github.io/deepseek-harness/](https://deepseek-harness.github.io/deepseek-harness/)
+## What you get
 
-## Developer preview
-
-DeepSeek Harness is in _developer preview_ and iterating rapidly. **THERE WILL BE COMPATIBILITY-BREAKING CHANGES.**
-
-Review the [safety notice](SAFETY.md) before running the project.
+- **One endpoint, every model.** `swe-2-max`, `gpt-6-astra`, `claude-opus-5`, `deepseek-v4-flash`
+  and the rest of the relay catalog, pulled live from `/v1/models` — no hand-maintained list.
+- **Bind once.** Paste the site Access Token from **个人设置 → 系统访问令牌**. The app mints and
+  stores its own `sk-` relay token, so chat, tools and background jobs all bill to one place.
+- **Balance in sight.** A 🍑 pill in the corner shows remaining quota, today's spend and the
+  last seven days; click it for the full breakdown.
+- **Logs that match the bill.** Every call is listed with model, tokens in/out, latency and time.
+- **Network awareness.** Three relay routes are probed continuously; the fastest one wins and
+  the switch happens without you noticing.
+- **Everything is a plugin.** The agent core, the tools, the UI slots and the provider adapters
+  are composable plugin layers, so a workspace can carry exactly the surface you need.
 
 ## Run
 
-### Run from `npm`
+### Desktop app
 
-Install `Node.js`, then run:
+Download the installer for your platform from
+[Releases](https://github.com/yellowpeachxgp/xpeach-harness/releases):
+
+| Platform | Asset |
+|---|---|
+| macOS (Apple silicon) | `xpeach-harness-<version>-arm64.dmg` |
+| Windows (x64) | `xpeach-harness-setup-<version>.exe` |
+| Linux (x64) | `xpeach-harness-<version>-x64.AppImage` |
+
+The app updates itself: a new release is downloaded in the background and applied when you quit.
+
+### Command line
 
 ```sh
-npx @deepseek-ai/dsh web
+pnpm xph web
 ```
 
-The command starts the Web UI at `http://127.0.0.1:3080` by default and opens it in the default browser for a local launch. An SSH launch only prints the host URL because the SSH client or editor owns the local forwarded address. Pass `--no-open` to run the server without opening a browser. See [Web UI guide](docs/user/guide/index.md).
+`xph` keeps its data in `~/.xph`, entirely separate from any other harness installation on the
+machine — sessions, credentials, settings and logs included.
 
-### Run from source
+## First run
 
-To run from a repository checkout:
+1. Launch the app. The workbench opens on the welcome screen.
+2. Paste your site Access Token. **It is stored on this machine only** — never uploaded.
+3. Pick the model group you want the relay token to serve (SWE, GPT, Claude, DeepSeek…).
+4. Start a session. The picker lists every model your token can call.
+
+You can move existing conversations in once, one-way and read-only, from a local DeepSeek
+Harness data directory — **Settings → XPeach → 从 DeepSeek 导入对话**.
+
+## Data and privacy
+
+| What | Where |
+|---|---|
+| Sessions, attachments, settings | `~/.xph` |
+| Site Access Token | `~/.xph/profiles/xpeach/xpeach.admin` (0600) |
+| Relay `sk-` token | `~/.xph/profiles/xpeach/xpeach.key` (0600) |
+| Relay route state | `~/.xph/profiles/xpeach/xpeach.route.json` |
+
+Nothing leaves the machine except the calls you make to the relay.
+
+## Building from source
 
 ```sh
-git clone https://github.com/deepseek-ai/deepseek-harness.git
-cd deepseek-harness
+git clone https://github.com/yellowpeachxgp/xpeach-harness.git
+cd xpeach-harness
 pnpm install
 pnpm run build
-pnpm dsh web
+pnpm xph web
 ```
 
-`pnpm run build` prepares the repository artifacts. `pnpm dsh web` uses those built artifacts without rebuilding.
+Desktop packaging and the release pipeline are described in
+[`packaging/README.md`](apps/desktop/packaging/README.md).
 
-## Community and support
+## Community
 
-- Submit feedback or bug reports through [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions).
-- Add the [`dsh-plugin`](https://github.com/topics/dsh-plugin) topic to your plugin repository for discoverability.
-- Join <a href="https://discord.gg/4MrtZUhpxg">DeepSeek Harness Discord community</a>.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Development
-
-Start with the [development guide](docs/development.md) and [architecture documentation](docs/architecture.md).
-
-`pnpm run dev:web` builds, serves, and rebuilds client bundles on source edits in one terminal, and `make help` lists the matching Make targets for Web and Desktop; the guide's application commands section owns the full table.
-
-For agents, follow [AGENTS.md](AGENTS.md).
-
-## Citation
-
-```bibtex
-@misc{deepseek-harness2026,
-  title={DeepSeek Harness: Everything is a Plugin},
-  author={DeepSeek-AI},
-  year={2026},
-  publisher={GitHub},
-  howpublished={\url{https://github.com/deepseek-ai/deepseek-harness}},
-}
-```
+- Site and console: [xpeach.codes](https://xpeach.codes)
+- Issues and feature requests: [GitHub Issues](https://github.com/yellowpeachxgp/xpeach-harness/issues)
 
 ## License
 
