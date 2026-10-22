@@ -2,6 +2,7 @@
 import { createHash } from 'node:crypto'
 import { cp, mkdir, readFile, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { DESKTOP_HOST_PACKAGE } from '../src/core-package-set.ts'
 import { runtimePath, verifyDesktopRuntime, writeDesktopRuntime } from '../src/runtime-tree.ts'
 import { readInstalledUpdateRun } from './installed-update-qualification.ts'
 
@@ -33,7 +34,8 @@ export async function prepareInstalledUpdateRuntime(manifest: string, sourceRoot
     await writeFile(join(receipt, 'source.json'), `${JSON.stringify({ sourceHash, version: run.source.version })}\n`,
       { flag: 'wx', mode: 0o600, flush: true })
     const releaseNames = new Set(source.sharedPackages.filter(entry => entry.version === run.source.version
-      && (entry.name === '@xpeach/xph-dsh' || entry.name.startsWith('@xpeach/xph-dsh-'))).map(entry => entry.name))
+      && (entry.name === '@xpeach/xph-dsh' || entry.name === DESKTOP_HOST_PACKAGE
+        || entry.name.startsWith('@xpeach/xph-dsh-'))).map(entry => entry.name))
     for (const version of run.versions) {
       const directory = join(run.root, version)
       await mkdir(directory)

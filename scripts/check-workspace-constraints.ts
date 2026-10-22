@@ -72,7 +72,7 @@ const desktopApplicationDirectory = 'apps/desktop'
 const localArtifactDirs = new Set(['node_modules'])
 const appPackageFiles: Readonly<Record<string, readonly string[]>> = {
   '@xpeach/xph-dsh': ['lib/*.js', 'lib/types/*.d.ts'],
-  '@xpeach/xph-dsh-desktop-host': [
+  '@xpeach/xph-desktop-host': [
     'lib/index.js', 'lib/cli.js',
   ],
   // Sourcemaps stay out by payload policy; the worker-preview surface
